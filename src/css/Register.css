@@ -1,0 +1,20 @@
+.container {
+    max-width: 500px;
+  }
+  
+  .btn-block {
+    width: 100%;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .vh-100 {
+    min-height: 100vh;
+  }
+  
+  .form-check-label {
+    margin-left: 0.3rem;
+  }
+  
