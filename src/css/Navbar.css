@@ -1,0 +1,51 @@
+.grid {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    /* Tres columnas: auto, flexible y auto */
+    align-items: center;
+    padding: 2rem;
+    background-color: #2F6FA5;
+    /* Color principal */
+}
+
+.header .nav-link,
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    color: #000000;
+}
+
+.header .navbar-brand img {
+    margin-right: 0.5rem;
+}
+
+.header .nav-login {
+    justify-self: end;
+    text-decoration: none;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+}
+
+.header .nav-link:hover {
+    color: #646cff;
+}
+
+.navbar-nav {
+    background-color: #E3DCD6;
+    /* color principal */
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem;
+}
+
+.navbar-nav .nav-link {
+    margin: 0 1rem;
+    /* Agrega espacio entre los links */
+    color: #000000;
+    text-decoration: none;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #646cff;
+}
