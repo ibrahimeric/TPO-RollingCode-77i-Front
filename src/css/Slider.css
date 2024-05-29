@@ -1,0 +1,51 @@
+.carousel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+.carousel img {
+    width: 100%;
+    height: 700px;
+    object-fit: cover;
+}
+
+a.carousel-control-prev,
+a.carousel-control-next {
+    width: 4rem;
+    /* Ancho más pequeño para los botones */
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.307);
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* Centra los elementos en el eje horizontal */
+    justify-content: flex-start;
+    /* Alinea el contenido hacia arriba */
+    margin-bottom: 3rem;
+    /* Espacio inferior */
+    margin-right: 20px;
+    /* Espacio derecho */
+}
+
+.carousel-caption h3 {
+    color: #fff;
+    text-align: center;
+    /* Centra el texto horizontalmente */
+}
+
+.carousel-caption p {
+    color: #ccc;
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    margin-bottom: 0;
+    /* Elimina el espacio inferior del párrafo */
+    text-align: left;
+    /* Alinea el texto a la izquierda */
+}
