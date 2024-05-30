@@ -1,33 +1,28 @@
-import { useState } from 'react'
-import reactLogo from '/react.svg'
-import viteLogo from '/vite.svg'
+import CardComponent from './components/Cards';
 import './css/App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="cards-container">
+        <CardComponent
+          imagen="/public/cards/card1.webp"
+          title="Registro de Mascotas"
+          text="Registra y gestiona la información de tus mascotas fácilmente"
+        />
+        <CardComponent
+          imagen="/public/cards/card2.webp"
+          title="Adopción de Mascotas"
+          text="Encuentra una nueva familia para mascotas necesitadas"
+        />
+        <CardComponent
+          imagen="/public/cards/card3.webp"
+          title="Reserva de Turnos"
+          text="Agenda turnos para vacunación y castración de manera sencilla"
+        />
+        {/* Duplica tantas tarjetas como necesites */}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
