@@ -1,23 +1,26 @@
-import { Container, Row, Col } from 'react-bootstrap';
 import GitHubIco from '/public/social-media/github.ico';
 import LinkedInIco from '/public/social-media/linkedin.ico';
 import InstagramIco from '/public/social-media/instagram.ico';
-import '../css/Footer.css'
+import '../css/Footer.css';
 
 const Footer = () => {
     return (
-        <Container fluid className="fixed-bottom container">
-            <div className="page-footer font-small blue pt-4 w-100">
-                <div className="container-fluid text-center text-md-left">
+        <div className="footer-container fixed-bottom">
+            <div className="page-footer font-small blue">
+                <div className="text-center text-md-left">
                     <div className="row">
-                        <Row className="col-md-6 mt-md-0 mt-3">
+                        <div className="col-md-6 mt-md-0 mt-3">
                             <h5 className="text-uppercase">Footer Content</h5>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime quam esse ex molestiae in.</p>
-                        </Row>
+                            <p>
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum dolor corrupti reiciendis neque,
+                                soluta, obcaecati veritatis cumque itaque aperiam hic id mollitia rerum quibusdam consectetur ipsa
+                                minima provident tenetur reprehenderit
+                            </p>
+                        </div>
 
                         <hr className="clearfix w-100 d-md-none pb-0" />
 
-                        <Row className="col-md-3 mb-md-0 mb-3">
+                        <div className="col-md-3 mb-md-0 mb-3">
                             <h5 className="text-uppercase">Links</h5>
                             <ul className="list-unstyled">
                                 <li><a href="#!">Link 1</a></li>
@@ -25,9 +28,9 @@ const Footer = () => {
                                 <li><a href="#!">Link 3</a></li>
                                 <li><a href="#!">Link 4</a></li>
                             </ul>
-                        </Row>
+                        </div>
 
-                        <Row className="col-md-3 mb-md-0 mb-3">
+                        <div className="col-md-3 mb-md-0 mb-3">
                             <h5 className="text-uppercase">Links</h5>
                             <ul className="list-unstyled">
                                 <li><a href="#!">Link 1</a></li>
@@ -35,9 +38,9 @@ const Footer = () => {
                                 <li><a href="#!">Link 3</a></li>
                                 <li><a href="#!">Link 4</a></li>
                             </ul>
-                        </Row>
-                        <Row className="justify-content-center">
-                            <Col xs={12} md={6} className="d-flex justify-content-around align-items-center iconos" style={{ fontSize: ''}}>
+                        </div>
+                        <div className="justify-content-center">
+                            <div className="iconos">
                                 <a href="https://github.com/petwebportal">
                                     <img className="icono-img"
                                         src={GitHubIco}
@@ -58,15 +61,16 @@ const Footer = () => {
                                         alt="Pet Web Portal Instagram"
                                     />
                                 </a>
-                            </Col>
-                        </Row>
-                        <Row className="justify-content-center footer-copyright text-center py-3 list-unstyled">© 2020 Copyright:
+                            </div>
+                        </div>
+                        <div className="justify-content-center footer-copyright text-center py-3 list-unstyled">
+                            <span>© 2020 Copyright:</span>
                             <li><a href="https://petwebportal.com/">PetWebPortal.com</a></li>
-                        </Row>
+                        </div>
                     </div>
                 </div>
             </div>
-        </Container>
+        </div>
     );
 }
 
