@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Slider from './components/Slider.jsx'
-import './css/index.css'
+import App from './App'
 import 'bootstrap/dist/css/bootstrap.min.css';
+
   
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Slider />
+    <App />
   </React.StrictMode>,
 )

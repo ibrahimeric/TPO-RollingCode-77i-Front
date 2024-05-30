@@ -15,7 +15,6 @@
 a.carousel-control-prev,
 a.carousel-control-next {
     width: 4rem;
-    /* Ancho más pequeño para los botones */
 }
 
 .carousel-caption {
