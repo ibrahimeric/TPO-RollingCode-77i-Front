@@ -1,5 +1,4 @@
 import CardComponent from './components/Cards';
-import './css/App.css'
 
 function App() {
 
