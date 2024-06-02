@@ -86,3 +86,79 @@ span.carousel-control-next-icon {
     height: 1rem;
     width: 1rem;
 }
+
+@media (max-width: 1200px) {
+    .contenedor {
+        padding: 0 3rem;
+    }
+
+    .item-container {
+        padding: 0rem 3rem;
+    }
+
+    .rounded-circle {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 992px) {
+    .contenedor {
+        padding: 0 2rem;
+    }
+
+    .item-container {
+        padding: 0rem 2rem;
+    }
+
+    .text-comment {
+        font-size: 20px;
+    }
+
+    .text-name {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contenedor {
+        padding: 0 0.5rem;
+    }
+
+    .user-experience-carousel {
+        padding: 3rem 4rem;
+    }
+
+    .item-container {
+        padding: 0rem 1rem;
+    }
+
+    .rounded-circle {
+        width: 60px;
+        height: 60px;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 60px;
+    }
+
+    span.carousel-control-prev-icon,
+    span.carousel-control-next-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .carousel-indicators button {
+        margin: 0.5rem;
+        height: 0.5rem;
+        width: 0.5rem;
+    }
+    .text-comment {
+        font-size: 15px;
+    }
+
+    .text-name {
+        font-size: 15px;
+    }
+}
