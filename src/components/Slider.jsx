@@ -16,8 +16,8 @@ const Slider = () => {
                     alt="First slide"
                 />
                 <Carousel.Caption>
-                    <h3>La nueva tendencia</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, quis! Eum, animi! Odio magni rerum maxime consectetur fugiat? Deleniti doloremque aliquid sunt suscipit dolores, possimus minima molestiae odit perferendis enim?</p>
+                    <h3>Tu Viaje de Adopción Simplificado</h3>
+                    <p>Sitio enfocado en facilitar la adopción de mascotas conectando dueños cariñosos con animales necesitados de un hogar amoroso. Destacan un proceso de adopción simplificado con un registro fácil, registros completos de vacunación y orientación experta durante todo el proceso.</p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -28,8 +28,8 @@ const Slider = () => {
                 />
 
                 <Carousel.Caption>
-                    <h3>La nueva tendencia</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, quis! Eum, animi! Odio magni rerum maxime consectetur fugiat? Deleniti doloremque aliquid sunt suscipit dolores, possimus minima molestiae odit perferendis enim?</p>
+                    <h3>Tu Viaje de Adopción Simplificado</h3>
+                    <p>Sitio enfocado en facilitar la adopción de mascotas conectando dueños cariñosos con animales necesitados de un hogar amoroso. Destacan un proceso de adopción simplificado con un registro fácil, registros completos de vacunación y orientación experta durante todo el proceso.</p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -40,8 +40,8 @@ const Slider = () => {
                 />
 
                 <Carousel.Caption>
-                    <h3>La nueva tendencia</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, quis! Eum, animi! Odio magni rerum maxime consectetur fugiat? Deleniti doloremque aliquid sunt suscipit dolores, possimus minima molestiae odit perferendis enim?</p>
+                    <h3>Tu Viaje de Adopción Simplificado</h3>
+                    <p>Sitio enfocado en facilitar la adopción de mascotas conectando dueños cariñosos con animales necesitados de un hogar amoroso. Destacan un proceso de adopción simplificado con un registro fácil, registros completos de vacunación y orientación experta durante todo el proceso.</p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -51,8 +51,8 @@ const Slider = () => {
                     alt="First slide"
                 />
                 <Carousel.Caption>
-                    <h3>La nueva tendencia</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, quis! Eum, animi! Odio magni rerum maxime consectetur fugiat? Deleniti doloremque aliquid sunt suscipit dolores, possimus minima molestiae odit perferendis enim?</p>
+                    <h3>Tu Viaje de Adopción Simplificado</h3>
+                    <p>Sitio enfocado en facilitar la adopción de mascotas conectando dueños cariñosos con animales necesitados de un hogar amoroso. Destacan un proceso de adopción simplificado con un registro fácil, registros completos de vacunación y orientación experta durante todo el proceso.</p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -62,8 +62,8 @@ const Slider = () => {
                     alt="First slide"
                 />
                 <Carousel.Caption>
-                    <h3>La nueva tendencia</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, quis! Eum, animi! Odio magni rerum maxime consectetur fugiat? Deleniti doloremque aliquid sunt suscipit dolores, possimus minima molestiae odit perferendis enim?</p>
+                    <h3>Tu Viaje de Adopción Simplificado</h3>
+                    <p>Sitio enfocado en facilitar la adopción de mascotas conectando dueños cariñosos con animales necesitados de un hogar amoroso. Destacan un proceso de adopción simplificado con un registro fácil, registros completos de vacunación y orientación experta durante todo el proceso.</p>
                 </Carousel.Caption>
             </Carousel.Item>
         </Carousel>
