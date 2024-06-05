@@ -15,7 +15,7 @@ const Login = () => {
       newErrors.email = 'El email no es válido';
     }
 
-    if (password.length < 8) {
+    if (password.length < 4) {
       newErrors.password = 'La contraseña debe tener al menos 8 caracteres';
     }
 
@@ -29,7 +29,7 @@ const Login = () => {
       return;
     }
     try {
-      const response = await fetch('/api/auth/login', {  
+      const response = await fetch('http://localhost:5000/api/auth/login', {  
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ const Login = () => {
             />
             <label className="form-check-label" htmlFor="showPassword">Ver contraseña</label>
           </div>
-          <button type="submit" className="btn btn-primary btn-block mb-3">Iniciar Sesión</button>
+          <button type="submit" className="btn btn-primary btn-block mb-3" onClick={handleSubmit}>Iniciar Sesión</button>
           <div className="text-center">
             <Link to="/recover-password">¿Olvidaste tu contraseña?</Link>
           </div>

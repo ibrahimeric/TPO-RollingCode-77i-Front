@@ -44,7 +44,7 @@ const Register = () => {
       return;
     }
     try {
-      const response = await fetch('/api/register', {  //no se si falta el auth
+      const response = await fetch('/api/auth/register', {  
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -138,7 +138,7 @@ const Register = () => {
             />
             <label className="form-check-label" htmlFor="showPassword">Ver contraseñas</label>
           </div>
-          <button type="submit" className="btn btn-primary btn-block mb-3">Registrarse</button>
+          <button type="submit" className="btn btn-primary btn-block mb-3" onClick={handleSubmit}>Registrarse</button>
           <div className="text-center">
             <Link to="/login">¿Ya tienes una cuenta? Iniciar Sesión</Link>
           </div>
