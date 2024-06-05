@@ -1,9 +1,8 @@
-// src/components/PetList.js
 import React from 'react';
 import { Container, Table, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../css/PetList.css';
-import PetsExamples from '../examples/PetsExamples'; // Importa el archivo de datos ejemplares
+import PetsExamples from '../examples/PetsExamples'; 
 
 const PetList = () => {
   const pets = PetsExamples; // Ejemplos hasta que se haga el fetch
