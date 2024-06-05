@@ -2,7 +2,8 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import PetsExamples from '../examples/PetsExamples';
-import { Container, Row, Col, Image } from 'react-bootstrap';
+import { Container, Row, Col, Image, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const PetDetail = () => {
   const { id } = useParams();
@@ -25,6 +26,7 @@ const PetDetail = () => {
           <p><strong>Sexo:</strong> {pet.gender}</p>
           <p><strong>Tamaño:</strong> {pet.size}</p>
           <p><strong>Especie:</strong> {pet.species}</p>
+          <Link to={`/pet/${id}/edit`}><Button>Editar</Button></Link>
         </Col>
       </Row>
     </Container>
