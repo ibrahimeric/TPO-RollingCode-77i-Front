@@ -29,7 +29,7 @@ const Login = () => {
       return;
     }
     try {
-      const response = await fetch('/api/login', {
+      const response = await fetch('/api/login', {  //no se si falta el auth
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

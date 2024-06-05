@@ -44,7 +44,7 @@ const Register = () => {
       return;
     }
     try {
-      const response = await fetch('/api/register', {
+      const response = await fetch('/api/register', {  //no se si falta el auth
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
