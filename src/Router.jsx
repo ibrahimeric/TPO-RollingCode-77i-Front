@@ -1,11 +1,15 @@
+import React from 'react';
+import App from './App';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-
-const Router = () => {
+const AppRouter = () => {
   return (
-    <div>
-      <h2>Archivo Enrutador</h2>
-    </div>
+    <React.StrictMode>
+    <Router>
+      <App />
+    </Router>
+  </React.StrictMode>
   )
 }
 
-export default Router
+export default AppRouter
