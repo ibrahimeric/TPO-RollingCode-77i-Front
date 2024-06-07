@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import NavBar from './components/Navbar';
+import Slider from './components/Slider';
 import './css/App.css';
 
 function App() {
@@ -9,8 +10,9 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<NavBar isAdmin={isAdmin} />} /> {/* Aquí se muestra solo el NavBar */}
+        <Route path="/" element={<NavBar isAdmin={isAdmin} />} />
       </Routes>
+      <Slider />
     </div>
   );
 }
