@@ -23,17 +23,43 @@ const menuItems = [
 
 /* slider */
 const sliderData = [
-  { image: slider1, alt: "First slide", title: "La nueva tendencia 1",
-    description: "comp", },
-  { image: slider2, alt: "Second slide", title: "La nueva tendencia 2",
-    description: "comple" },
-  { image: slider3, alt: "Third slide", title: "La nueva tendencia 3",
-    description: "completa" },
-  { image: slider4, alt: "Fourth slide", title: "La nueva tendencia 4",
-    description: "completar" },
-  { image: slider5, alt: "Fifth slide", title: "La nueva tendencia 5",
-    description: "tara" }
+  { 
+    // Primera diapositiva
+    image: slider1, 
+    alt: "First slide", 
+    title: "Registro Único de Mascotas",
+    description: "Facilitamos el registro único de mascotas, brindando una plataforma centralizada para almacenar y acceder a la información de tus mascotas de forma fácil y segura.", 
+  },
+  { 
+    // Segunda diapositiva
+    image: slider2, 
+    alt: "Second slide", 
+    title: "Portal de Adopción",
+    description: "Conectamos a dueños cariñosos con animales necesitados de un hogar amoroso. Nuestro portal de adopción simplifica el proceso de búsqueda y encuentro de tu nueva mascota.", 
+  },
+  { 
+    // Tercera diapositiva
+    image: slider3, 
+    alt: "Third slide", 
+    title: "Vacunación Completa",
+    description: "Garantizamos registros completos de vacunación para todas las mascotas en nuestro sistema. La salud y el bienestar de tu mascota son nuestra prioridad.", 
+  },
+  { 
+    // Cuarta diapositiva
+    image: slider4, 
+    alt: "Fourth slide", 
+    title: "Comunidad de Amantes de las Mascotas",
+    description: "Únete a nuestra comunidad de amantes de las mascotas. Comparte tus experiencias, consejos y fotos con otros dueños de mascotas apasionados como tú.", 
+  },
+  { 
+    // Quinta diapositiva
+    image: slider5, 
+    alt: "Fifth slide", 
+    title: "Apoyo Experto",
+    description: "Recibe orientación durante todo el proceso de adopción y cuidado de mascotas. Estamos aquí para brindarte el apoyo que necesitas en cada paso del camino." 
+  }
 ];
+
 
 /* tarjetas */
 const cardsData = [
@@ -81,9 +107,14 @@ const socialMediaLinks = [  /* enlaces de redes sociales */
   { href: "https://instagram.com/@petwebportal", icon: InstagramIco, alt: "Pet Web Portal Instagram" }
 ];
 
-const footerLinks = [ /* enlaces en el footer */
-  { title: "Links", items: ["Link 1", "Link 2", "Link 3", "Link 4"] },
-  { title: "Links", items: ["Link 1", "Link 2", "Link 3", "Link 4"] }
+const footerLinks = [
+  // { title: "Acerca de nosotros", items: ["Misión y visión", "Nuestro equipo", "Testimonios", "Blog"] },
+  { title: "Servicios", items: ["Registro de mascotas", "Portal de adopción", "Vacunación", "Cuidado de mascotas"] },
+  { title: "Contacto", items: ["Soporte", "Formulario de contacto", "Ubicación", "Redes sociales"] }
 ];
 
-export { cardsData, menuItems, sliderData, userExperiences, socialMediaLinks, footerLinks };
+const footerParagraph = [
+  { title: "Sobre Nosotros", paragraph:["Descubre tu compañero ideal en nuestro portal de adopción de mascotas. Con un registro único y completo, facilitamos la conexión entre dueños amorosos y mascotas necesitadas. Únete a nuestra comunidad comprometida con el bienestar animal hoy mismo"]}
+];
+
+export { cardsData, menuItems, sliderData, userExperiences, socialMediaLinks, footerLinks, footerParagraph };

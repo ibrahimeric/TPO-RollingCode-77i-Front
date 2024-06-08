@@ -58,11 +58,8 @@
 }
 
 @media (max-width: 576px) {
-
-
     .text-uppercase {
         font-size: 15px;
-        /* Tamaño de fuente para dispositivos pequeños */
     }
 
     .text-paragraph {
@@ -71,30 +68,25 @@
 
     .list-unstyled li a {
         font-size: 14px;
-        /* Tamaño de fuente para dispositivos pequeños */
     }
 }
 
 @media (min-width: 577px) and (max-width: 992px) {
     .text-uppercase {
         font-size: 20px;
-        /* Tamaño de fuente para dispositivos medianos */
     }
 
     .list-unstyled li a {
         font-size: 16px;
-        /* Tamaño de fuente para dispositivos medianos */
     }
 }
 
 @media (min-width: 993px) {
     .text-uppercase {
         font-size: 24px;
-        /* Tamaño de fuente para dispositivos grandes */
     }
 
     .list-unstyled li a {
         font-size: 18px;
-        /* Tamaño de fuente para dispositivos grandes */
     }
 }

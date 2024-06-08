@@ -11,7 +11,7 @@ import './css/App.css'
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado de autenticación del usuario
   const [isAdmin, setIsAdmin] = useState(false);
-  
+
   // Función para cerrar sesión
   const handleLogout = () => {
     setIsLoggedIn(false);
@@ -24,10 +24,13 @@ function App() {
       </Routes>
       <Slider />
       <div className="cards-container">
+        <div className='titulo-cards'>
+          <h3 className='titulo'>Nuestros Servicios</h3>
+        </div>
         <CardList />
       </div>
-      <UserExperience/>
-      <Footer/>
+      <UserExperience />
+      <Footer />
     </>
   );
 }
