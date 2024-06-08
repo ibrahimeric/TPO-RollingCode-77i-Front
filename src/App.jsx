@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import NavBar from './components/Navbar';
 import Slider from './components/Slider';
 import CardComponent from './components/Cards';
@@ -21,7 +21,9 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<NavBar menuItems={menuItems} isLoggedIn={isLoggedIn} isAdmin={isAdmin} />} />
+        <Route path="/" element={<Link to="/non-existent-page">Go to 404</Link>} />
       </Routes>
+
       <Slider />
       <div className="cards-container">
         <div className='titulo-cards'>
