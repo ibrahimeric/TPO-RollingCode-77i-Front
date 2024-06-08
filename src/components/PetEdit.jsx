@@ -1,7 +1,7 @@
 // src/components/PetEdit.js
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import PetsExamples from '../examples/PetsExamples';
+
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 
 const PetEdit = () => {
@@ -17,20 +17,50 @@ const PetEdit = () => {
     });
   };
 
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Aquí puedes agregar la lógica para guardar los cambios en la base de datos o hacer la solicitud al backend
-    console.log('Pet edited:', editedPet);
-    history.push(`/pets`);
+    try {
+      const response = await fetch(`pet/update/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(editedPet),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
+      console.log('Pet edited:', editedPet);
+      // Después de guardar los cambios, redirige a la página de listado de mascotas
+      history.push(`/pets`);
+    } catch (error) {
+      console.error('Error editing pet:', error);
+      // Manejar el error, podrías establecer un estado de error para mostrar un mensaje al usuario
+    }
   };
+  
 
-  const handleDelete = () => {
-    // Aquí puedes agregar la lógica para eliminar la mascota
-    console.log("Mascota eliminada:", id);
-    // Después de eliminar la mascota, redirige a la página de listado de mascotas
-    history.push('/pets');
+  const handleDelete = async () => {
+    try {
+      const response = await fetch(`pet/delete/${id}`, {
+        method: 'DELETE',
+      });
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
+      console.log("Mascota eliminada:", id);
+      // Después de eliminar la mascota, redirige a la página de listado de mascotas
+      history.push('/pets');
+    } catch (error) {
+      console.error('Error deleting pet:', error);
+      // Manejar el error, podrías establecer un estado de error para mostrar un mensaje al usuario
+    }
   };
+  
   return (
     <Container className="my-4">
       <Row>

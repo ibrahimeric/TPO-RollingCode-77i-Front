@@ -1,16 +1,36 @@
-// src/components/PetDetail.js
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import PetsExamples from '../examples/PetsExamples';
+import React, { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
 const PetDetail = () => {
   const { id } = useParams();
-  const pet = PetsExamples.find(pet => pet.id === parseInt(id));
+  const [pet, setPet] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchPetDetails = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/pet/:${id}`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setPet(data);
+      } catch (error) {
+        setError(error.message);
+        console.error('Error fetching pet details:', error);
+      }
+    };
+
+    fetchPetDetails();
+  }, [id]);
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
 
   if (!pet) {
-    return <p>Mascota no encontrada</p>;
+    return <p>Loading...</p>;
   }
 
   return (

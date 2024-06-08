@@ -1,11 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Table, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../css/PetList.css';
-import PetsExamples from '../examples/PetsExamples'; 
 
 const PetList = () => {
-  const pets = PetsExamples; // Ejemplos hasta que se haga el fetch
+  const [pets, setPets] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchPets = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/pet', {  
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+        setPets(data);
+      } catch (error) {
+        setError(error.message);
+        console.error('Error fetching pets:', error);
+      }
+    };
+
+    fetchPets();
+  }, []);
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <Container>
@@ -28,9 +57,9 @@ const PetList = () => {
             <tr key={pet.id}>
               <td><img src={pet.image || 'src/assets/pet.imagen.jpg'} alt={pet.name} style={{ width: '100px', height: '100px', objectFit: 'cover' }} /></td>
               <td>{pet.name}</td>
-              <td>{pet.breed}</td>
+              <td>{pet.race}</td>
               <td>{pet.age} años</td>
-              <td>{pet.gender}</td>
+              <td>{pet.sex}</td>
               <td>{pet.size}</td>
               <td>{pet.species}</td>
               <td>
