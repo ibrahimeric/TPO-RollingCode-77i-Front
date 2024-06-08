@@ -1,6 +1,9 @@
+// NavBar.jsx
+
 import { useState } from 'react';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import logo from '/logo.png';
+import { menuItems } from '../js/data';
 import '../css/Navbar.css';
 
 const NavBar = () => {
@@ -36,9 +39,12 @@ const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <div className="navbar-nav">
             <Nav>
-              <Nav.Link href="#home" className="nav-link-custom">Inicio</Nav.Link>
-              <Nav.Link href="#services" className="nav-link-custom">Serivicios</Nav.Link>
-              <Nav.Link href="#shifts" className="nav-link-custom">Turnos</Nav.Link>
+            {/* cambio para usar data */}
+              {menuItems.map((item, index) => (
+                <Nav.Link key={index} href={item.url} className="nav-link-custom">
+                  {item.title}
+                </Nav.Link>
+              ))}
             </Nav>
           </div>
 
