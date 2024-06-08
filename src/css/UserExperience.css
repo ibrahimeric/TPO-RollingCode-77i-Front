@@ -1,12 +1,12 @@
 .contenedor-experiences {
     padding: 0 4rem;
-    background-color: rgba(84, 70, 241, 0.688);
+    background-color: rgba(70, 130, 241, 0.372);
 }
 
 .user-experience-carousel {
     background-color: transparent;
     max-width: 100%;
-    padding: 4rem 4rem;
+    padding: 6rem;
 }
 
 .item-container {
@@ -55,12 +55,11 @@
 .user-experience-carousel .carousel-control-next-icon {
     width: 50px;
     height: 50px;
-    /* background-color: rgba(0, 0, 0, 0.516); */
     background-size: 100%, 100%;
     border-radius: 50%;
 }
 
-.user-experience-carousel span.carousel-control-prev-icon, 
+.user-experience-carousel span.carousel-control-prev-icon,
 .user-experience-carousel span.carousel-control-next-icon {
     width: 40px;
     height: 40px;
@@ -77,6 +76,7 @@
 .user-experience-carousel .carousel-item {
     transition: opacity 0.5s ease-in-out;
 }
+
 .user-experience-carousel .carousel-item.active {
     opacity: 1;
 }
@@ -148,11 +148,62 @@
         height: 0.5rem;
         width: 0.5rem;
     }
+
     .text-comment {
         font-size: 15px;
     }
 
     .text-name {
         font-size: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .contenedor-experiences {
+        padding: 0 1rem;
+    }
+
+    .user-experience-carousel {
+        padding: 2rem 1rem;
+    }
+
+    .item-container {
+        padding: 0rem 1rem;
+    }
+
+    .user-slide {
+        padding: 0.5rem 0;
+    }
+
+    .image-container {
+        padding: 0.25rem 0;
+    }
+
+    .text-container {
+        padding: 0.25rem 0;
+    }
+
+    .text-comment {
+        font-size: 15px;
+    }
+
+    .text-name {
+        font-size: 14px;
+    }
+
+    .rounded-circle {
+        width: 50px;
+        height: 50px;
+    }
+
+    .user-experience-carousel a.carousel-control-prev,
+    .user-experience-carousel a.carousel-control-next {
+        width: 20px;
+    }
+
+    .user-experience-carousel span.carousel-control-prev-icon,
+    .user-experience-carousel span.carousel-control-next-icon {
+        width: 25px;
+        height: 25px;
     }
 }

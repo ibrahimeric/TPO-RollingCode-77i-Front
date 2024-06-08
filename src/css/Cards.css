@@ -4,9 +4,8 @@
     justify-content: center;
     align-items: center;
     gap: 40px;
-    background-color: #cfe8fc ;
-    padding: 1rem 4rem;
-    height: 700px;
+    background-color: #ffff ;
+    padding: 6rem;
 }
 
 .custom-card {

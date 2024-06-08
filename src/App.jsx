@@ -4,6 +4,7 @@ import NavBar from './components/Navbar';
 import Slider from './components/Slider';
 import CardComponent from './components/Cards';
 import UserExperience from './components/UserExperience';
+import Footer from './components/Footer.jsx'
 import { menuItems, cardsData } from './js/data';
 import './css/App.css'
 
@@ -26,6 +27,7 @@ function App() {
         <CardList />
       </div>
       <UserExperience/>
+      <Footer/>
     </>
   );
 }

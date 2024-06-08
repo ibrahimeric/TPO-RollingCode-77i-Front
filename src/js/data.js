@@ -6,6 +6,12 @@ import slider3 from '../assets/slider/slider3.jpg';
 import slider4 from '../assets/slider/slider4.jpg';
 import slider5 from '../assets/slider/slider5.jpg';
 
+// footer: redes sociales
+import GitHubIco from '../../public/social-media/github.ico';
+import LinkedInIco from '../../public/social-media/linkedin.ico';
+import InstagramIco from '../../public/social-media/instagram.ico';
+
+
 // Datos
 /* navbar */
 const menuItems = [
@@ -44,7 +50,8 @@ const cardsData = [
   // Agrega más objetos aquí si necesitas más tarjetas
 ];
 
-const userExperiences  = [
+/* experiencias de usuarios */
+const userExperiences = [
   {
     image: '/src/assets/user-experience/perfil1.jpg',
     text: '"Fácil de encontrar a mi compañero y rastrear registros de vacunación."',
@@ -62,4 +69,16 @@ const userExperiences  = [
   }
 ];
 
-export { cardsData, menuItems, sliderData, userExperiences  };
+/* footer */
+const socialMediaLinks = [  /* enlaces de redes sociales */
+  { href: "https://github.com/petwebportal", icon: GitHubIco, alt: "Pet Web Portal GitHub" },
+  { href: "https://www.linkedin.com/in/petwebportal", icon: LinkedInIco, alt: "Pet Web Portal LinkedIn" },
+  { href: "https://instagram.com/@petwebportal", icon: InstagramIco, alt: "Pet Web Portal Instagram" }
+];
+
+const footerLinks = [ /* enlaces en el footer */
+  { title: "Links", items: ["Link 1", "Link 2", "Link 3", "Link 4"] },
+  { title: "Links", items: ["Link 1", "Link 2", "Link 3", "Link 4"] }
+];
+
+export { cardsData, menuItems, sliderData, userExperiences, socialMediaLinks, footerLinks };
