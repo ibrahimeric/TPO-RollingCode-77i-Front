@@ -44,7 +44,8 @@ const Footer = () => {
                             </div>
                             <div className="justify-content-center footer-copyright text-center py-3 list-unstyled">
                                 <span>© 2024 Copyright:</span>
-                                <li><a href="https://petwebportal.com/">PetWebPortal.com</a></li>
+                                {/* https://petwebportal.com/ */}
+                                <li><a href="/error-404" target="_blank" rel="noopener noreferrer">PetWebPortal.com</a></li>
                             </div>
                         </div>
                     </div>
