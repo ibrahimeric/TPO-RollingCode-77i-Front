@@ -1,172 +1,124 @@
-/* Estilos generales del carousel */
-.slider-container {
+#carousel-principal {
+    display: block;
     width: 100%;
-    height: 550px; /* Altura del contenedor */
-    position: relative;
-}
-
-/* Estilos de la imagen en el carousel */
-.carousel img {
-    width: 100%;
-    height: 700px;
+    height: 40vw;
+    max-height: calc(100vh - 80px);
+    /* font-family: 'Times New Roman', Times, serif; */
     object-fit: cover;
-    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-/* Estilos del contenido de la caption */
-.caption-content h3 {
-    font-size: 2.5rem;
-    font-weight: bold;
+.carousel-item-wrapper {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+}
+
+.carousel-imagen {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.custom-carousel-caption {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.5);
     color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    padding: 1% 2%;
+    border-radius: 10px;
+    width: 35%;
+    height: auto;
+}
+
+.custom-carousel-caption h3 {
+    font-size: 1.7vw;
     margin-bottom: 10px;
 }
 
-/* Estilos del párrafo en la caption */
-.caption-content p {
-    font-size: 1.25rem;
-    color: #ddd;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+.custom-carousel-caption p {
+    font-size: 1.2vw;
     margin: 0;
 }
 
-/* Estilos generales de la caption */
-.carousel-caption {
-    position: absolute;
-    bottom: 20%;
-    left: 20%; 
-    transform: translate(-30%, -50%);
-    text-align: left;
-    background-color: rgba(0, 0, 0, 0.292);
-    padding: 10px 20px;
-    border-radius: 10px;
-    max-height: 350px;
-    width: 40%;
-}
-
-.carousel-container .carousel-indicators li[data-bs-target]:not([data-bs-target='']):before {
-    display: none;
-}
-
-/* Estilos de los indicadores del carousel */
-.carousel-container .carousel-indicators {
-    display: flex;
-    justify-content: center;
+.carousel-indicators {
     position: absolute;
     bottom: 10px;
-    left: 0px;
-    margin: auto;
-    width: auto;
-    padding: 10px 0;
-    list-style: none;
-    border-radius: 50%;
+    left: calc(50% - 10vw);
+    transform: translateX(-50%);
 }
 
-/* Estilos de los puntos indicadores */
-.carousel-container .carousel-indicators li {
+.carousel-indicators li {
     background-color: #fff;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
+    border: 1px solid #ccc;
+    width: 2vw;
+    height: 2vw;
     margin: 0 5px;
     cursor: pointer;
-    opacity: 0.7;
 }
 
-/* Estilos del punto indicador activo */
-.carousel-container .carousel-indicators .active {
-    opacity: 1;
+#carousel-principal .carousel-control-prev,
+#carousel-principal .carousel-control-next {
+    width: 10%;
 }
 
-/* Estilos de los botones de control */
-.carousel-container .carousel-control-prev,
-.carousel-container .carousel-control-next {
-    width: 5%;
-}
-
-/* Estilos de los iconos de control */
-.carousel-container .carousel-control-prev-icon,
-.carousel-container .carousel-control-next-icon {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    border-radius: 50%;
-}
-
-/* Estilos de los iconos de control al pasar el mouse */
-.carousel-container .carousel-control-prev-icon:hover,
-.carousel-container .carousel-control-next-icon:hover {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-/* Estilos de las diapositivas */
-.carousel-container .carousel-item {
-    transition: opacity 0.5s ease-in-out;
-}
-
-/* Estilos de las diapositivas activas */
-.carousel-container .carousel-item-next,
-.carousel-item-prev,
-.carousel-item.active {
-    display: block;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-
-/* Estilos de las diapositivas activas */
-.carousel-container .carousel-item.active {
-    opacity: 1;
-}
-
-/* Media queries para diferentes tamaños de pantalla */
 @media (max-width: 1200px) {
-    .slider-container {
-        height: 650px;
+    .custom-carousel-caption {
+        top: 10%;
+        height: auto;
     }
 
-    .carousel-caption {
-        bottom: 10%;
-        left: 25%;
-        transform: translate(-25%, -50%);
-        width: 45%;
+    .carousel-indicators {
+        left: calc(50% - 10vw);
+        width: 200px;
+        bottom: -2%;
     }
 }
 
 @media (max-width: 768px) {
-    .slider-container {
-        height: 500px;
+    .custom-carousel-caption {
+        top: 10%;
+        height: auto;
     }
 
-    .carousel-caption {
-        bottom: 20%;
-        left: 30%;
-        transform: translate(-30%, -50%);
-        width: 60%;
-        padding: 8px 16px;
-    }
-    .carousel-caption h3{
-        font-size: 20px;
-    }
-    .carousel-caption p{
-        font-size: 15px;
-    }
-}
-
-@media (max-width: 576px) {
-    .slider-container {
-        height: 350px;
+    .carousel-indicators {
+        left: calc(50% - 15vw);
+        width: 100px;
+        bottom: -2%;
     }
 
-    .carousel-caption {
-        bottom: 20%;
-        left: 45%;
-        transform: translate(-50%, -50%);
-        width: 70%;
-        padding: 5px 10px;
+    @media (max-width: 576px) {
+        .custom-carousel-caption {
+            top: 8%;
+            height: auto;
+        }
+
+        .carousel-indicators {
+            left: calc(50% - 15vw);
+            width: 80px;
+            bottom: -10%;
+        }
     }
-    .carousel-caption h3 {
-        font-size: 12px;
+
+    @media (max-width: 400px) {
+    .custom-carousel-caption {
+        top: 5%;
+        height: auto;
     }
-    .carousel-caption p {
-        font-size: 8px;
+
+        .carousel-indicators {
+            left: calc(50% - 15vw);
+            width: 60px;
+            bottom: -15%;
+        }
+
+        .carousel-indicators li {
+            width: 10px;
+            height: 10px;
+            margin: 0 3px;
+        }
     }
 }

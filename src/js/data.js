@@ -23,11 +23,16 @@ const menuItems = [
 
 /* slider */
 const sliderData = [
-  { image: slider1, alt: "First slide" },
-  { image: slider2, alt: "Second slide" },
-  { image: slider3, alt: "Third slide" },
-  { image: slider4, alt: "Fourth slide" },
-  { image: slider5, alt: "Fifth slide" }
+  { image: slider1, alt: "First slide", title: "La nueva tendencia 1",
+    description: "comp", },
+  { image: slider2, alt: "Second slide", title: "La nueva tendencia 2",
+    description: "comple" },
+  { image: slider3, alt: "Third slide", title: "La nueva tendencia 3",
+    description: "completa" },
+  { image: slider4, alt: "Fourth slide", title: "La nueva tendencia 4",
+    description: "completar" },
+  { image: slider5, alt: "Fifth slide", title: "La nueva tendencia 5",
+    description: "tara" }
 ];
 
 /* tarjetas */

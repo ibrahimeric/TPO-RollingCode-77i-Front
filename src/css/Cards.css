@@ -6,6 +6,7 @@
     gap: 40px;
     background-color: #ffff ;
     padding: 6rem;
+    position: relative;
 }
 
 .custom-card {
