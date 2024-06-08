@@ -17,13 +17,13 @@ function App() {
     setIsLoggedIn(false);
     setIsAdmin(false); // Asegúrate de actualizar el estado de administrador al cerrar sesión
   };
+
   return (
     <>
       <Routes>
         <Route path="/" element={<NavBar menuItems={menuItems} isLoggedIn={isLoggedIn} isAdmin={isAdmin} />} />
         <Route path="/" element={<Link to="/non-existent-page">Go to 404</Link>} />
       </Routes>
-
       <Slider />
       <div className="cards-container">
         <div className='titulo-cards'>

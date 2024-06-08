@@ -23,40 +23,40 @@ const menuItems = [
 
 /* slider */
 const sliderData = [
-  { 
+  {
     // Primera diapositiva
-    image: slider1, 
-    alt: "First slide", 
+    image: slider1,
+    alt: "First slide",
     title: "Registro Único de Mascotas",
-    description: "Facilitamos el registro único de mascotas, brindando una plataforma centralizada para almacenar y acceder a la información de tus mascotas de forma fácil y segura.", 
+    description: "Facilitamos el registro único de mascotas, brindando una plataforma centralizada para almacenar y acceder a la información de tus mascotas de forma fácil y segura.",
   },
-  { 
+  {
     // Segunda diapositiva
-    image: slider2, 
-    alt: "Second slide", 
+    image: slider2,
+    alt: "Second slide",
     title: "Portal de Adopción",
-    description: "Conectamos a dueños cariñosos con animales necesitados de un hogar amoroso. Nuestro portal de adopción simplifica el proceso de búsqueda y encuentro de tu nueva mascota.", 
+    description: "Conectamos a dueños cariñosos con animales necesitados de un hogar amoroso. Nuestro portal de adopción simplifica el proceso de búsqueda y encuentro de tu nueva mascota.",
   },
-  { 
+  {
     // Tercera diapositiva
-    image: slider3, 
-    alt: "Third slide", 
+    image: slider3,
+    alt: "Third slide",
     title: "Vacunación Completa",
-    description: "Garantizamos registros completos de vacunación para todas las mascotas en nuestro sistema. La salud y el bienestar de tu mascota son nuestra prioridad.", 
+    description: "Garantizamos registros completos de vacunación para todas las mascotas en nuestro sistema. La salud y el bienestar de tu mascota son nuestra prioridad.",
   },
-  { 
+  {
     // Cuarta diapositiva
-    image: slider4, 
-    alt: "Fourth slide", 
+    image: slider4,
+    alt: "Fourth slide",
     title: "Comunidad de Amantes de las Mascotas",
-    description: "Únete a nuestra comunidad de amantes de las mascotas. Comparte tus experiencias, consejos y fotos con otros dueños de mascotas apasionados como tú.", 
+    description: "Únete a nuestra comunidad de amantes de las mascotas. Comparte tus experiencias, consejos y fotos con otros dueños de mascotas apasionados como tú.",
   },
-  { 
+  {
     // Quinta diapositiva
-    image: slider5, 
-    alt: "Fifth slide", 
+    image: slider5,
+    alt: "Fifth slide",
     title: "Apoyo Experto",
-    description: "Recibe orientación durante todo el proceso de adopción y cuidado de mascotas. Estamos aquí para brindarte el apoyo que necesitas en cada paso del camino." 
+    description: "Recibe orientación durante todo el proceso de adopción y cuidado de mascotas. Estamos aquí para brindarte el apoyo que necesitas en cada paso del camino."
   }
 ];
 
@@ -114,7 +114,34 @@ const footerLinks = [
 ];
 
 const footerParagraph = [
-  { title: "Sobre Nosotros", paragraph:["Descubre tu compañero ideal en nuestro portal de adopción de mascotas. Con un registro único y completo, facilitamos la conexión entre dueños amorosos y mascotas necesitadas. Únete a nuestra comunidad comprometida con el bienestar animal hoy mismo"]}
+  { title: "Sobre Nosotros", paragraph: ["Descubre tu compañero ideal en nuestro portal de adopción de mascotas. Con un registro único y completo, facilitamos la conexión entre dueños amorosos y mascotas necesitadas. Únete a nuestra comunidad comprometida con el bienestar animal hoy mismo"] }
 ];
 
-export { cardsData, menuItems, sliderData, userExperiences, socialMediaLinks, footerLinks, footerParagraph };
+/* MOdal */
+const contactData = {
+  address: "9 de Julio 112, Concepción, Tucumán, Argentina.",
+  addressLink: "https://www.google.com.gt/maps/place/La+Oferta/@-27.3477648,-65.5910017,18z/data=!4m10!1m2!2m1!1sla+oferta!3m6!1s0x9423cf5c99bfe997:0x1e14071c27ac474d!8m2!3d-27.3466769!4d-65.5894634!15sCglsYSBvZmVydGFaCyIJbGEgb2ZlcnRhkgEOY2xvdGhpbmdfc3RvcmXgAQA!16s%2Fg%2F11b7xmqvg8?entry=ttu",
+  whatsappLink: "https://api.whatsapp.com/send?phone=543865653191&text=Hola%2C%20estoy%20interesado%20en%20contactarme%20por%20una%20mascota",
+  phone: "+54 9 3865-653191",
+  phoneLink: "tel:+5493865-396343",
+  email: "petwebp@gmail.com",
+  emailLink: "mailto:petwebp@gmail.com?subject=Me%20Contacto%20Por%20Una%20Mascota",
+};
+
+const socialMediaLinksModal = {
+  facebook: "https://www.facebook.com/municipalidadeconcepcion",
+  instagram: "https://www.instagram.com/municipalidadconcepcion/",
+  twitter: "https://x.com/Concepcion_Tuc/",
+};
+
+export {
+  cardsData,
+  menuItems,
+  sliderData,
+  userExperiences,
+  socialMediaLinks,
+  footerLinks,
+  footerParagraph,
+  contactData,
+  socialMediaLinksModal
+};

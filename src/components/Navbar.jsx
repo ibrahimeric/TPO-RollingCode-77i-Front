@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import logo from '/logo.png';
 import { menuItems } from '../js/data';
 import '../css/Navbar.css';
@@ -18,7 +19,20 @@ const NavBar = () => {
 
   return (
     <>
-      <div className="header grid">
+      <div className="header grid navbar">
+        {/* <Nav className="navbar">
+          Otros enlaces de navegación 
+          <Link to="/contact" className="HnavLink" onClick={() => { setContacto(true); setBarsAnimate(false); }}>
+            Contactanos
+          </Link>
+          Botón de menú para dispositivos móviles 
+          <button
+            className={`menu-btn ${barsAnimate ? 'animate' : ''}`}
+            onClick={() => setBarsAnimate(!barsAnimate)}
+          >
+            ☰
+          </button>
+        </Nav> */}
         <Navbar.Brand href="#home">
           <img src={logo} width="30" height="30" className="d-inline-block align-top" alt="Logo" />
           {' Pet Web Portal'}
@@ -39,7 +53,7 @@ const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <div className="navbar-nav">
             <Nav>
-            {/* cambio para usar data */}
+              {/* cambio para usar data */}
               {menuItems.map((item, index) => (
                 <Nav.Link key={index} href={item.url} className="nav-link-custom">
                   {item.title}

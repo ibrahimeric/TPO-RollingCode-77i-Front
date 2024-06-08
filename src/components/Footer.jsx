@@ -1,5 +1,6 @@
 import { socialMediaLinks, footerLinks, footerParagraph } from '../js/data';
 import '../css/Footer.css';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -24,7 +25,11 @@ const Footer = () => {
                                     <h5 className="text-uppercase">{linkGroup.title}</h5>
                                     <ul className="list-unstyled">
                                         {linkGroup.items.map((item, i) => (
-                                            <li key={i}><a href="#!">{item}</a></li>
+                                            <li key={i}>
+                                                {/* Usar un div como enlace */}
+                                                {/* <a className="support-link" href="/tu-destino">{item}</a> */}
+                                                <Link className="support-link" to={getRoute(item)}>{item}</Link>
+                                            </li>
                                         ))}
                                     </ul>
                                 </div>
@@ -54,5 +59,30 @@ const Footer = () => {
         </>
     );
 }
+
+// Definir la función getRoute fuera del componente Footer
+const getRoute = (text) => {
+    switch (text) {
+        case "Registro de mascotas":
+            return "/registro-mascotas";
+        case "Portal de adopción":
+            return "/portal-adopcion";
+        case "Vacunación":
+            return "/vacunacion";
+        case "Cuidado de mascotas":
+            return "/cuidado-mascotas";
+        case "Soporte":
+            return "/contact";
+        case "Formulario de contacto":
+            return "/formulario-contacto";
+        case "Ubicación":
+            return "/ubicacion";
+        case "Redes sociales":
+            return "/redes-sociales";
+        // Agrega más casos según tus necesidades
+        default:
+            return "/";
+    }
+};
 
 export default Footer;
