@@ -33,7 +33,7 @@ const Footer = () => {
                             <div className="justify-content-center">
                                 <div className="iconos">
                                     {socialMediaLinks.map((socialMediaLink, index) => (
-                                        <a key={index} href={socialMediaLink.href}>
+                                        <a key={index} href={socialMediaLink.href} target="_blank" rel="noopener noreferrer">
                                             <img className="icono-img"
                                                 src={socialMediaLink.icon}
                                                 alt={socialMediaLink.alt}
