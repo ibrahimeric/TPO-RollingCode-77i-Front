@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import NavBar from './components/Navbar';
 import Slider from './components/Slider';
 import CardComponent from './components/Cards';
+import UserExperience from './components/UserExperience';
 import { menuItems, cardsData } from './js/data';
 import './css/App.css'
 
@@ -24,6 +25,7 @@ function App() {
       <div className="cards-container">
         <CardList />
       </div>
+      <UserExperience/>
     </>
   );
 }

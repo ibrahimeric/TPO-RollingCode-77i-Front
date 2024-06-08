@@ -17,11 +17,11 @@ const menuItems = [
 
 /* slider */
 const sliderData = [
-    { image: slider1, alt: "First slide" },
-    { image: slider2, alt: "Second slide" },
-    { image: slider3, alt: "Third slide" },
-    { image: slider4, alt: "Fourth slide" },
-    { image: slider5, alt: "Fifth slide" }
+  { image: slider1, alt: "First slide" },
+  { image: slider2, alt: "Second slide" },
+  { image: slider3, alt: "Third slide" },
+  { image: slider4, alt: "Fourth slide" },
+  { image: slider5, alt: "Fifth slide" }
 ];
 
 /* tarjetas */
@@ -44,4 +44,22 @@ const cardsData = [
   // Agrega más objetos aquí si necesitas más tarjetas
 ];
 
-export { cardsData, menuItems, sliderData };
+const userExperiences  = [
+  {
+    image: '/src/assets/user-experience/perfil1.jpg',
+    text: '"Fácil de encontrar a mi compañero y rastrear registros de vacunación."',
+    name: '- Maria'
+  },
+  {
+    image: '/src/assets/user-experience/perfil2.jpg',
+    text: '"Proceso de registro único y función de registro de vacunación eficiente".',
+    name: '- Ana'
+  },
+  {
+    image: '/src/assets/user-experience/perfil3.jpg',
+    text: '"Encontré al amigo peludo perfecto para mi familia."',
+    name: '- Pablo'
+  }
+];
+
+export { cardsData, menuItems, sliderData, userExperiences  };
