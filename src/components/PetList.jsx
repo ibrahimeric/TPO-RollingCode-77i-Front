@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Table, Button } from 'react-bootstrap';
+import { Container, Table, Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../css/PetList.css';
 
 const PetList = () => {
   const [pets, setPets] = useState([]);
   const [error, setError] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const fetchPets = async () => {
@@ -32,46 +33,83 @@ const PetList = () => {
     fetchPets();
   }, []);
 
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredPets = pets.filter(pet => 
+    pet.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  const petimagen = (pet) => {
+    if (pet.imagen === undefined) {
+      return 'src/assets/pet.imagen.jpg';
+    } else {
+      return pet.imagen;
+    }
+  };
   if (error) {
     return <div>Error: {error}</div>;
   }
 
   return (
-    <Container>
-      <h1 className="my-4">Listado de Mascotas</h1>
-      <Table striped bordered hover responsive>
-        <thead>
-          <tr>
-            <th>Imagen</th>
-            <th>Nombre</th>
-            <th>Raza</th>
-            <th>Edad</th>
-            <th>Sexo</th>
-            <th>Tamaño</th>
-            <th>Especie</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {pets.map((pet) => (
-            <tr key={pet.id}>
-              <td><img src={pet.image || 'src/assets/pet.imagen.jpg'} alt={pet.name} style={{ width: '100px', height: '100px', objectFit: 'cover' }} /></td>
-              <td>{pet.name}</td>
-              <td>{pet.race}</td>
-              <td>{pet.age} años</td>
-              <td>{pet.sex}</td>
-              <td>{pet.size}</td>
-              <td>{pet.species}</td>
-              <td>
-                <Link to={`/pet/${pet.id}`}>
-                  <Button variant="primary">Ver Detalles</Button>
-                </Link>
-              </td>
+    <>
+
+      <Container>
+        <h1 className="my-4">Listado de Mascotas</h1>
+        <div className="pet-card-header">
+        <Form.Control
+          type="text"
+          placeholder="Buscar mascota por nombre"
+          value={searchTerm}
+          onChange={handleSearchChange}
+          className="mb-3"
+        />
+        <Link to="/pet/add">
+          <Button variant="success">
+            Agregar otra mascota
+          </Button>
+        </Link>
+      </div>
+        <Table striped bordered hover responsive>
+          <thead>
+            <tr>
+              <th>Imagen</th>
+              <th>Nombre</th>
+              <th>Raza</th>
+              <th>Edad</th>
+              <th>Sexo</th>
+              <th>Tamaño</th>
+              <th>Especie</th>
+              <th>Acciones</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
-    </Container>
+          </thead>
+          <tbody>
+            {filteredPets.map((pet) => (
+              <tr key={pet._id}>
+                <td>
+                  <img 
+                    src={petimagen(pet)} 
+                    alt={pet.name} 
+                    style={{ width: '100px', height: '100px', objectFit: 'cover' }} 
+                  />
+                </td>
+                <td>{pet.name}</td>
+                <td>{pet.breed}</td>
+                <td>{pet.age} años</td>
+                <td>{pet.gender}</td>
+                <td>{pet.size}</td>
+                <td>{pet.species}</td>
+                <td>
+                  <Link to={`/pet/${pet._id}`}>
+                    <Button variant="primary">Ver Detalles</Button>
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </Container>
+    </>
   );
 };
 

@@ -4,13 +4,15 @@ import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 
 const PetDetail = () => {
   const { id } = useParams();
+  console.log(id);
+
   const [pet, setPet] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchPetDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/pet/:${id}`);
+        const response = await fetch(`http://localhost:5000/pet/${id}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

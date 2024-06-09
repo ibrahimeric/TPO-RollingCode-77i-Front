@@ -1,12 +1,13 @@
 // src/components/PetCard.jsx
 import React, { useState, useEffect } from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../css/PetCard.css';
 
 const PetCard = () => {
   const [pets, setPets] = useState([]);
   const [error, setError] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const fetchPets = async () => {
@@ -33,25 +34,45 @@ const PetCard = () => {
     fetchPets();
   }, []);
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredPets = pets.filter(pet => 
+    pet.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   const petimagen = (pet) => {
-    // Verificar si pet.imagen es undefined
     if (pet.imagen === undefined) {
-      // Si pet.imagen es undefined, retornar la imagen predeterminada
       return 'src/assets/pet.imagen.jpg';
     } else {
-      // Si pet.imagen está definida, retornar la imagen de pet
       return pet.imagen;
     }
   };
-  
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
     <div className="pet-card-container">
-      {pets.map((pet) => (
-        <Card key={pet.id} className="mb-3">
-          <Card.Img variant="top" src={petimagen} alt={pet.name} />
+      <div className="pet-card-header">
+        <Form.Control
+          type="text"
+          placeholder="Buscar mascota por nombre"
+          value={searchTerm}
+          onChange={handleSearchChange}
+          className="mb-3"
+        />
+        <Link to="/pet/add">
+          <Button variant="success">
+            Agregar otra mascota
+          </Button>
+        </Link>
+      </div>
+      {filteredPets.map((pet) => (
+        <Card key={pet._id} className="mb-3">
+          <Card.Img variant="top" src={petimagen(pet)} alt={pet.name} />
           <Card.Body>
             <Card.Title>{pet.name}</Card.Title>
             <Card.Text>
@@ -61,7 +82,7 @@ const PetCard = () => {
               <strong>Tamaño:</strong> {pet.size}<br />
               <strong>Especie:</strong> {pet.species}
             </Card.Text>
-            <Link to={`/pet/${pet.id}/edit`}> 
+            <Link to={`/pet/${pet._id}/edit`}>
               <Button variant="primary">Editar</Button>
             </Link>
           </Card.Body>
