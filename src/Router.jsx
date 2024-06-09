@@ -6,7 +6,8 @@ import Loading from './components/Loading';
 import Contact from './components/Contact';
 import Formulario from './components/Form';
 import FormTurnos from './components/FormTurnos';
-import Turnos from './components/TurnosPage';
+import PetsPage from './components/PetsPage';
+import TurnosPage from './components/TurnosPage';
 
 
 const AppRouter = () => {
@@ -35,7 +36,8 @@ const AppRouter = () => {
             <Route path="*" element={<Error404 />} />
             <Route path="/formulario-contacto" element={<Formulario />} />
             <Route path="/formulario-turnos" element={<FormTurnos />} />
-            <Route path="/page-turnos" element={<Turnos />} />
+            <Route path="/page-mascotas" element={<PetsPage />} />
+            <Route path="/page-turnos" element={<TurnosPage />} />
           </Routes>
         </Router>
       )}

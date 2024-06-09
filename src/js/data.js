@@ -12,16 +12,19 @@ import LinkedInIco from '../../public/social-media/linkedin.ico';
 import InstagramIco from '../../public/social-media/instagram.ico';
 
 // Page Turnos
-import mascota1 from '../img/mascota1.webp'
-import mascota2 from '../img/mascota2.webp'
+import turno1 from '../img/turno1.webp';
+import turno2 from '../img/turno2.webp';
 
+// Page Mascotas
+import pet1 from '../img/pet1.webp';
+import pet2 from '../img/pet2.webp';
 
 
 // Exportación Datos
 /* navbar */
 export const menuItems = [
   { title: "Inicio", url: "/" },
-  { title: "Servicios", url: "/page-mascotas" },
+  { title: "Mascotas", url: "/page-mascotas" },
   { title: "Turnos", url: "/page-turnos" },
   // Agrega más elementos de menú según sea necesario
 ];
@@ -145,16 +148,34 @@ export const socialMediaLinksModal = {
 export const turnos = [
     {
         id: 1,
-        urlImage: mascota1,
+        urlImage: turno1,
         nombreMascota: 'Luna',
         tipoServicio: 'Vacunación',
         fecha: '15-07-2024'
     },
     {
         id: 2,
-        urlImage: mascota2,
+        urlImage: turno2,
         nombreMascota: 'Max',
         tipoServicio: 'Adopción',
+        fecha: '24-09-2024'
+    },
+    // Agrega más turnos
+];
+
+export const pets = [
+    {
+        id: 1,
+        urlImage: pet1,
+        nombreMascota: 'Luna',
+        servicioSolicitado: 'Vacunación',
+        fecha: '15-07-2024'
+    },
+    {
+        id: 2,
+        urlImage: pet2,
+        nombreMascota: 'Max',
+        servicioSolicitado: 'Adopción',
         fecha: '24-09-2024'
     },
     // Agrega más turnos

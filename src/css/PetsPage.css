@@ -1,16 +1,16 @@
-.contenedor {
+.contenedor--mascotas {
     padding: 3rem;
     background-color: rgba(0, 0, 0, 0.539);
     height: 100vh;
 }
 
-.container {
+.contenedor-color {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 60vh;
-    background-color: #f8f9fa;
+    background-color: #fdf5e6  !important;
     padding: 0 3rem;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -60,6 +60,10 @@ h1 {
 
 .imagen-tabla-mascotas {
     width: 100px;
+}
+
+.btn-volver {
+    margin-top: 4rem;
 }
 
 @media (max-width: 576px) {
