@@ -73,13 +73,13 @@ const cardsData = [
     imagen: "/public/cards/card2.webp",
     title: "Adopción de Mascotas",
     text: "Encuentra una nueva familia para mascotas necesitadas",
-    route: "/ruta-deseada"
+    route: "/error-404"
   },
   {
     imagen: "/public/cards/card3.webp",
     title: "Reserva de Turnos",
     text: "Agenda turnos para vacunación y castración de manera sencilla",
-    route: "/ruta-deseada"
+    route: "/formulario-turnos"
   }
   // Agrega más objetos aquí si necesitas más tarjetas
 ];

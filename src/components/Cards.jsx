@@ -2,7 +2,12 @@ import { Card, Button } from 'react-bootstrap';
 import '../css/Cards.css'
 import { Link } from 'react-router-dom';
 
-function CardComponent({ imagen, title, text, formData }) {
+function CardComponent({ imagen, title, text }) {
+    const routes = {
+        "Registro de Mascotas": "/formulario-contacto",
+        "Adopción de Mascotas": "/error-404",
+        "Reserva de Turnos": "/formulario-turnos"
+    };
     return (
         <Card className="custom-card" >
             <div className="image-container">
@@ -19,7 +24,7 @@ function CardComponent({ imagen, title, text, formData }) {
                 <Card.Text>
                     {text}
                 </Card.Text>
-                <Link to={{ pathname: "/formulario-contacto", state: formData }}>
+                <Link to={routes[title]}>
                     <Button className="btn-card" variant="primary">
                         Ir al formulario
                     </Button>

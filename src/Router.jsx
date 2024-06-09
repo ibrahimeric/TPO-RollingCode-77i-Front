@@ -5,6 +5,7 @@ import Error404 from './components/Error404';
 import Loading from './components/Loading';
 import Contact from './components/Contact';
 import Formulario from './components/Form';
+import FormTurnos from './components/FormTurnos';
 
 
 const AppRouter = () => {
@@ -31,7 +32,8 @@ const AppRouter = () => {
             <Route path="/" element={<App />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<Error404 />} />
-            <Route path="/formulario-contacto" element={<Formulario/>} />
+            <Route path="/formulario-contacto" element={<Formulario />} />
+            <Route path="/formulario-turnos" element={<FormTurnos />} />
           </Routes>
         </Router>
       )}

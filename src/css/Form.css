@@ -14,6 +14,7 @@
 /* Estilo para el cuerpo del modal */
 .modal-body {
   padding: 20px;
+  text-align: left;
 }
 
 /* Estilo para el pie del modal */
@@ -34,5 +35,9 @@
 
 .modal-dialog {
   margin-top: 100px; /* Ajusta este valor según sea necesario */
+}
+
+.form-group {
+  margin-bottom: 20px;
 }
 

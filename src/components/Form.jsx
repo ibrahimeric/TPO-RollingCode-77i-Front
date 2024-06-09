@@ -39,7 +39,7 @@ function Formulario() {
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formName">
+            <Form.Group className="mb-3" controlId="formName">
               <Form.Label>Nombre</Form.Label>
               <Form.Control
                 type="text"
@@ -50,7 +50,7 @@ function Formulario() {
               />
             </Form.Group>
 
-            <Form.Group controlId="formEmail">
+            <Form.Group className="mb-3" controlId="formEmail">
               <Form.Label>Correo</Form.Label>
               <Form.Control
                 type="email"
@@ -64,7 +64,7 @@ function Formulario() {
               </Form.Text>
             </Form.Group>
 
-            <Form.Group controlId="formMessage">
+            <Form.Group className="mb-3" controlId="formMessage">
               <Form.Label>Mensaje</Form.Label>
               <Form.Control
                 as="textarea"
