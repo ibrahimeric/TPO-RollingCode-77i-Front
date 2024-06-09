@@ -1,69 +1,85 @@
-import React from 'react';
-import { Modal } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Button, Modal } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faPhone, faEnvelope, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faWhatsapp, faFacebook, faInstagram, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { contactData, socialMediaLinksModal } from '../js/data'
 import '../css/Contact.css';
 
-const Contact = ({ show, handleClose }) => {
-    console.log("Estado de show:", show);
+const Contact = () => {
+    const [showContactModal, setShowContactModal] = useState(false);
+
+    const handleShowContact = () => {
+        setShowContactModal(true);
+    };
+
+    const handleCloseContact = () => {
+        setShowContactModal(false);
+        console.log("Cerrando modal");
+        console.log("Estado de showContactModal:", showContactModal);
+    };
+    console.log("Estado de showContactModal:", showContactModal);
 
     return (
-        <div className='containerModal'>
-            <Modal show={show} onHide={handleClose} centered>
-                <Modal.Header>
-                    <div className='modal-title'>
-                        <Modal.Title>Pet Web Portal</Modal.Title>
-                    </div>
-                    <div className='modal-close'>
-                        <FontAwesomeIcon icon={faTimes} onClick={handleClose} className="Hicon-close" />
-                    </div>
-                </Modal.Header>
-                <Modal.Body>
-                    <ul className='contactanos'>
-                        <li className='contactos'>
-                            <a className='direccion' href={contactData.addressLink} target='_blank' rel="noopener noreferrer">
-                                <FontAwesomeIcon icon={faMapMarkerAlt} /> {contactData.address}
-                            </a>
-                        </li>
-                        <li className='contactos'>
-                            <a className='whatsapp' href={contactData.whatsappLink} target='_blank' rel="noopener noreferrer">
-                                <FontAwesomeIcon icon={faWhatsapp} /> WhatsApp
-                            </a>
-                        </li>
-                        <li className='contactos'>
-                            <a className='celular' href={contactData.phoneLink} target='_blank' rel="noopener noreferrer">
-                                <FontAwesomeIcon icon={faPhone} /> {contactData.phone}
-                            </a>
-                        </li>
-                        <li className='contactos'>
-                            <a className='mail' href={contactData.emailLink} target='_blank' rel="noopener noreferrer">
-                                <FontAwesomeIcon icon={faEnvelope} /> {contactData.email}
-                            </a>
-                        </li>
-                    </ul>
-                </Modal.Body>
-                <Modal.Footer>
-                    <div className="HiconsContact">
+        <>
+            <Button variant="primary" onClick={handleShowContact}>
+                Abrir Formulario
+            </Button>
+            <div className='containerModal'>
+                <Modal show={showContactModal} onHide={handleCloseContact} centered>
+                    <Modal.Header>
                         <div className='modal-title'>
-                            <Modal.Title>Siguenos</Modal.Title>
+                            <Modal.Title>Pet Web Portal</Modal.Title>
                         </div>
-                        <div className='social-media'>
-                            <a className='HiconContact' href={socialMediaLinksModal.facebook} target='_blank' rel="noopener noreferrer">
-                                <FontAwesomeIcon icon={faFacebook} className="facebook" />
-                            </a>
-                            <a className='HiconContact' href={socialMediaLinksModal.instagram} target='_blank' rel="noopener noreferrer">
-                                <FontAwesomeIcon icon={faInstagram} className="instagram" />
-                            </a>
-                            <a className='HiconContact' href={socialMediaLinksModal.twitter} target='_blank' rel="noopener noreferrer">
-                                <FontAwesomeIcon icon={faXTwitter} className="x" />
-                            </a>
+                        <div className='modal-close'>
+                            <FontAwesomeIcon icon={faTimes} onClick={handleCloseContact} className="Hicon-close" />
                         </div>
-                    </div>
-                </Modal.Footer>
-            </Modal>
-        </div>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <ul className='contactanos'>
+                            <li className='contactos'>
+                                <a className='direccion' href={contactData.addressLink} target='_blank' rel="noopener noreferrer">
+                                    <FontAwesomeIcon icon={faMapMarkerAlt} /> {contactData.address}
+                                </a>
+                            </li>
+                            <li className='contactos'>
+                                <a className='whatsapp' href={contactData.whatsappLink} target='_blank' rel="noopener noreferrer">
+                                    <FontAwesomeIcon icon={faWhatsapp} /> WhatsApp
+                                </a>
+                            </li>
+                            <li className='contactos'>
+                                <a className='celular' href={contactData.phoneLink} target='_blank' rel="noopener noreferrer">
+                                    <FontAwesomeIcon icon={faPhone} /> {contactData.phone}
+                                </a>
+                            </li>
+                            <li className='contactos'>
+                                <a className='mail' href={contactData.emailLink} target='_blank' rel="noopener noreferrer">
+                                    <FontAwesomeIcon icon={faEnvelope} /> {contactData.email}
+                                </a>
+                            </li>
+                        </ul>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <div className="HiconsContact">
+                            <div className='modal-title'>
+                                <Modal.Title>Siguenos</Modal.Title>
+                            </div>
+                            <div className='social-media'>
+                                <a className='HiconContact' href={socialMediaLinksModal.facebook} target='_blank' rel="noopener noreferrer">
+                                    <FontAwesomeIcon icon={faFacebook} className="facebook" />
+                                </a>
+                                <a className='HiconContact' href={socialMediaLinksModal.instagram} target='_blank' rel="noopener noreferrer">
+                                    <FontAwesomeIcon icon={faInstagram} className="instagram" />
+                                </a>
+                                <a className='HiconContact' href={socialMediaLinksModal.twitter} target='_blank' rel="noopener noreferrer">
+                                    <FontAwesomeIcon icon={faXTwitter} className="x" />
+                                </a>
+                            </div>
+                        </div>
+                    </Modal.Footer>
+                </Modal>
+            </div>
+        </>
     );
 };
 

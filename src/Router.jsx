@@ -4,11 +4,11 @@ import App from './App';
 import Error404 from './components/Error404';
 import Loading from './components/Loading';
 import Contact from './components/Contact';
+import Formulario from './components/Form';
 
 
 const AppRouter = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [showContactModal, setShowContactModal] = useState(false);
 
   useEffect(() => {
     // Simula el tiempo de carga de la página
@@ -20,17 +20,6 @@ const AppRouter = () => {
     return () => clearTimeout(timeout);
   }, []);
 
-  const handleShow = () => {
-    setShowContactModal(true);
-  };
-
-  const handleClose = () => {
-    setShowContactModal(false);
-    console.log("Cerrando modal");
-    console.log("Estado de showContactModal:", showContactModal);
-  };
-
-  console.log("Estado de showContactModal:", showContactModal);
 
   return (
     <React.StrictMode>
@@ -40,11 +29,9 @@ const AppRouter = () => {
         <Router>
           <Routes>
             <Route path="/" element={<App />} />
-            <Route path="/contact" element={<>
-              <App />
-              <Contact show={handleShow} handleClose={handleClose} />
-            </>} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<Error404 />} />
+            <Route path="/formulario-contacto" element={<Formulario/>} />
           </Routes>
         </Router>
       )}

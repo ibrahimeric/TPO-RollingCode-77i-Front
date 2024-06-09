@@ -66,17 +66,20 @@ const cardsData = [
   {
     imagen: "/public/cards/card1.webp",
     title: "Registro de Mascotas",
-    text: "Registra y gestiona la información de tus mascotas fácilmente"
+    text: "Registra y gestiona la información de tus mascotas fácilmente",
+    route: "/formulario-contacto"
   },
   {
     imagen: "/public/cards/card2.webp",
     title: "Adopción de Mascotas",
-    text: "Encuentra una nueva familia para mascotas necesitadas"
+    text: "Encuentra una nueva familia para mascotas necesitadas",
+    route: "/ruta-deseada"
   },
   {
     imagen: "/public/cards/card3.webp",
     title: "Reserva de Turnos",
-    text: "Agenda turnos para vacunación y castración de manera sencilla"
+    text: "Agenda turnos para vacunación y castración de manera sencilla",
+    route: "/ruta-deseada"
   }
   // Agrega más objetos aquí si necesitas más tarjetas
 ];
