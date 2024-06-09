@@ -1,0 +1,120 @@
+/* Colores personalizados */
+:root {
+  --primary-color: #3c3d59; /* Tono más claro para el fondo */
+  --primary-dark-color: #484a7f; /* Tono oscuro para botones y encabezados */
+  --secondary-color: #babcd9; /* Color de resaltado */
+  --light-color: #f2f2f2; /* Color claro para el fondo principal */
+  --danger-color: #f44336; /* Color rojo para botones de eliminar */
+}
+
+/* Estilos globales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--light-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+/* Encabezado */
+.header {
+  background-color: var(--primary-dark-color);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Contenido principal */
+.main-content {
+  padding: 20px;
+  width: 800px; /* Ancho fijo en píxeles */
+  height: 500px; /* Altura fija en píxeles */
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Página de administración */
+.admin-page,
+.admin-home-page {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Listas de items */
+.item-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  padding: 10px;
+}
+
+/* Botones en la misma fila que los nombres */
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+/* Navegación */
+.nav-list {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-list li {
+  margin: 0 10px;
+}
+
+.nav-button {
+  background-color: var(--primary-dark-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 10px; /* Espaciado consistente para todos los botones */
+}
+
+.nav-button:hover {
+  background-color: var(--primary-color);
+}
+
+.edit-button {
+  background-color: var(--primary-dark-color);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.delete-button {
+  background-color: var(--danger-color);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
