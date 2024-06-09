@@ -125,12 +125,24 @@
     color: var(--facebook);
 }
 
+.social-media .facebook:hover {
+    color: #82a9ff;
+}
+
 .social-media .instagram {
     color: var(--instagram);
 }
 
+.social-media .instagram:hover {
+    color: #ff8299;
+}
+
 .social-media .x {
     color: var(--x);
+}
+
+.social-media .x:hover {
+    color: #5c5c5c;
 }
 
 @media (max-width: 1200px) {

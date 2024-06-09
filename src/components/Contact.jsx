@@ -1,39 +1,34 @@
 import React, { useState } from 'react';
-import { Button, Modal } from 'react-bootstrap';
+import { /* Button */ Modal } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faPhone, faEnvelope, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faWhatsapp, faFacebook, faInstagram, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { contactData, socialMediaLinksModal } from '../js/data'
 import '../css/Contact.css';
 
-const Contact = () => {
-    const [showContactModal, setShowContactModal] = useState(false);
+const Contact = ({ isOpen, onClose }) => {
+    // Utilizamos la prop `isOpen` para controlar el estado del modal
+     const [contacto, setContacto] = useState(false);
 
-    const handleShowContact = () => {
-        setShowContactModal(true);
-    };
-
-    const handleCloseContact = () => {
-        setShowContactModal(false);
-        console.log("Cerrando modal");
-        console.log("Estado de showContactModal:", showContactModal);
-    };
-    console.log("Estado de showContactModal:", showContactModal);
+     // Si hay un cambio en la prop `isOpen`, actualizamos el estado local `contacto`
+    React.useEffect(() => {
+        setContacto(isOpen);
+    }, [isOpen]);
 
     return (
         <>
-            <Button variant="primary" onClick={handleShowContact}>
+            {/* <Button variant="primary" onClick={handleShowContact}>
                 Abrir Formulario
-            </Button>
+            </Button> */}
             <div className='containerModal'>
-                <Modal show={showContactModal} onHide={handleCloseContact} centered>
-                    <Modal.Header>
+                <Modal show={contacto} onHide={() => setContacto(false)} centered>
+                    <Modal.Header closeButton>
                         <div className='modal-title'>
                             <Modal.Title>Pet Web Portal</Modal.Title>
                         </div>
-                        <div className='modal-close'>
-                            <FontAwesomeIcon icon={faTimes} onClick={handleCloseContact} className="Hicon-close" />
-                        </div>
+                        {/* <div className='modal-close'>
+                            <FontAwesomeIcon icon={faTimes} onClick={() => setContacto(false)} className="Hicon-close" />
+                        </div> */}
                     </Modal.Header>
                     <Modal.Body>
                         <ul className='contactanos'>

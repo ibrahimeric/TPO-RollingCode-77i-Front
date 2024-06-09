@@ -20,15 +20,19 @@ const Footer = () => {
 
                             <hr className="clearfix w-100 d-md-none pb-0" />
 
-                            {footerLinks.map((linkGroup, index) => (
+                            {footerLinks.map(({ title, items }, index) => (
                                 <div key={index} className="col-md-3 mb-md-0 mb-3">
-                                    <h5 className="text-uppercase">{linkGroup.title}</h5>
+                                    <h5 className="text-uppercase">{title}</h5>
                                     <ul className="list-unstyled">
-                                        {linkGroup.items.map((item, i) => (
+                                        {items.map((item, i) => (
                                             <li key={i}>
-                                                {/* Usar un div como enlace */}
-                                                {/* <a className="support-link" href="/tu-destino">{item}</a> */}
-                                                <Link className="support-link" to={getRoute(item)}>{item}</Link>
+                                                {/* Agrega un manejador de eventos onClick a cada elemento de enlace */}
+                                                <Link
+                                                    className="support-link"
+                                                    to={getRoute(item)}
+                                                >
+                                                    {item}
+                                                </Link>
                                             </li>
                                         ))}
                                     </ul>
@@ -60,25 +64,22 @@ const Footer = () => {
     );
 }
 
+
 // Definir la función getRoute fuera del componente Footer
 const getRoute = (text) => {
     switch (text) {
-        case "Registro de mascotas":
-            return "/registro-mascotas";
-        case "Portal de adopción":
-            return "/portal-adopcion";
-        case "Vacunación":
-            return "/vacunacion";
-        case "Cuidado de mascotas":
-            return "/cuidado-mascotas";
+        case "Mis mascotas":
+            return "/page-mascotas";
+        case "Adopcion":
+            return "/page-adopcion";
+        case "Turnos":
+            return "/page-turnos";
         case "Soporte":
-            return "/contact";
-        case "Formulario de contacto":
-            return "/formulario-contacto";
-        case "Ubicación":
-            return "/ubicacion";
-        case "Redes sociales":
-            return "/redes-sociales";
+            return "/soperte";
+        case "Contacto":
+            return "/form";
+        case "Acerca de":
+            return "/about-us";
         // Agrega más casos según tus necesidades
         default:
             return "/";

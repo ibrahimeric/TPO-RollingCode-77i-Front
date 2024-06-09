@@ -120,8 +120,8 @@ export const socialMediaLinks = [  /* enlaces de redes sociales */
 
 export const footerLinks = [
   // { title: "Acerca de nosotros", items: ["Misión y visión", "Nuestro equipo", "Testimonios", "Blog"] },
-  { title: "Servicios", items: ["Registro de mascotas", "Portal de adopción", "Vacunación", "Cuidado de mascotas"] },
-  { title: "Contacto", items: ["Soporte", "Formulario de contacto", "Ubicación", "Redes sociales"] }
+  { title: "Servicios", items: ["Mis mascotas", "Adopcion", "Turnos"] },
+  { title: "Contacto", items: ["Soporte", "Contacto", "Acerca de"] }
 ];
 
 export const footerParagraph = [
@@ -180,16 +180,3 @@ export const pets = [
     },
     // Agrega más turnos
 ];
-
-/* export {
-  cardsData,
-  menuItems,
-  sliderData,
-  userExperiences,
-  socialMediaLinks,
-  footerLinks,
-  footerParagraph,
-  contactData,
-  socialMediaLinksModal,
-  turnos
-}; */
