@@ -1,4 +1,4 @@
-// Imagenes importacion
+// Importacion imágenes
 /* slider */
 import slider1 from '../assets/slider/slider1.jpg';
 import slider2 from '../assets/slider/slider2.jpg';
@@ -11,18 +11,23 @@ import GitHubIco from '../../public/social-media/github.ico';
 import LinkedInIco from '../../public/social-media/linkedin.ico';
 import InstagramIco from '../../public/social-media/instagram.ico';
 
+// Page Turnos
+import mascota1 from '../img/mascota1.webp'
+import mascota2 from '../img/mascota2.webp'
 
-// Datos
+
+
+// Exportación Datos
 /* navbar */
-const menuItems = [
-  { title: "Inicio", url: "#home" },
-  { title: "Servicios", url: "#services" },
-  { title: "Turnos", url: "#shifts" },
+export const menuItems = [
+  { title: "Inicio", url: "/" },
+  { title: "Servicios", url: "/page-mascotas" },
+  { title: "Turnos", url: "/page-turnos" },
   // Agrega más elementos de menú según sea necesario
 ];
 
 /* slider */
-const sliderData = [
+export const sliderData = [
   {
     // Primera diapositiva
     image: slider1,
@@ -62,7 +67,7 @@ const sliderData = [
 
 
 /* tarjetas */
-const cardsData = [
+export const cardsData = [
   {
     imagen: "/public/cards/card1.webp",
     title: "Registro de Mascotas",
@@ -85,7 +90,7 @@ const cardsData = [
 ];
 
 /* experiencias de usuarios */
-const userExperiences = [
+export const userExperiences = [
   {
     image: '/src/assets/user-experience/perfil1.jpg',
     text: '"Fácil de encontrar a mi compañero y rastrear registros de vacunación."',
@@ -104,24 +109,24 @@ const userExperiences = [
 ];
 
 /* footer */
-const socialMediaLinks = [  /* enlaces de redes sociales */
+export const socialMediaLinks = [  /* enlaces de redes sociales */
   { href: "https://github.com/petwebportal", icon: GitHubIco, alt: "Pet Web Portal GitHub" },
   { href: "https://www.linkedin.com/in/petwebportal", icon: LinkedInIco, alt: "Pet Web Portal LinkedIn" },
   { href: "https://instagram.com/@petwebportal", icon: InstagramIco, alt: "Pet Web Portal Instagram" }
 ];
 
-const footerLinks = [
+export const footerLinks = [
   // { title: "Acerca de nosotros", items: ["Misión y visión", "Nuestro equipo", "Testimonios", "Blog"] },
   { title: "Servicios", items: ["Registro de mascotas", "Portal de adopción", "Vacunación", "Cuidado de mascotas"] },
   { title: "Contacto", items: ["Soporte", "Formulario de contacto", "Ubicación", "Redes sociales"] }
 ];
 
-const footerParagraph = [
+export const footerParagraph = [
   { title: "Sobre Nosotros", paragraph: ["Descubre tu compañero ideal en nuestro portal de adopción de mascotas. Con un registro único y completo, facilitamos la conexión entre dueños amorosos y mascotas necesitadas. Únete a nuestra comunidad comprometida con el bienestar animal hoy mismo"] }
 ];
 
 /* MOdal */
-const contactData = {
+export const contactData = {
   address: "9 de Julio 112, Concepción, Tucumán, Argentina.",
   addressLink: "https://www.google.com.gt/maps/place/La+Oferta/@-27.3477648,-65.5910017,18z/data=!4m10!1m2!2m1!1sla+oferta!3m6!1s0x9423cf5c99bfe997:0x1e14071c27ac474d!8m2!3d-27.3466769!4d-65.5894634!15sCglsYSBvZmVydGFaCyIJbGEgb2ZlcnRhkgEOY2xvdGhpbmdfc3RvcmXgAQA!16s%2Fg%2F11b7xmqvg8?entry=ttu",
   whatsappLink: "https://api.whatsapp.com/send?phone=543865653191&text=Hola%2C%20estoy%20interesado%20en%20contactarme%20por%20una%20mascota",
@@ -131,13 +136,31 @@ const contactData = {
   emailLink: "mailto:petwebp@gmail.com?subject=Me%20Contacto%20Por%20Una%20Mascota",
 };
 
-const socialMediaLinksModal = {
+export const socialMediaLinksModal = {
   facebook: "https://www.facebook.com/municipalidadeconcepcion",
   instagram: "https://www.instagram.com/municipalidadconcepcion/",
   twitter: "https://x.com/Concepcion_Tuc/",
 };
 
-export {
+export const turnos = [
+    {
+        id: 1,
+        urlImage: mascota1,
+        nombreMascota: 'Luna',
+        tipoServicio: 'Vacunación',
+        fecha: '15-07-2024'
+    },
+    {
+        id: 2,
+        urlImage: mascota2,
+        nombreMascota: 'Max',
+        tipoServicio: 'Adopción',
+        fecha: '24-09-2024'
+    },
+    // Agrega más turnos
+];
+
+/* export {
   cardsData,
   menuItems,
   sliderData,
@@ -146,5 +169,6 @@ export {
   footerLinks,
   footerParagraph,
   contactData,
-  socialMediaLinksModal
-};
+  socialMediaLinksModal,
+  turnos
+}; */
