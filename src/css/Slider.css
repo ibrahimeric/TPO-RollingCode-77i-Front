@@ -66,6 +66,10 @@
     width: 10%;
 }
 
+.user-experience-carousel .carousel-item {
+    transition: opacity 0.5s ease-in-out;
+}
+
 @media (max-width: 1200px) {
     .custom-carousel-caption {
         top: 10%;

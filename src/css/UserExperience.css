@@ -73,8 +73,8 @@
     background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'%23FFFFFF\' viewBox=\'0 0 8 8\'%3e%3cpath d=\'M3.5 0v3H0v2h3.5v3L8 4 3.5 0z\'/%3e%3c/svg%3e');
 }
 
-.user-experience-carousel .carousel-item {
-    transition: opacity 0.5s ease-in-out;
+#carousel-principal .carousel-item {
+    transition: opacity 0.1s ease-in-out;
 }
 
 .user-experience-carousel .carousel-item.active {
