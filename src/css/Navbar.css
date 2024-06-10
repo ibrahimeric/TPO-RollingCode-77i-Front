@@ -30,11 +30,15 @@
   color: #646cff;
 }
 
-.header .nav-login {
+.header .nav-btn {
   justify-self: end;
   text-decoration: none;
   color: #000;
   cursor: pointer;
+}
+
+.btn-login {
+  margin-left: 10px;
 }
 
 nav {

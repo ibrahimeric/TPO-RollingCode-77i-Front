@@ -1,18 +1,18 @@
 import { Modal, Form, Button } from 'react-bootstrap';
 import '../css/Form.css';
 
-function Formulario({ formData, handleChange, handleSubmit, handleClose }) {
+function FormRegistro({ formData, handleChange, handleSubmit, handleClose }) {
   return (
     <Modal show={true} onHide={handleClose}>
-      <Modal.Header closeButton>
+      <Modal.Header className='modal-header-register' closeButton>
         <div className='titulo-form'>
-          <Modal.Title>Ingresa tu Información</Modal.Title>
+          <Modal.Title>Registrar Mascota</Modal.Title>
         </div>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body className="modal-body">
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formName">
-            <Form.Label>Nombre</Form.Label>
+            <Form.Label className='text-label'>Nombre</Form.Label>
             <Form.Control
               type="text"
               placeholder="Ingresa tu nombre"
@@ -23,7 +23,7 @@ function Formulario({ formData, handleChange, handleSubmit, handleClose }) {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formEmail">
-            <Form.Label>Correo</Form.Label>
+            <Form.Label className='text-label'>Correo</Form.Label>
             <Form.Control
               type="email"
               placeholder="Ingresa tu email"
@@ -37,7 +37,7 @@ function Formulario({ formData, handleChange, handleSubmit, handleClose }) {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formMessage">
-            <Form.Label>Mensaje</Form.Label>
+            <Form.Label className='text-label'>Mensaje</Form.Label>
             <Form.Control
               as="textarea"
               rows={3}
@@ -60,8 +60,4 @@ function Formulario({ formData, handleChange, handleSubmit, handleClose }) {
   );
 }
 
-export default Formulario;
-
-
-
-
+export default FormRegistro;

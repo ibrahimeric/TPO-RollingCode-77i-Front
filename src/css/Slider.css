@@ -48,7 +48,7 @@
 .carousel-indicators {
     position: absolute;
     bottom: 10px;
-    left: calc(50% - 10vw);
+    left: calc(50% - 15vw);
     transform: translateX(-50%);
 }
 

@@ -4,17 +4,32 @@
 }
 
 /* Estilo para el encabezado del modal */
-.modal-header {
-  background-color: #007bff;
+.modal-header-register {
+  background-color: #00eaff;
   color: #fff;
   border-bottom: none;
   border-radius: 10px 10px 0 0;
 }
 
+.modal-header-adoption {
+  background-color: #007bff;
+  color: #fff;
+  border-bottom: none;
+}
+
+.modal-header-shifts {
+  background-color: #a01ddd;
+  color: #fff;
+  border-bottom: none;
+}
+
 /* Estilo para el cuerpo del modal */
-.modal-body {
+.modal-body  {
   padding: 20px;
-  text-align: left;
+}
+
+.text-label {
+    text-align: left !important;
 }
 
 /* Estilo para el pie del modal */
@@ -41,3 +56,6 @@
   margin-bottom: 20px;
 }
 
+.modal-body .btn-submit {
+  margin-left: 10px;
+}

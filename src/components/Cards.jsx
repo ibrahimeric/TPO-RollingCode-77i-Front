@@ -1,20 +1,27 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import card1Image from '../assets/cards/card1.webp';
 import card2Image from '../assets/cards/card2.webp';
 import card3Image from '../assets/cards/card3.webp';
-import Formulario from './Form';
+import FormRegistro from './FormRegistro';
+import FormTurnos from './FormTurnos';
+import FormAdopcion from './FormAdopcion';
 import '../css/Cards.css';
 
 function ParentComponent() {
     const [showModal, setShowModal] = useState(false);
+    const [selectedFormType, setSelectedFormType] = useState(null); // Nuevo estado para identificar el formulario seleccionado
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         message: ''
     });
 
-    const handleShowModal = () => setShowModal(true);
+    const handleShowModal = (formType) => {
+        setSelectedFormType(formType);
+        setShowModal(true);
+    };
+
     const handleCloseModal = () => setShowModal(false);
 
     const handleChange = (e) => {
@@ -33,17 +40,20 @@ function ParentComponent() {
         {
             imagen: card1Image,
             title: "Registro de Mascotas",
-            text: "Registra y gestiona la información de tus mascotas fácilmente"
+            text: "Registra y gestiona la información de tus mascotas fácilmente",
+            formType: 'registro' // Asegúrate de que este valor esté presente
         },
         {
             imagen: card2Image,
             title: "Adopción de Mascotas",
-            text: "Encuentra una nueva familia para mascotas necesitadas"
+            text: "Encuentra una nueva familia para mascotas necesitadas",
+            formType: 'adopcion'
         },
         {
             imagen: card3Image,
             title: "Reserva de Turnos",
-            text: "Agenda turnos para vacunación y castración de manera sencilla"
+            text: "Agenda turnos para vacunación y castración de manera sencilla",
+            formType: 'turnos'
         }
     ];
 
@@ -56,12 +66,29 @@ function ParentComponent() {
                         imagen={card.imagen}
                         title={card.title}
                         text={card.text}
+                        formType={card.formType} // Agregar el tipo de formulario como formType
                         handleShowModal={handleShowModal}
                     />
                 </div>
             ))}
-            {showModal && (
-                <Formulario
+            {showModal && selectedFormType === 'registro' && (
+                <FormRegistro
+                    formData={formData}
+                    handleChange={handleChange}
+                    handleSubmit={handleSubmit}
+                    handleClose={handleCloseModal}
+                />
+            )}
+            {showModal && selectedFormType === 'adopcion' && (
+                <FormAdopcion
+                    formData={formData}
+                    handleChange={handleChange}
+                    handleSubmit={handleSubmit}
+                    handleClose={handleCloseModal}
+                />
+            )}
+            {showModal && selectedFormType === 'turnos' && (
+                <FormTurnos
                     formData={formData}
                     handleChange={handleChange}
                     handleSubmit={handleSubmit}
@@ -72,7 +99,7 @@ function ParentComponent() {
     );
 }
 
-function CardComponent({ imagen, title, text, handleShowModal }) {
+function CardComponent({ imagen, title, text, formType, handleShowModal }) {
     return (
         <Card className="custom-card">
             <div className="image-container">
@@ -85,7 +112,7 @@ function CardComponent({ imagen, title, text, handleShowModal }) {
             <Card.Body className="card-body">
                 <Card.Title className="title-card">{title}</Card.Title>
                 <Card.Text>{text}</Card.Text>
-                <Button className="btn-card" variant="primary" onClick={handleShowModal}>
+                <Button className="btn-card" variant="primary" onClick={() => handleShowModal(formType)}>
                     Ir al formulario
                 </Button>
             </Card.Body>
