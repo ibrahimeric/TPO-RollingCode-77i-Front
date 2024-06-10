@@ -12,12 +12,12 @@ import LinkedInIco from '../../public/social-media/linkedin.ico';
 import InstagramIco from '../../public/social-media/instagram.ico';
 
 // Page Turnos
-import turno1 from '../img/turno1.webp';
-import turno2 from '../img/turno2.webp';
+import turno1 from '../assets/turnos/turno1.webp';
+import turno2 from '../assets/turnos/turno2.webp';
 
 // Page Mascotas
-import pet1 from '../img/pet1.webp';
-import pet2 from '../img/pet2.webp';
+import pet1 from '../assets/pets/pet1.webp';
+import pet2 from '../assets/pets/pet2.webp';
 
 
 // Exportación Datos
@@ -68,30 +68,6 @@ export const sliderData = [
   }
 ];
 
-
-/* tarjetas */
-export const cardsData = [
-  {
-    imagen: "/public/cards/card1.webp",
-    title: "Registro de Mascotas",
-    text: "Registra y gestiona la información de tus mascotas fácilmente",
-    route: "/formulario-contacto"
-  },
-  {
-    imagen: "/public/cards/card2.webp",
-    title: "Adopción de Mascotas",
-    text: "Encuentra una nueva familia para mascotas necesitadas",
-    route: "/error-404"
-  },
-  {
-    imagen: "/public/cards/card3.webp",
-    title: "Reserva de Turnos",
-    text: "Agenda turnos para vacunación y castración de manera sencilla",
-    route: "/formulario-turnos"
-  }
-  // Agrega más objetos aquí si necesitas más tarjetas
-];
-
 /* experiencias de usuarios */
 export const userExperiences = [
   {
@@ -128,7 +104,7 @@ export const footerParagraph = [
   { title: "Sobre Nosotros", paragraph: ["Descubre tu compañero ideal en nuestro portal de adopción de mascotas. Con un registro único y completo, facilitamos la conexión entre dueños amorosos y mascotas necesitadas. Únete a nuestra comunidad comprometida con el bienestar animal hoy mismo"] }
 ];
 
-/* MOdal */
+/* Modal */
 export const contactData = {
   address: "9 de Julio 112, Concepción, Tucumán, Argentina.",
   addressLink: "https://www.google.com.gt/maps/place/La+Oferta/@-27.3477648,-65.5910017,18z/data=!4m10!1m2!2m1!1sla+oferta!3m6!1s0x9423cf5c99bfe997:0x1e14071c27ac474d!8m2!3d-27.3466769!4d-65.5894634!15sCglsYSBvZmVydGFaCyIJbGEgb2ZlcnRhkgEOY2xvdGhpbmdfc3RvcmXgAQA!16s%2Fg%2F11b7xmqvg8?entry=ttu",

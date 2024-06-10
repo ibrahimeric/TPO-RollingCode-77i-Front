@@ -2,10 +2,10 @@ import { useState } from 'react'
 import { Routes, Route, Link } from 'react-router-dom';
 import NavBar from './components/Navbar';
 import Slider from './components/Slider';
-import CardComponent from './components/Cards';
+import Cards from './components/Cards'; // Importamos el componente Cards
 import UserExperience from './components/UserExperience';
 import Footer from './components/Footer.jsx';
-import { menuItems, cardsData } from './js/data';
+import { menuItems } from './js/data';
 import './css/App.css'
 
 function App() {
@@ -25,32 +25,13 @@ function App() {
         <Route path="/" element={<Link to="/non-existent-page">Go to 404</Link>} />
       </Routes>
       <Slider />
-      <div className="cards-container">
-        <div className='titulo-cards'>
-          <h3 className='titulo'>Nuestros Servicios</h3>
-        </div>
-        <CardList />
-      </div>
+      <Cards />
       <UserExperience />
       <Footer />
     </>
   );
 }
 
-function CardList() {
-  return (
-    <>
-      {cardsData.map((card, index) => (
-        <CardComponent
-          key={index}
-          imagen={card.imagen}
-          title={card.title}
-          text={card.text}
-        />
-      ))}
-    </>
-  );
-}
-
 export default App;
+
 
