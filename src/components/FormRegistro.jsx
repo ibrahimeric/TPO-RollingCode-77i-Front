@@ -51,7 +51,7 @@ function FormRegistro({ formData, handleChange, handleSubmit, handleClose }) {
           <Button variant="secondary" onClick={handleClose}>
             Cancelar
           </Button>
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="submit" className="btn-submit">
             Enviar
           </Button>
         </Form>
