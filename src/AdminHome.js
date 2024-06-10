@@ -1,25 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './App.css';
 
-const database = {
-  turnos: [
-    { id: 1, mascota: 'Max', fecha: '2024-06-03' },
-    { id: 2, mascota: 'Luna', fecha: '2024-06-04' },
-    { id: 3, mascota: 'Charlie', fecha: '2024-06-05' },
-    { id: 4, mascota: 'Bella', fecha: '2024-06-06' },
-    { id: 5, mascota: 'Rocky', fecha: '2024-06-07' },
-  ]
-};
-
 function AdminHomePage({ setPage }) {
+  const [turnos, setTurnos] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchTurnos = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/admin/appointments');
+        setTurnos(response.data);
+      } catch (err) {
+        setError('Error fetching appointments');
+        console.error('Error fetching appointments:', err);
+      }
+    };
+
+    fetchTurnos();
+  }, []);
+
   return (
     <div className="admin-home-page">
       <h1>Bienvenido Administrador</h1>
       <p>Turnos asignados:</p>
+      {error && <p className="error-message">{error}</p>}
       <ul className="item-list">
-        {database.turnos.map(turno => (
-          <li key={turno.id} className="item">
-            <span>{turno.mascota} - {turno.fecha}</span>
+        {turnos.map(turno => (
+          <li key={turno._id} className="item">
+            <span>{turno.type} - {new Date(turno.date).toLocaleDateString()}</span>
           </li>
         ))}
       </ul>

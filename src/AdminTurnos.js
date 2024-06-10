@@ -1,35 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './App.css';
 
-const database = {
-  turnos: [
-    { id: 1, mascota: 'Max', fecha: '2024-06-03' },
-    { id: 2, mascota: 'Luna', fecha: '2024-06-04' },
-    { id: 3, mascota: 'Charlie', fecha: '2024-06-05' },
-    { id: 4, mascota: 'Bella', fecha: '2024-06-06' },
-    { id: 5, mascota: 'Rocky', fecha: '2024-06-07' },
-  ],
-};
-
 function AdminTurnos({ setPage }) {
-  const [turnos, setTurnos] = useState(database.turnos);
+  const [turnos, setTurnos] = useState([]);
+  const [error, setError] = useState(null);
 
-  const handleChangeFecha = (id, newFecha) => {
-    const updatedTurnos = turnos.map(turno =>
-      turno.id === id ? { ...turno, fecha: newFecha } : turno
-    );
-    setTurnos(updatedTurnos);
+  useEffect(() => {
+    const fetchTurnos = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/admin/appointments');
+        setTurnos(response.data);
+      } catch (err) {
+        setError('Error fetching appointments');
+        console.error('Error fetching appointments:', err);
+      }
+    };
+
+    fetchTurnos();
+  }, []);
+
+  const handleChangeFecha = async (id, newFecha) => {
+    try {
+      await axios.put(`http://localhost:5000/admin/appointments/${id}`, { date: newFecha });
+      const updatedTurnos = turnos.map(turno =>
+        turno._id === id ? { ...turno, date: newFecha } : turno
+      );
+      setTurnos(updatedTurnos);
+    } catch (err) {
+      setError('Error updating turno');
+      console.error('Error updating turno:', err);
+    }
   };
 
   return (
     <div className="admin-page">
       <h2>Administrar Turnos</h2>
+      {error && <p>{error}</p>}
       <ul className="item-list">
         {turnos.map(turno => (
-          <li key={turno.id} className="item">
-            <span>{turno.mascota} - {turno.fecha}</span>
+          <li key={turno._id} className="item">
+            <span>{turno.pet ? turno.pet.name : "Sin Mascota"} - {new Date(turno.date).toLocaleDateString()}</span>
             <div className="button-group">
-              <button className="edit-button" onClick={() => handleChangeFecha(turno.id, prompt('Nueva fecha:'))}>Editar Fecha</button>
+              <button className="edit-button" onClick={() => handleChangeFecha(turno._id, prompt('Nueva fecha:'))}>Editar Fecha</button>
             </div>
           </li>
         ))}
