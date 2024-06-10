@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import '../css/Login.css';
 
 const Login = () => {
@@ -7,6 +7,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   const validateForm = () => {
     const newErrors = {};
@@ -15,7 +16,7 @@ const Login = () => {
       newErrors.email = 'El email no es válido';
     }
 
-    if (password.length < 4) {
+    if (password.length < 8) {
       newErrors.password = 'La contraseña debe tener al menos 8 caracteres';
     }
 
@@ -29,7 +30,7 @@ const Login = () => {
       return;
     }
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {  
+      const response = await fetch('http://localhost:5000/auth/login', {  
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -42,7 +43,10 @@ const Login = () => {
       }
 
       const data = await response.json();
-      console.log(data); // Manejar la respuesta del backend según sea necesario
+      if (data.token) {
+        localStorage.setItem('token', data.token); // Guardar el token en localStorage
+        navigate('/'); // Redirigir al usuario a la página principal u otra página protegida
+      }
     } catch (error) {
       console.error('Error logging in:', error);
     }
@@ -87,7 +91,7 @@ const Login = () => {
             />
             <label className="form-check-label" htmlFor="showPassword">Ver contraseña</label>
           </div>
-          <button type="submit" className="btn btn-primary btn-block mb-3" onClick={handleSubmit}>Iniciar Sesión</button>
+          <button type="submit" className="btn btn-primary btn-block mb-3">Iniciar Sesión</button>
           <div className="text-center">
             <Link to="/recover-password">¿Olvidaste tu contraseña?</Link>
           </div>
