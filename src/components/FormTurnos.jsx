@@ -1,25 +1,90 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import '../css/FormTurnos.css'
+import '../css/FormTurnos.css';
+import axios from 'axios'; // Importar axios para hacer solicitudes HTTP
+// import { jwtDecode } from 'jwt-decode';
 
 function FormTurnos() {
+    const [error, setError] = useState(null);
+
     const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        message: ''
+        type: '',
+        date: '',
+        pet: '',
+        user: ''
     });
+
+    const [pets, setPets] = useState([]);
+
+    useEffect(() => {
+        /* const token = localStorage.getItem('token');
+        if (!token) {
+            setError('No token found');
+            return;
+        } */
+
+        let userId = '666329fd7f4df62bdfa19115';
+        /* try {
+            const decodedToken = jwtDecode(token);
+            userId = decodedToken.id;
+            console.log(userId);
+        } catch (error) {
+            setError('Invalid token');
+            console.error('Error decoding token:', error);
+            return;
+        } */
+
+        const fetchPets = async () => {
+            try {
+                const response = await fetch(`http://localhost:5000/user/${userId}/pets`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        // 'Authorization': `Bearer ${token}`,
+                    }
+                });
+
+                if (!response.ok) {
+                    if (response.status === 401) {
+                        setError('Unauthorized access. Please check your token.');
+                    } else {
+                        setError('Network response was not ok');
+                    }
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json();
+
+                console.log('API response data:', data); // Log the response data
+
+                // Ensure data.pets is an array
+                if (Array.isArray(data.pets)) {
+                    setPets(data.pets);
+                } else {
+                    throw new Error('Received data.pets is not an array');
+                }
+            } catch (error) {
+                setError(error.message);
+                console.error('Error fetching pets:', error);
+            }
+        };
+
+        fetchPets();
+    }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Aquí puedes agregar la lógica para enviar el formulario
-        console.log(formData);
-        // Redireccionar a una nueva página después de enviar el formulario
-        window.location.href = '/nueva-pagina'; // Reemplaza '/nueva-pagina' con la URL de tu nueva página
+        try {
+            await axios.post('/appointments', formData);
+            window.location.href = '/nueva-pagina';
+        } catch (error) {
+            console.error('Error al enviar la solicitud de cita:', error);
+        }
     };
 
     return (
@@ -32,67 +97,67 @@ function FormTurnos() {
                 <div className="form-card">
                     <div className="form-card-body">
                         <Form onSubmit={handleSubmit}>
-                            <Form.Group className="mb-3" controlId="formName">
-                                <Form.Label>Nombre</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    placeholder="Ingresa tu nombre"
-                                    name="name"
-                                    value={formData.name}
-                                    onChange={handleChange}
-                                />
-                            </Form.Group>
-
-                            <Form.Group className="mb-3" controlId="formEmail">
-                                <Form.Label>Correo</Form.Label>
-                                <Form.Control
-                                    type="email"
-                                    placeholder="Ingresa tu email"
-                                    name="email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                />
-                                <Form.Text className="text-muted">
-                                    Nunca compartiremos tu email con nadie.
-                                </Form.Text>
-                            </Form.Group>
-
-                            <Form.Group className="mb-3" controlId="formOptionsMascotas">
-                                <Form.Label>Mascotas</Form.Label>
-                                <Form.Select onChange={handleChange}>
-                                    <option value="option1">Opción 1</option>
-                                    <option value="option2">Opción 2</option>
-                                </Form.Select>
-                            </Form.Group>
-
-                            <Form.Group className="mb-3" controlId="formOptionsTurnos">
-                                <Form.Label>Turnos</Form.Label>
-                                <Form.Select onChange={handleChange}>
-                                    <option value="option1">Castración</option>
-                                    <option value="option2">Vacunación</option>
+                            <Form.Group className="mb-3" controlId="formType">
+                                <Form.Label>Tipo de cita</Form.Label>
+                                <Form.Select name="type" value={formData.type} onChange={handleChange}>
+                                    <option value="">Selecciona un tipo</option>
+                                    <option value="adopcion">Adopción</option>
+                                    <option value="vacunacion">Vacunación</option>
                                 </Form.Select>
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formDate">
-                                <Form.Label>Selecciona una fecha</Form.Label>
-                                <Form.Control type="date" />
+                                <Form.Label>Fecha de la cita</Form.Label>
+                                <Form.Control
+                                    type="date"
+                                    name="date"
+                                    value={formData.date}
+                                    onChange={handleChange}
+                                />
                             </Form.Group>
 
-                            <Form.Group className="mb-3" controlId="formMessage">
-                                <Form.Label>Mensaje</Form.Label>
+                            {/* <Form.Group className="mb-3" controlId="formPet">
+                                <Form.Label>Mascota</Form.Label>
+                                <Form.Select name="pet" value={formData.pet} onChange={handleChange}>
+                                    <option value="">Selecciona una mascota</option>
+                                    {pets.map((pet) => (
+                                        <option key={pet._id} value={pet._id}>{pet.name}</option>
+                                    ))}
+                                </Form.Select>
+                            </Form.Group> */}
+
+                            <Form.Group className="mb-3" controlId="formPet">
+                                <Form.Label>Mascota</Form.Label>
+                                <Form.Select
+                                    as="select"
+                                    name="pet"
+                                    value={formData.pet}
+                                    onChange={handleChange}
+                                >
+                                    <option value="">Selecciona una mascota</option>
+                                    {pets.map((pet) => (
+                                        <option key={pet._id} value={pet._id}>{pet.name}</option>
+                                    ))}
+                                </Form.Select>
+                            </Form.Group>
+
+
+
+
+
+                            <Form.Group className="mb-3" controlId="formUser">
+                                <Form.Label>Usuario</Form.Label>
                                 <Form.Control
-                                    as="textarea"
-                                    rows={3}
-                                    placeholder="Ingresa un Mensaje"
-                                    name="message"
-                                    value={formData.message}
+                                    type="text"
+                                    name="user"
+                                    value={formData.user}
                                     onChange={handleChange}
                                 />
                             </Form.Group>
                             <div className='btn-enviar'>
                                 <Button variant="primary" type="submit">
-                                Enviar
-                            </Button>
+                                    Enviar
+                                </Button>
                             </div>
                         </Form>
                     </div>
