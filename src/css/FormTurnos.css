@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* .noto-serif {
+  font-family: "Noto Serif", serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+} */
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 1rem;
+}
+
+.left-column,
+.right-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 700px;
+}
+
+.form-container .left-column h1 {
+  font-size: 3rem;
+  font-family: "Noto Serif", serif;
+  font-weight: bold;
+}
+
+.form-container .left-column p {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-family: "Noto Serif", serif;
+}
+
+.right-column {
+  padding: 20px;
+  width: 90vh;
+}
+
+.form-card {
+  margin-left: 1rem;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.24);
+  padding: 1rem 2rem;
+  width: auto;
+  border-radius: 2%;
+}
+
+.form-card-header {
+  padding: 20px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-text {
+  color: #6c757d;
+}
+
+.form-container .btn-enviar {
+  border-radius: 2%;
+  margin-top: 1rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .form-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .left-column,
+  .right-column {
+    flex: none;
+    width: 100%;
+  }
+
+  .left-column,
+  .right-column,
+  .form-card {
+    margin: 10px;
+  }
+
+  .form-container .left-column h1 {
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .form-container h1 {
+    font-size: 0.8rem;
+  }
+
+  .form-card-body .form-label {
+    font-size: 0.8rem;
+  }
+
+  .form-card-body input,
+  .card-body select,
+  .card-body textarea {
+    font-size: 0.8rem;
+  }
+
+  .form-container .left-column h1 {
+    font-size: 1.5rem;
+  }
+
+  .form-container .left-column p {
+    font-size: 0.8rem;
+  }
+}

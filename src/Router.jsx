@@ -6,10 +6,12 @@ import Loading from './components/Loading';
 import Contact from './components/Contact';
 import PetsPage from './components/PetsPage';
 import TurnosPage from './components/TurnosPage';
+import FormTurnos from './components/FormTurnos';
 
 
 const AppRouter = () => {
   const [isLoading, setIsLoading] = useState(true);
+    const [formTurnos, setFormTurnos] = useState(false);
 
   useEffect(() => {
     // Simula el tiempo de carga de la página
@@ -34,6 +36,7 @@ const AppRouter = () => {
             <Route path="*" element={<Error404 />} />
             <Route path="/page-mascotas" element={<PetsPage />} />
             <Route path="/page-turnos" element={<TurnosPage />} />
+            <Route path="/formTurnos" element={<FormTurnos setFormTurnos={formTurnos} />} />
           </Routes>
         </Router>
       )}
