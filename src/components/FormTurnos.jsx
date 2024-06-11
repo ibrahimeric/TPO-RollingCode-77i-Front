@@ -116,16 +116,6 @@ function FormTurnos() {
                                 />
                             </Form.Group>
 
-                            {/* <Form.Group className="mb-3" controlId="formPet">
-                                <Form.Label>Mascota</Form.Label>
-                                <Form.Select name="pet" value={formData.pet} onChange={handleChange}>
-                                    <option value="">Selecciona una mascota</option>
-                                    {pets.map((pet) => (
-                                        <option key={pet._id} value={pet._id}>{pet.name}</option>
-                                    ))}
-                                </Form.Select>
-                            </Form.Group> */}
-
                             <Form.Group className="mb-3" controlId="formPet">
                                 <Form.Label>Mascota</Form.Label>
                                 <Form.Select
