@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { AuthContext } from '../context/Context'; // Importar AuthContext
 import '../css/Login.css';
 
 const Login = () => {
@@ -8,6 +9,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext); // Usar el contexto
 
   const validateForm = () => {
     const newErrors = {};
@@ -44,7 +46,7 @@ const Login = () => {
 
       const data = await response.json();
       if (data.token) {
-        localStorage.setItem('token', data.token); // Guardar el token en localStorage
+        login(data.token); // Llamar a la función de inicio de sesión del contexto
         navigate('/'); // Redirigir al usuario a la página principal u otra página protegida
       }
     } catch (error) {

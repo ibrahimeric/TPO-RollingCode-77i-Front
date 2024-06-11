@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useContext } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { AuthContext } from '../context/Context';
 import '../css/Register.css';
 
 const Register = () => {
@@ -10,6 +11,8 @@ const Register = () => {
   const [repeatPassword, setRepeatPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
 
   const validateForm = () => {
     const newErrors = {};
@@ -44,7 +47,7 @@ const Register = () => {
       return;
     }
     try {
-      const response = await fetch('/api/auth/register', {  
+      const response = await fetch('http://localhost:5000/api/auth/register', {  
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -57,7 +60,10 @@ const Register = () => {
       }
 
       const data = await response.json();
-      console.log(data); // Manejar la respuesta del backend según sea necesario
+      if (data.token) {
+        login(data.token); // Llamar a la función de inicio de sesión del contexto
+        navigate('/'); // Redirigir al usuario a la página principal u otra página protegida
+      }
     } catch (error) {
       console.error('Error registering:', error);
     }
@@ -138,7 +144,7 @@ const Register = () => {
             />
             <label className="form-check-label" htmlFor="showPassword">Ver contraseñas</label>
           </div>
-          <button type="submit" className="btn btn-primary btn-block mb-3" onClick={handleSubmit}>Registrarse</button>
+          <button type="submit" className="btn btn-primary btn-block mb-3">Registrarse</button>
           <div className="text-center">
             <Link to="/login">¿Ya tienes una cuenta? Iniciar Sesión</Link>
           </div>
