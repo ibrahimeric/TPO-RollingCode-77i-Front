@@ -13,7 +13,7 @@ function App() {
     <>
       <BrowserRouter>
       <Routes>
-
+        
         <Route path="/pets" element={isTabletOrMobile ? <PetCard /> : <PetList />} />
         <Route path="/pet/:id" element={<PetDetail />} /> 
         <Route path="/pet/:id/edit" element={<PetEdit />} />
