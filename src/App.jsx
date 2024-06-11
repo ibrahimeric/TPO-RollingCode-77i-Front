@@ -10,9 +10,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-      {/* <NavBar/> */}
         <Route path="/formTurnos" element={<FormTurnos setFormTurnos={formTurnos} />} />
-        {/* <Footer/> */}
       </Routes>
     </div>
   )

@@ -23,17 +23,14 @@ function FormTurnos() {
     };
 
     return (
-        <div className="container">
+        <div className="form-container">
             <div className="left-column">
-                <h1>Solicite un Turno</h1>
+                <h1>Solicite un turno</h1>
                 <p>Comuníquese con nosotros para todas sus necesidades de registro, adopción y vacunación de mascotas en Concepción.</p>
             </div>
             <div className="right-column">
-                <div className="card">
-                    <div className="card-header">
-                        <h1>Solicitud de Turno</h1>
-                    </div>
-                    <div className="card-body">
+                <div className="form-card">
+                    <div className="form-card-body">
                         <Form onSubmit={handleSubmit}>
                             <Form.Group className="mb-3" controlId="formName">
                                 <Form.Label>Nombre</Form.Label>

@@ -1,44 +1,59 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2; /* Color de fondo gris */
-}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
 
-.container {
+/* .noto-serif {
+  font-family: "Noto Serif", serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+} */
+
+.form-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin: 1rem;
 }
 
 .left-column,
 .right-column {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 700px;
 }
 
-.left-column {
-  padding: 20px;
+.form-container .left-column h1 {
+  font-size: 3rem;
+  font-family: "Noto Serif", serif;
+  font-weight: bold;
+}
+
+.form-container .left-column p {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-family: "Noto Serif", serif;
 }
 
 .right-column {
   padding: 20px;
+  width: 90vh;
 }
 
-.card {
+.form-card {
+  margin-left: 1rem;
   background-color: white;
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.24);
+  padding: 1rem 2rem;
+  width: auto;
+  border-radius: 2%;
 }
 
-.card-header {
-  padding: 20px;
+.form-card-header {
+  padding: 20px 0;
   border-bottom: 1px solid #ddd;
-}
-
-.card-body h1 {
-  padding: 20px;
-  font-size: 0.8rem;
 }
 
 .form-group {
@@ -46,18 +61,18 @@ body {
 }
 
 .form-text {
-  color: #6c757d; /* Color del texto de ayuda */
+  color: #6c757d;
 }
 
-.btn-enviar {
-  text-align: center;
+.form-container .btn-enviar {
+  border-radius: 2%;
+  margin-top: 1rem;
 }
 
 @media only screen and (max-width: 768px) {
-  .container {
+  .form-container {
     display: flex;
     flex-direction: column;
-    /* align-items: stretch; */
   }
 
   .left-column,
@@ -68,37 +83,35 @@ body {
 
   .left-column,
   .right-column,
-  .card {
+  .form-card {
     margin: 10px;
   }
 
-  .card-body h1 {
-    font-size: 0.7rem;
+  .form-container .left-column h1 {
+    font-size: 2rem;
   }
 }
 
 @media only screen and (max-width: 480px) {
-  .card {
-    margin: 0;
-  }
-  
-  .card-header h1 {
-    font-size: 1rem;
-  }
-
-  .card-body h1 {
-    font-size: 0.6rem;
-  }
-
-  .card-body .form-label {
+  .form-container h1 {
     font-size: 0.8rem;
   }
 
-  .card-body input, .card-body select , .card-body textarea  {
+  .form-card-body .form-label {
     font-size: 0.8rem;
   }
-  
-  .form-text {
+
+  .form-card-body input,
+  .card-body select,
+  .card-body textarea {
+    font-size: 0.8rem;
+  }
+
+  .form-container .left-column h1 {
+    font-size: 1.5rem;
+  }
+
+  .form-container .left-column p {
     font-size: 0.8rem;
   }
 }
