@@ -92,9 +92,11 @@ function FormTurnos() {
                                     onChange={handleChange}
                                 />
                             </Form.Group>
-                            <Button variant="primary" type="submit" className='btn-enviar'>
+                            <div className='btn-enviar'>
+                                <Button variant="primary" type="submit">
                                 Enviar
                             </Button>
+                            </div>
                         </Form>
                     </div>
                 </div>
