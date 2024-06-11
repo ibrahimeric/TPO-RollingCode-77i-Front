@@ -4,7 +4,7 @@ import FormTurnos from './components/FormTurnos';
 
 
 function App() {
-  // const [form, setForm] = useState(false);
+  // const [form, setForm] = useStatgte(false);
   const [formTurnos, setFormTurnos] = useState(false);
 
   return (
