@@ -58,7 +58,7 @@ function CardComponent({ imagen, title, text, route }) {
       <Card.Body className="card-body">
         <Card.Title className="title-card">{title}</Card.Title>
         <Card.Text>{text}</Card.Text>
-        <Link to={route} className="btn btn-primary">Ir al formulario</Link>
+        <Link to={route} className="btn btn-primary">Ir a la Pagina</Link>
       </Card.Body>
     </Card>
   );
