@@ -1,0 +1,92 @@
+.footer-container {
+    width: 100%;
+    background-color: #2F6FA5;
+    padding: 4rem 2rem 0;
+}
+
+.page-footer {
+    color: #fff;
+}
+
+.text-uppercase {
+    color: #fff;
+}
+
+.text-uppercase a {
+    color: #fff;
+}
+
+.text-uppercase a:hover {
+    color: #ccc;
+}
+
+.list-unstyled li a {
+    color: #201e1e;
+    text-decoration: none;
+}
+
+.list-unstyled li a:hover {
+    color: #535bf2;
+}
+
+.iconos {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.icono-img {
+    width: 30px;
+    height: 30px;
+    margin: 0 1rem;
+}
+
+.icono-img:hover {
+    transform: scale(1.2);
+}
+
+.footer-copyright {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-copyright li {
+    display: inline;
+    margin-left: 5px;
+}
+
+@media (max-width: 576px) {
+    .text-uppercase {
+        font-size: 15px;
+    }
+
+    .text-paragraph {
+        font-size: 12px;
+    }
+
+    .list-unstyled li a {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 992px) {
+    .text-uppercase {
+        font-size: 20px;
+    }
+
+    .list-unstyled li a {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 993px) {
+    .text-uppercase {
+        font-size: 24px;
+    }
+
+    .list-unstyled li a {
+        font-size: 18px;
+    }
+}

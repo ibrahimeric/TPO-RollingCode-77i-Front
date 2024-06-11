@@ -1,0 +1,35 @@
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease; 
+}
+
+.loading-container:hover {
+  background-color: #c0c0c0;
+}
+
+.custom-spinner {
+  width: 4rem !important;
+  height: 4rem !important;
+  border-color: transparent !important;
+  border-top-color: blue !important;
+}
+
+.custom-spinner::after {
+  border-color: transparent transparent blue transparent !important;
+}
+
+@media (max-width: 768px) {
+  .loading-container {
+    height: 100vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .loading-container {
+    height: 100vh;
+  }
+}
