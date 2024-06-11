@@ -4,6 +4,7 @@ import logo from '/logo.png';
 import { menuItems } from '../js/data';
 import Contact from './Contact';
 import '../css/Navbar.css';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
   const [showContactModal, setShowContactModal] = useState(false);
@@ -28,9 +29,11 @@ const NavBar = () => {
         </Navbar.Brand>
         <div className="nav-btn">
           <Button variant="outline-primary" onClick={handleToggleContactModal} className="ml-2">Contacto</Button>
-          <Button variant="outline-primary" href="#login" className="btn-login">
-            {!isLoggedIn ? 'Login' : 'Logout'}
-          </Button>
+          <Link to={isLoggedIn ? "/logout" : "/login"}>
+            <Button variant="outline-primary" className="btn-login">
+              {!isLoggedIn ? 'Login' : 'Logout'}
+            </Button>
+          </Link>
         </div>
       </div>
 
