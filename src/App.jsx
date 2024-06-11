@@ -10,8 +10,8 @@ import PetCard from './components/PetCard';
 import PetEdit from './components/PetEdit';
 import PetAdd from './components/PetAdd';
 import { AuthProvider } from './context/Context';
-import PublicRoute from './routes/PublicRoute';
-import PrivateRoute from './routes/PrivateRoute';
+import PublicRoute from './routes/PublicRoutes';
+import PrivateRoute from './routes/PrivateRoutes';
 
 function App() {
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 768px)' });
@@ -26,11 +26,13 @@ function App() {
           <Route path="/register" element={<PublicRoute restricted={true} />}>
             <Route path="/register" element={<Register />} />
           </Route>
-          <Route path="/" element={<Home />} />
-          <Route path="/pets" element={isTabletOrMobile ? <PetCard /> : <PetList />} />
-          <Route path="/pet/:id" element={<PetDetail />} />
-          <Route path="/pet/:id/edit" element={<PetEdit />} />
-          <Route path="/pet/add" element={<PetAdd />} />
+          <Route path="/" element={<Home />} /> 
+            <Route path="/pets" element={isTabletOrMobile ? <PetCard /> : <PetList />} />
+          <Route element={<PrivateRoute />}>
+            <Route path="/pet/:id" element={<PetDetail />} />
+            <Route path="/pet/:id/edit" element={<PetEdit />} />
+            <Route path="/pet/add" element={<PetAdd />} />
+          </Route>
         </Routes>
       </Router>
     </AuthProvider>
@@ -38,4 +40,3 @@ function App() {
 }
 
 export default App;
-
