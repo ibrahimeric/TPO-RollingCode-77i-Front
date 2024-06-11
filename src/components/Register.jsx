@@ -3,25 +3,25 @@ import { Link } from 'react-router-dom';
 import '../css/Register.css';
 
 const Register = () => {
-  const [nombre, setNombre] = useState('');
-  const [apellido, setApellido] = useState('');
+  // const [nombre, setNombre] = useState('');
+  // const [apellido, setApellido] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [repeatPassword, setRepeatPassword] = useState('');
+  // const [repeatPassword, setRepeatPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
 
   const validateForm = () => {
     const newErrors = {};
 
-    if (nombre.trim().length < 2) {
+    /* if (nombre.trim().length < 2) {
       newErrors.nombre = 'El nombre debe tener al menos 2 caracteres';
     }
 
     if (apellido.trim().length < 2) {
       newErrors.apellido = 'El apellido debe tener al menos 2 caracteres';
     }
-
+ */
     if (!/\S+@\S+\.\S+/.test(email)) {
       newErrors.email = 'El email no es válido';
     }
@@ -30,9 +30,9 @@ const Register = () => {
       newErrors.password = 'La contraseña debe tener al menos 8 caracteres';
     }
 
-    if (password !== repeatPassword) {
+   /*  if (password !== repeatPassword) {
       newErrors.repeatPassword = 'Las contraseñas no coinciden';
-    }
+    } */
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -44,12 +44,12 @@ const Register = () => {
       return;
     }
     try {
-      const response = await fetch('/api/auth/register', {  
+      const response = await fetch('/auth/register', {  
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ nombre, apellido, email, password }),
+        body: JSON.stringify({ /* nombre, apellido,  */email, password }),
       });
 
       if (!response.ok) {
@@ -69,6 +69,30 @@ const Register = () => {
         <h1 className="text-center mb-4">Registrarse</h1>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
+            <label htmlFor="email">Email:</label>
+            <input 
+              type="email" 
+              className="form-control" 
+              id="email" 
+              value={email} 
+              onChange={e => setEmail(e.target.value)} 
+              required 
+            />
+          <div className="form-group">
+            <label htmlFor="password">Contraseña:</label>
+            <input 
+              type={showPassword ? "text" : "password"} 
+              className="form-control" 
+              id="password" 
+              value={password} 
+              onChange={e => setPassword(e.target.value)} 
+              required 
+            />
+            {errors.password && <div className="text-danger">{errors.password}</div>}
+          </div>
+            {errors.email && <div className="text-danger">{errors.email}</div>}
+          </div>
+          {/* <div className="form-group">
             <label htmlFor="nombre">Nombre:</label>
             <input 
               type="text" 
@@ -93,30 +117,6 @@ const Register = () => {
             {errors.apellido && <div className="text-danger">{errors.apellido}</div>}
           </div>
           <div className="form-group">
-            <label htmlFor="email">Email:</label>
-            <input 
-              type="email" 
-              className="form-control" 
-              id="email" 
-              value={email} 
-              onChange={e => setEmail(e.target.value)} 
-              required 
-            />
-            {errors.email && <div className="text-danger">{errors.email}</div>}
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Contraseña:</label>
-            <input 
-              type={showPassword ? "text" : "password"} 
-              className="form-control" 
-              id="password" 
-              value={password} 
-              onChange={e => setPassword(e.target.value)} 
-              required 
-            />
-            {errors.password && <div className="text-danger">{errors.password}</div>}
-          </div>
-          <div className="form-group">
             <label htmlFor="repeatPassword">Repetir Contraseña:</label>
             <input 
               type={showPassword ? "text" : "password"} 
@@ -127,7 +127,7 @@ const Register = () => {
               required 
             />
             {errors.repeatPassword && <div className="text-danger">{errors.repeatPassword}</div>}
-          </div>
+          </div> */}
           <div className="form-check mb-3">
             <input 
               type="checkbox" 
