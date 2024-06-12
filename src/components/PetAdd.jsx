@@ -2,17 +2,17 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import {jwtDecode} from "jwt-decode";
 
 const PetAdd = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const [newPet, setNewPet] = useState({
     name: "",
-    breed: "",
+    race: "",
     age: "",
-    gender: "Macho", 
-    size: "",
-    species: "",
+    sex: "male",
+    species: "canine",
     image: null,
   });
 
@@ -24,29 +24,56 @@ const PetAdd = () => {
     });
   };
 
+  const token = localStorage.getItem("token");
+  if (!token) {
+    setError("No token found");
+    return;
+  }
+
+  let userId;
+  try {
+    const decodedToken = jwtDecode(token);
+    userId = decodedToken.id;
+  } catch (error) {
+    setError("Invalid token");
+    console.error("Error decoding token:", error);
+    return;
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const formData = new FormData();
+    formData.append("name", newPet.name);
+    formData.append("race", newPet.race);
+    formData.append("age", newPet.age);
+    formData.append("sex", newPet.sex);
+    formData.append("species", newPet.species);
+    if (newPet.image) {
+      formData.append("image", newPet.image);
+    }
+
     try {
       const response = await fetch(
-        "http://localhost:5000/pet/register/:ownerId",
+        `http://localhost:5000/pet/register/${userId}`,
         {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
           },
-          body: JSON.stringify(newPet), // Enviar el objeto newPet como JSON en el cuerpo de la solicitud
+          body: formData,
         }
       );
 
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-
+      console.log("Mascota Agregada correctamente");
       // Redirigir a la página de listado de mascotas después de agregar
       navigate("/pets");
     } catch (error) {
       console.error("Error adding pet:", error);
-      setError(error.message); // Manejar el error, podrías establecer un estado de error para mostrar un mensaje al usuario
+      setError(error.message);
     }
   };
 
@@ -73,14 +100,15 @@ const PetAdd = () => {
                 value={newPet.name}
                 onChange={handleInputChange}
                 placeholder="Ingrese el nombre de la mascota"
+                required
               />
             </Form.Group>
-            <Form.Group controlId="formBreed">
+            <Form.Group controlId="formRace">
               <Form.Label>Raza</Form.Label>
               <Form.Control
                 type="text"
-                name="breed"
-                value={newPet.breed}
+                name="race"
+                value={newPet.race}
                 onChange={handleInputChange}
                 placeholder="Ingrese la raza de la mascota"
               />
@@ -93,31 +121,19 @@ const PetAdd = () => {
                 value={newPet.age}
                 onChange={handleInputChange}
                 placeholder="Ingrese la edad de la mascota"
+                required
               />
             </Form.Group>
             <Form.Group controlId="formGender">
               <Form.Label>Sexo</Form.Label>
               <Form.Control
                 as="select"
-                name="gender"
-                value={newPet.gender}
+                name="sex"
+                value={newPet.sex}
                 onChange={handleInputChange}
               >
-                <option value="Macho">Macho</option>
-                <option value="Hembra">Hembra</option>
-              </Form.Control>
-            </Form.Group>
-            <Form.Group controlId="formSize">
-              <Form.Label>Tamaño</Form.Label>
-              <Form.Control
-                as="select"
-                name="size"
-                value={newPet.size}
-                onChange={handleInputChange}
-              >
-                <option value="Grande">Grande</option>
-                <option value="Mediano">Mediano</option>
-                <option value="Pequeño">Pequeño</option>
+                <option value="male">Macho</option>
+                <option value="female">Hembra</option>
               </Form.Control>
             </Form.Group>
             <Form.Group controlId="formSpecies">
@@ -128,8 +144,8 @@ const PetAdd = () => {
                 value={newPet.species}
                 onChange={handleInputChange}
               >
-                <option value="Canino">Canino</option>
-                <option value="Felino">Felino</option>
+                <option value="canine">Canino</option>
+                <option value="feline">Felino</option>
               </Form.Control>
             </Form.Group>
             <Form.Group controlId="formImage">
