@@ -10,11 +10,12 @@ function FormTurnos() {
     const [formData, setFormData] = useState({
         type: '',
         date: '',
-        pet: '',
-        user: ''
+        pet: ''
+        // user: ''
     });
 
     const [pets, setPets] = useState([]);
+    // const [userId, setUserId] = useState('');
 
     useEffect(() => {
         /* const token = localStorage.getItem('token');
@@ -23,7 +24,7 @@ function FormTurnos() {
             return;
         } */
 
-        let userId = '666329fd7f4df62bdfa19115';
+        // let userId = '666329fd7f4df62bdfa19115';
         /* try {
             const decodedToken = jwtDecode(token);
             userId = decodedToken.id;
@@ -36,7 +37,8 @@ function FormTurnos() {
 
         const fetchPets = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/user/${userId}/pets`, {
+                // const response = await fetch(`http://localhost:5000/user/${userId}/pets`, {
+                const response = await fetch(`http://localhost:5000/user/666329fd7f4df62bdfa19115/pets`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -72,20 +74,32 @@ function FormTurnos() {
         fetchPets();
     }, []);
 
+    
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
+        if (name === 'pet') {
+            console.log('ID de la mascota seleccionada:', value);
+        }
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('/appointments', formData);
-            window.location.href = '/nueva-pagina';
+            const updatedFormData = { ...formData, petId: formData.pet }; // Renombrar 'pet' a 'petId'
+            setFormData(updatedFormData);
+
+            // Hacemos la solicitud POST con los datos actualizados
+            await axios.post(`http://localhost:5000/user/666329fd7f4df62bdfa19115/new_appointment`, updatedFormData);
+            console.log('Datos enviados exitosamente a la base de datos');
+            console.log('ID de la mascota seleccionada:', updatedFormData.petId);
         } catch (error) {
-            console.error('Error al enviar la solicitud de cita:', error);
+            console.error('Error al enviar los datos a la base de datos:', error);
         }
     };
+
+
 
     return (
         <div className="form-container">
@@ -100,9 +114,9 @@ function FormTurnos() {
                             <Form.Group className="mb-3" controlId="formType">
                                 <Form.Label>Tipo de cita</Form.Label>
                                 <Form.Select name="type" value={formData.type} onChange={handleChange}>
-                                    <option value="">Selecciona un tipo</option>
-                                    <option value="adopcion">Adopción</option>
-                                    <option value="vacunacion">Vacunación</option>
+                                    <option>Selecciona un tipo</option>
+                                    <option value="neutering">neutering</option>
+                                    <option value="vaccination">vaccination</option>
                                 </Form.Select>
                             </Form.Group>
 
@@ -128,6 +142,7 @@ function FormTurnos() {
                                     {pets.map((pet) => (
                                         <option key={pet._id} value={pet._id}>{pet.name}</option>
                                     ))}
+
                                 </Form.Select>
                             </Form.Group>
 
@@ -135,7 +150,7 @@ function FormTurnos() {
 
 
 
-                            <Form.Group className="mb-3" controlId="formUser">
+                            {/* <Form.Group className="mb-3" controlId="formUser">
                                 <Form.Label>Usuario</Form.Label>
                                 <Form.Control
                                     type="text"
@@ -143,7 +158,7 @@ function FormTurnos() {
                                     value={formData.user}
                                     onChange={handleChange}
                                 />
-                            </Form.Group>
+                            </Form.Group> */}
                             <div className='btn-enviar'>
                                 <Button variant="primary" type="submit">
                                     Enviar
