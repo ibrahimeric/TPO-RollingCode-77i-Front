@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/Context'; // Importar el proveedor de autenticación
+import { useMediaQuery } from 'react-responsive'
 import App from './App';
 import NavBar from './components/Navbar';
 import Footer from './components/Footer';
@@ -17,6 +18,7 @@ import PetList from './components/PetList';
 import PetDetail from './components/PetDetail';
 import PetEdit from './components/PetEdit';
 import PetAdd from './components/PetAdd';
+import PetCard from './components/PetCard';
 import AdminHomePage from './components/AdminHome';
 import AdminAdopciones from './components/AdminAdopciones';
 import AdminMascotas from './components/AdminMascotas';
@@ -36,6 +38,8 @@ const AppRouter = () => {
 
     return () => clearTimeout(timeout);
   }, []);
+
+  const isTableOrMobile = useMediaQuery({ query: '(max-width:768px)' })
 
   return (
     <React.StrictMode>
@@ -57,19 +61,19 @@ const AppRouter = () => {
               <Route path="/adopciones" element={<AdopcionPage />} />
               <Route path="/login" element={
                 <PublicRoute restricted={true} />}>
-                  <Route path="/login" element={<Login />} />
-                </Route>
+                <Route path="/login" element={<Login />} />
+              </Route>
               <Route path="/register" element={
                 <PublicRoute restricted={true} />}>
-                  <Route path="/register" element={<Register />} />
-                </Route>
-              <Route path="/pets" element={<PetList />} />
+                <Route path="/register" element={<Register />} />
+              </Route>
+              <Route path="/pets" element={isTableOrMobile ? <PetCard /> : <PetList />} />
               <Route path="/pet/:id" element={<PetDetail />} />
               <Route path="/pet/:id/edit" element={<PetEdit />} />
               <Route path="/pet/add" element={<PetAdd />} />
-            
-              <Route path='/about-us' element={<AboutPage/>}/>
-              
+
+              <Route path='/about-us' element={<AboutPage />} />
+
               {/* Administrador */}
               <Route path="/admin" element={<AdminHomePage />} />
               <Route path="/admin/mascotas" element={<AdminMascotas />} />
