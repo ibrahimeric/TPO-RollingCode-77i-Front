@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import './App.css';
+import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 const database = {
   adopciones: [
@@ -27,7 +28,7 @@ function AdminAdopciones({ setPage }) {
   };
 
   return (
-    <div className="admin-page">
+    <div className="admin-home-page">
       <h2>Administrar Adopciones</h2>
       <ul className="item-list">
         {adopciones.map(adopcion => (
@@ -40,7 +41,9 @@ function AdminAdopciones({ setPage }) {
           </li>
         ))}
       </ul>
-      <button className="nav-button" onClick={() => setPage('home')}>Volver a la página principal</button>
+      <Link to="/admin">
+        <Button variant="primary">Regresar</Button>
+      </Link>
     </div>
   );
 }

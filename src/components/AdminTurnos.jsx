@@ -1,12 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './App.css';
+import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 function AdminTurnos({ setPage }) {
   const [turnos, setTurnos] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // Define tu variable de accessToken
+    // const accessToken = 'tu_token_de_acceso_aqui';
+    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTcxODIwNzg1MSwiZXhwIjoxNzE4MjExNDUxfQ.SV06qE_JHk21ioRP6ULJmvyxniv2NQ-SHrhKDy25_jQ';
+    const fetchTurnos = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/admin/appointments', {
+          headers: {
+            Authorization: 'Bearer ' + accessToken // Reemplaza accessToken con tu token de acceso válido
+          }
+        });
+        setTurnos(response.data);
+      } catch (err) {
+        setError('Error fetching appointments');
+        console.error('Error fetching appointments:', err);
+      }
+    };
+
+    fetchTurnos();
+  }, []);
+
+  /* useEffect(() => {
     const fetchTurnos = async () => {
       try {
         const response = await axios.get('http://localhost:5000/admin/appointments');
@@ -19,7 +41,7 @@ function AdminTurnos({ setPage }) {
 
     fetchTurnos();
   }, []);
-
+ */
   const handleDeleteFecha = async (id) => {
     try {
       await axios.delete(`http://localhost:5000/admin/appointments/delete/${id}`);
@@ -34,20 +56,22 @@ function AdminTurnos({ setPage }) {
   };
 
   return (
-    <div className="admin-page">
+    <div className="admin-home-page">
       <h2>Administrar Turnos</h2>
       {error && <p>{error}</p>}
       <ul className="item-list">
-        {turnos.map(turno => (
-          <li key={turno._id} className="item">
-            <span>{turno.pet ? turno.pet.name : "Sin Mascota"} - {turno.type} - {new Date(turno.date).toLocaleDateString()}</span>
-            <div className="button-group">
-              <button className="delete-button" onClick={() => handleDeleteFecha(turno._id)}>Borrar</button>
-            </div>
-          </li>
-        ))}
+        {error && <p className="error-message">{error}</p>}
+        <ul className="item-list">
+          {turnos.map(turno => (
+            <li key={turno._id} className="item">
+              <span>{turno.pet ? turno.pet.name : "Sin Mascota"} - {turno.type} - {new Date(turno.date).toLocaleDateString()}</span>
+            </li>
+          ))}
+        </ul>
       </ul>
-      <button className="nav-button" onClick={() => setPage('home')}>Volver a la página principal</button>
+      <Link to="/admin">
+        <Button variant="primary">Regresar</Button>
+      </Link>
     </div>
   );
 }

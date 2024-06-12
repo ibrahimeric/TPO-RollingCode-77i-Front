@@ -17,7 +17,10 @@ import PetList from './components/PetList';
 import PetDetail from './components/PetDetail';
 import PetEdit from './components/PetEdit';
 import PetAdd from './components/PetAdd';
-
+import AdminHomePage from './components/AdminHome';
+import AdminAdopciones from './components/AdminAdopciones';
+import AdminMascotas from './components/AdminMascotas';
+import AdminTurnos from './components/AdminTurnos';
 import AdopcionPage from './components/AdopcionPage';
 import FormAdopcion from './components/FormAdopcion';
 import AboutPage from './components/AcercaDe';
@@ -65,6 +68,13 @@ const AppRouter = () => {
               <Route path="/pet/add" element={<PetAdd />} />
             
               <Route path='/about-us' element={<AboutPage/>}/>
+              
+              {/* Administrador */}
+              <Route path="/admin" element={<AdminHomePage />} />
+              <Route path="/admin/mascotas" element={<AdminMascotas />} />
+              <Route path="/admin/turnos" element={<AdminTurnos />} />
+              <Route path="/admin/adopciones" element={<AdminAdopciones />} />
+
 
             </Routes>
             <Footer />
