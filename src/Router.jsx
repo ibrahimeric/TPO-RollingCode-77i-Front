@@ -44,7 +44,7 @@ const AppRouter = () => {
               <Route path="/" element={<App />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<Error404 />} />
-              <Route path="/page-mascotas" element={<PetsPage />} />
+              <Route path="/page-mascotas" element={<PetList />} />
               <Route path="/page-turnos" element={<TurnosPage />} />
               <Route path="/formTurnos" element={<FormTurnos />} />
               <Route path="/formRegistro" element={<FormRegistro />} />

@@ -140,19 +140,6 @@ export const socialMediaLinksModal = {
 ]; */
 
 export const pets = [
-    {
-        id: 1,
-        urlImage: pet1,
-        nombreMascota: 'Luna',
-        servicioSolicitado: 'Vacunación',
-        fecha: '15-07-2024'
-    },
-    {
-        id: 2,
-        urlImage: pet2,
-        nombreMascota: 'Max',
-        servicioSolicitado: 'Adopción',
-        fecha: '24-09-2024'
-    },
+
     // Agrega más turnos
 ];

@@ -1,14 +1,20 @@
 import React from 'react';
 import { Button, Container, Table } from 'react-bootstrap';
-import { pets } from '../js/data'
-import '../css/PetsPage.css'
+import { pets } from '../js/data';
+import '../css/PetsPage.css';
 import { Link } from 'react-router-dom';
 
-const TurnosPage = () => {
+const PetsPage = () => {
+
+  const cancelarTurno = (petId) => {
+    // Aquí iría la lógica para cancelar el turno, por ejemplo una llamada a la API
+    console.log(`Cancelando turno para la mascota con ID: ${petId}`);
+  };
+
   return (
     <div className='contenedor-mascotas'>
       <Container className='contenedor-color'>
-        <h1 className="text-center-mascotas">Mis Mascotas</h1>
+        <h1 className="text-center-mascotas">Mascotas</h1>
         <div className='table-responsive'>
           <Table striped bordered hover className='table-mascotas'>
             <thead>
@@ -43,4 +49,4 @@ const TurnosPage = () => {
   );
 }
 
-export default TurnosPage;
+export default PetsPage;
