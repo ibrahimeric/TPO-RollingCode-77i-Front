@@ -5,22 +5,38 @@ import '../css/Error404.css'
 const Error404 = () => {
   return (
     <div className='error404'>
-      <Container className='card-error404'>
-        <Row className="justify-content-center">
-          <Col md={6} className="text-center containerError404">
-            <h3>404</h3>
-            <h5>PÁGINA NO ENCONTRADA</h5>
-            <p>
-              Buscamos alto y bajo, pero no pudimos encontrar lo que estás buscando.<br />
-              Busquemos un mejor lugar para que vayas.
-            </p>
-            <Link to='/'>
-              <Button variant="primary" className='ErrorLink'>IR A INICIO</Button>
-            </Link>
-          </Col>
-        </Row>
-      </Container>
-    </div>
+      <div class="center">
+        <div class="error">
+          <div class="number">4</div>
+          <div class="illustration">
+            <div class="circle"></div>
+            <div class="clip">
+              <div class="paper">
+                <div class="face">
+                  <div class="eyes">
+                    <div class="eye eye-left"></div>
+                    <div class="eye eye-right"></div>
+                  </div>
+                 
+                  <div class="mouth"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="number">4</div>
+        </div>
+
+        <div class="text">Ups! La pagina que buscas no existe
+        <p>Es probable que estes aqui porque:</p>
+      <ul>
+        <li>La pagina se ha movido</li>
+        <li>La pagina ha sido eliminada</li>
+        <li>Estabas buscando tus gatitos y te perdiste</li>
+        <li>Te gustan las paginas de error</li>
+      </ul>
+        </div>
+</div>
+      </div>
 
   )
 }

@@ -67,7 +67,7 @@ const getRoute = (text) => {
         case "Turnos":
             return "/page-turnos";
         case "Soporte":
-            return "/soperte";
+            return "/soporte";
         case "Contacto":
             return "/form";
         case "Acerca de":

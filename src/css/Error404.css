@@ -1,88 +1,184 @@
-.error404 {
-  background-color: #5292d375;
-  height: 100vh;
+:root {
+  /* colors */
+  --blue: #1379ff;
+  --pink: #fdabaf;
+  --pink-light: #ffe0e6;
+  --green: #04cba0;
+  --green-dark: #01ac88;
+  --white: white;
+}
+
+.error404{
+  border-style: dashed;
+  border-color: #86868627;
+  margin: 3vw
+}
+
+a {
+  text-decoration: none;
+}
+
+.center {
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
-.card-error404 {
-  padding: 10px;
-  background-color: transparent;
+.error {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
 }
 
-.containerError404 {
-  padding: 2rem 0;
-  background: white;
-  box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)
+.number {
+  font-weight: 900;
+  font-size: 15rem;
+  line-height: 1;
 }
 
-.containerError404:hover {
-  background-color: rgba(255, 17, 0, 0.2);
+.illustration {
+  position: relative;
+  width: 12.2rem;
+  margin: 0 2.1rem;
 }
 
-.containerError404 h3 {
-  font-size: 6rem;
-  margin-bottom: 1rem;
+.circle {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 12.2rem;
+  height: 11.4rem;
+  border-radius: 50%;
+  background-color: var(--blue);
 }
 
-.containerError404 h5 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+.clip {
+  position: absolute;
+  bottom: 0.3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  width: 12.5rem;
+  height: 13rem;
+  border-radius: 0 0 50% 50%;
 }
 
-.containerError404 p {
-  font-size: 1rem;
-  margin-bottom: 2rem;
+.paper {
+  position: absolute;
+  bottom: -0.3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 9.2rem;
+  height: 12.4rem;
+  border: 0.3rem solid var(--blue);
+  background-color: var(--white);
+  border-radius: 0.8rem;
 }
 
-.ErrorLink {
-  text-decoration: none;
-  color: #000;
-  background-color: transparent;
-  transition: background-color 0.3s ease;
+.paper::before {
+  content: "";
+  position: absolute;
+  top: -0.7rem;
+  right: -0.7rem;
+  width: 1.4rem;
+  height: 1rem;
+  background-color: var(--white);
+  border-bottom: 0.3rem solid var(--blue);
+  transform: rotate(45deg);
 }
 
-@media (max-width: 768px) {
-  .containerError404 {
-    padding: 1rem;
+.face {
+  position: relative;
+  margin-top: 2.3rem;
+}
+
+.eyes {
+  position: absolute;
+  top: 0;
+  left: 2.4rem;
+  width: 4.6rem;
+  height: 0.8rem;
+}
+
+.eye {
+  position: absolute;
+  bottom: 0;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  background-color: var(--blue);
+  animation-name: eye;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.eye-left {
+  left: 0;
+}
+
+.eye-right {
+  right: 0;
+}
+
+@keyframes eye {
+  0% {
+    height: 0.8rem;
   }
-
-  .containerError404 h3 {
-    font-size: 4rem;
-    margin-bottom: 0.5rem;
+  50% {
+    height: 0.8rem;
   }
-
-  .containerError404 h5 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
+  52% {
+    height: 0.1rem;
   }
-
-  .containerError404 p {
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
+  54% {
+    height: 0.8rem;
+  }
+  100% {
+    height: 0.8rem;
   }
 }
 
-@media (max-width: 480px) {
-  .containerError404 {
-    padding: 0.5rem;
-  }
-
-  .containerError404 h3 {
-    font-size: 3rem;
-    margin-bottom: 0.3rem;
-  }
-
-  .containerError404 h5 {
-    font-size: 1rem;
-    margin-bottom: 0.3rem;
-  }
-
-  .containerError404 p {
-    font-size: 0.8rem;
-    margin-bottom: 0.5rem;
-  }
+.mouth {
+  position: absolute;
+  top: 3.1rem;
+  left: 50%;
+  width: 1.6rem;
+  height: 0.2rem;
+  border-radius: 0.1rem;
+  transform: translateX(-50%);
+  background-color: var(--blue);
 }
+
+.text {
+  margin-top: 2rem;
+  font-weight: 500;
+}
+
+.button {
+  margin-top: 4rem;
+  padding: 1.2rem 3rem;
+  margin: 1.2rem;
+  color: var(--white);
+  background-color: #1379ff;
+}
+
+.button:hover {
+  background-color: var(--green-dark);
+}
+
+.by {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+.byLink {
+  color: var(--green);
+}
+
