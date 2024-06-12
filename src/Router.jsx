@@ -22,6 +22,12 @@ import AdopcionPage from './components/AdopcionPage';
 import FormAdopcion from './components/FormAdopcion';
 import AboutPage from './components/AcercaDe';
 
+import AdminHome from './components/AdminHome';
+import AdminMascotas from './components/AdminMascotas';
+import AdminTurnos from './components/AdminTurnos';
+import AdminAdopciones from './components/AdminAdopciones';
+
+
 const AppRouter = () => {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -65,6 +71,7 @@ const AppRouter = () => {
               <Route path="/pet/add" element={<PetAdd />} />
             
               <Route path='/about-us' element={<AboutPage/>}/>
+              <Route path='/admin/home' element={<AdminHome/>}/>
 
             </Routes>
             <Footer />

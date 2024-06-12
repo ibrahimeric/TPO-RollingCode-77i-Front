@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Modal from 'react-modal';
-import './App.css';
 
 Modal.setAppElement('#root'); // Especificar el elemento root para accesibilidad
 
