@@ -6,6 +6,17 @@
   background-color: #ffff;
 }
 
+#page-name{
+  font-size: larger;
+  display: flex;
+  align-items: center;
+}
+
+#page-name img{
+  height: 3vw;
+  width: auto;
+}
+
 .header .navbar-brand {
   display: flex;
   align-items: center;
