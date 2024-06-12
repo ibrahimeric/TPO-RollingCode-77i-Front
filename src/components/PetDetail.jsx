@@ -24,7 +24,7 @@ const PetDetail = () => {
           throw new Error("Invalid token");
         }
 
-        const response = await fetch(`http://localhost:5000/pet/${id}`, {
+        const response = await fetch(`https://back-rum-rolling.onrender.com/pet/${id}`, {
           headers: {
             "Authorization": `Bearer ${token}`,
           },

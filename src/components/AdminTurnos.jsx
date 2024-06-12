@@ -13,7 +13,7 @@ function AdminTurnos({ setPage }) {
     const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTcxODIwNzg1MSwiZXhwIjoxNzE4MjExNDUxfQ.SV06qE_JHk21ioRP6ULJmvyxniv2NQ-SHrhKDy25_jQ';
     const fetchTurnos = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/admin/appointments', {
+        const response = await axios.get('https://back-rum-rolling.onrender.com/admin/appointments', {
           headers: {
             Authorization: 'Bearer ' + accessToken // Reemplaza accessToken con tu token de acceso válido
           }

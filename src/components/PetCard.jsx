@@ -31,7 +31,7 @@ const PetCard = () => {
     const fetchPets = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/user/${userId}/pets`,
+          `https://back-rum-rolling.onrender.com/user/${userId}/pets`,
           {
             method: "GET",
             headers: {

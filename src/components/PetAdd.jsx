@@ -55,7 +55,7 @@ const PetAdd = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/pet/register/${userId}`,
+        `https://back-rum-rolling.onrender.com/pet/register/${userId}`,
         {
           method: "POST",
           headers: {

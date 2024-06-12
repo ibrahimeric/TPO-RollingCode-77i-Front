@@ -11,7 +11,7 @@ const TurnosPage = () => {
   useEffect(() => {
     const fetchTurnos = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/user/${userId}/get_appointments`);
+        const response = await axios.get(`https://back-rum-rolling.onrender.com/user/${userId}/get_appointments`);
         setTurnos(response.data);
         console.log('IDs de los turnos:', response.data.map(turno => turno.id));
       } catch (error) {

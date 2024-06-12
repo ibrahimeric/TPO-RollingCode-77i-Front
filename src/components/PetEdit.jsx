@@ -25,7 +25,7 @@ const PetEdit = () => {
           throw new Error("Invalid token");
         }
 
-        const response = await fetch(`http://localhost:5000/pet/${id}`, {
+        const response = await fetch(`https://back-rum-rolling.onrender.com/pet/${id}`, {
           headers: {
             "Authorization": `Bearer ${token}`,
           },
@@ -79,7 +79,7 @@ const PetEdit = () => {
         formData.append("image", editedPet.image);
       }
 
-      const response = await fetch(`http://localhost:5000/pet/${id}`, {
+      const response = await fetch(`https://back-rum-rolling.onrender.com/pet/${id}`, {
         method: "PATCH",
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -117,7 +117,7 @@ const PetEdit = () => {
     }
 
     try {
-      await axios.delete(`http://localhost:5000/admin/pets/delete/${id}`, {
+      await axios.delete(`https://back-rum-rolling.onrender.com/delete/${id}`, {
         headers: {
           "Authorization": `Bearer ${token}`,
         },
