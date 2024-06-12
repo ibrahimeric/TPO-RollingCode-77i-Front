@@ -1,28 +1,27 @@
-import { useState, useContext } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { AuthContext } from '../context/Context';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import '../css/Register.css';
 
 const Register = () => {
-  const [nombre, setNombre] = useState('');
-  const [apellido, setApellido] = useState('');
+  const [name, setName] = useState('');
+  const [DNI, setDNI] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
-  const { login } = useContext(AuthContext);
 
   const validateForm = () => {
     const newErrors = {};
 
-    if (nombre.trim().length < 2) {
-      newErrors.nombre = 'El nombre debe tener al menos 2 caracteres';
+    if (name.trim().length < 2) {
+      newErrors.name = 'El nombre debe tener al menos 2 caracteres';
     }
 
-    if (apellido.trim().length < 2) {
-      newErrors.apellido = 'El apellido debe tener al menos 2 caracteres';
+    if (DNI.trim().length < 6) {
+      newErrors.DNI = 'El DNI debe tener al menos 6 caracteres';
     }
 
     if (!/\S+@\S+\.\S+/.test(email)) {
@@ -47,25 +46,26 @@ const Register = () => {
       return;
     }
     try {
-      const response = await fetch('http://localhost:5000/api/auth/register', {  
+      const response = await fetch('http://localhost:5000/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ nombre, apellido, email, password }),
+        body: JSON.stringify({ name, DNI, email, phone, password }),
       });
 
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Network response was not ok');
       }
 
       const data = await response.json();
-      if (data.token) {
-        login(data.token); // Llamar a la función de inicio de sesión del contexto
-        navigate('/'); // Redirigir al usuario a la página principal u otra página protegida
+      if (data.usuario) {
+        navigate('/login'); // Redirigir al usuario a la página de inicio de sesión u otra página
       }
     } catch (error) {
       console.error('Error registering:', error);
+      setErrors({ general: error.message });
     }
   };
 
@@ -75,28 +75,28 @@ const Register = () => {
         <h1 className="text-center mb-4">Registrarse</h1>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="nombre">Nombre:</label>
+            <label htmlFor="name">Nombre y Apellido:</label>
             <input 
               type="text" 
               className="form-control" 
-              id="nombre" 
-              value={nombre} 
-              onChange={e => setNombre(e.target.value)} 
+              id="name" 
+              value={name} 
+              onChange={e => setName(e.target.value)} 
               required 
             />
-            {errors.nombre && <div className="text-danger">{errors.nombre}</div>}
+            {errors.name && <div className="text-danger">{errors.name}</div>}
           </div>
           <div className="form-group">
-            <label htmlFor="apellido">Apellido:</label>
+            <label htmlFor="DNI">DNI:</label>
             <input 
               type="text" 
               className="form-control" 
-              id="apellido" 
-              value={apellido} 
-              onChange={e => setApellido(e.target.value)} 
+              id="DNI" 
+              value={DNI} 
+              onChange={e => setDNI(e.target.value)} 
               required 
             />
-            {errors.apellido && <div className="text-danger">{errors.apellido}</div>}
+            {errors.DNI && <div className="text-danger">{errors.DNI}</div>}
           </div>
           <div className="form-group">
             <label htmlFor="email">Email:</label>
@@ -109,6 +109,18 @@ const Register = () => {
               required 
             />
             {errors.email && <div className="text-danger">{errors.email}</div>}
+          </div>
+          <div className="form-group">
+            <label htmlFor="phone">Celular:</label>
+            <input 
+              type="text" 
+              className="form-control" 
+              id="phone" 
+              value={phone} 
+              onChange={e => setPhone(e.target.value)} 
+              required 
+            />
+            {errors.phone && <div className="text-danger">{errors.phone}</div>}
           </div>
           <div className="form-group">
             <label htmlFor="password">Contraseña:</label>
@@ -144,6 +156,7 @@ const Register = () => {
             />
             <label className="form-check-label" htmlFor="showPassword">Ver contraseñas</label>
           </div>
+          {errors.general && <div className="text-danger mb-3">{errors.general}</div>}
           <button type="submit" className="btn btn-primary btn-block mb-3">Registrarse</button>
           <div className="text-center">
             <Link to="/login">¿Ya tienes una cuenta? Iniciar Sesión</Link>

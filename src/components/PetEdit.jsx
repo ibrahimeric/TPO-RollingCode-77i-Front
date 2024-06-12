@@ -8,9 +8,9 @@ const PetEdit = () => {
   const [pet, setPet] = useState(null);
   const [editedPet, setEditedPet] = useState({
     name: '',
-    breed: '',
+    race: '',
     age: '',
-    gender: 'Macho',
+    sex: 'Macho',
     size: '',
     species: '',
     image: null, // Agregar campo para la imagen

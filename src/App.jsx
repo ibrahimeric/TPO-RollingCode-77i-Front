@@ -28,10 +28,10 @@ function App() {
           </Route>
           <Route path="/" element={<Home />} /> 
             <Route path="/pets" element={isTabletOrMobile ? <PetCard /> : <PetList />} />
-          <Route element={<PrivateRoute />}>
             <Route path="/pet/:id" element={<PetDetail />} />
             <Route path="/pet/:id/edit" element={<PetEdit />} />
             <Route path="/pet/add" element={<PetAdd />} />
+          <Route element={<PrivateRoute />}>
           </Route>
         </Routes>
       </Router>
