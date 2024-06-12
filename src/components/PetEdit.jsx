@@ -78,7 +78,7 @@ const PetEdit = () => {
       }
 
       const response = await fetch(`http://localhost:5000/pet/${id}`, {
-        method: "PUT",
+        method: "PATCH",
         headers: {
           "Authorization": `Bearer ${token}`,
         },
@@ -196,4 +196,5 @@ const PetEdit = () => {
 };
 
 export default PetEdit;
+
 
