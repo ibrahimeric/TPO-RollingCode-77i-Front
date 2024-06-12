@@ -2,11 +2,12 @@ Usuario normal
 
     -Register: ok
     -Login: ok
+    -Logout: ok
 
     -Ver mascotas: (sin foto)
     -Registrar mascotas: ok
-    -Editar mascotas: pendiente
-    -Eliminar mascotas: pendiente
+    -Editar mascotas: no anda
+    -Eliminar mascotas: no anda
 
     -Ver turnos: pendiente
     -Registrar turnos: pendiente
@@ -14,3 +15,4 @@ Usuario normal
 
     -Ver adopciones: maquetado
     -Solicitar adopciones: maquetado
+

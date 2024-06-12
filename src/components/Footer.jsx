@@ -1,4 +1,4 @@
-import { socialMediaLinks, footerLinks, footerParagraph } from '../js/data';
+import { socialMediaLinks, footerLinks} from '../js/data';
 import '../css/Footer.css';
 import { Link } from 'react-router-dom';
 
@@ -9,14 +9,6 @@ const Footer = () => {
                 <div className="page-footer font-small blue">
                     <div className="text-center text-md-left">
                         <div className="row">
-                            <div className="col-md-6 mt-md-0 mt-3">
-                                <h5 className="text-uppercase">{footerParagraph[0].title}</h5>
-                                <p className="text-paragraph">
-                                    {footerParagraph[0].paragraph.map((paragraph, index) => (
-                                        <span key={index}>{paragraph}</span>
-                                    ))}
-                                </p>
-                            </div>
 
                             <hr className="clearfix w-100 d-md-none pb-0" />
 
@@ -71,7 +63,7 @@ const getRoute = (text) => {
         case "Mis mascotas":
             return "/page-mascotas";
         case "Adopcion":
-            return "/page-adopcion";
+            return "/adopciones";
         case "Turnos":
             return "/page-turnos";
         case "Soporte":

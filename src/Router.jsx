@@ -20,6 +20,7 @@ import PetAdd from './components/PetAdd';
 
 import AdopcionPage from './components/AdopcionPage';
 import FormAdopcion from './components/FormAdopcion';
+import AboutPage from './components/AcercaDe';
 
 const AppRouter = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -50,16 +51,21 @@ const AppRouter = () => {
               <Route path="/formRegistro" element={<FormRegistro />} />
               <Route path="/pet/adopcion" element={<FormAdopcion />} />
               <Route path="/adopciones" element={<AdopcionPage />} />
-              <Route path="/login" element={<PublicRoute restricted={true} />}>
-                <Route path="/login" element={<Login />} />
-              </Route>
-              <Route path="/register" element={<PublicRoute restricted={true} />}>
-                <Route path="/register" element={<Register />} />
-              </Route>
+              <Route path="/login" element={
+                <PublicRoute restricted={true} />}>
+                  <Route path="/login" element={<Login />} />
+                </Route>
+              <Route path="/register" element={
+                <PublicRoute restricted={true} />}>
+                  <Route path="/register" element={<Register />} />
+                </Route>
               <Route path="/pets" element={<PetList />} />
               <Route path="/pet/:id" element={<PetDetail />} />
               <Route path="/pet/:id/edit" element={<PetEdit />} />
               <Route path="/pet/add" element={<PetAdd />} />
+            
+              <Route path='/about-us' element={<AboutPage/>}/>
+
             </Routes>
             <Footer />
           </Router>

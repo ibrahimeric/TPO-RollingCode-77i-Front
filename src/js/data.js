@@ -95,13 +95,8 @@ export const socialMediaLinks = [  /* enlaces de redes sociales */
 ];
 
 export const footerLinks = [
-  // { title: "Acerca de nosotros", items: ["Misión y visión", "Nuestro equipo", "Testimonios", "Blog"] },
   { title: "Servicios", items: ["Mis mascotas", "Adopcion", "Turnos"] },
   { title: "Contacto", items: ["Soporte", "Contacto", "Acerca de"] }
-];
-
-export const footerParagraph = [
-  { title: "Sobre Nosotros", paragraph: ["Descubre tu compañero ideal en nuestro portal de adopción de mascotas. Con un registro único y completo, facilitamos la conexión entre dueños amorosos y mascotas necesitadas. Únete a nuestra comunidad comprometida con el bienestar animal hoy mismo"] }
 ];
 
 /* Modal */

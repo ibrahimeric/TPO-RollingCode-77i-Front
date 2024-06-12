@@ -1,13 +1,17 @@
 /* Estilos para el contenedor del footer */
 .footer-container {
     width: 100%;
-    background-color: #2F6FA5;
+    background-color: #1379ff;
     padding: 4rem 2rem 0;
 }
 
 /* Estilos generales del footer */
 .footer-container .page-footer {
     color: #fff;
+}
+
+.footer-container .row {
+    justify-content: center;
 }
 
 /* Estilos para el título del párrafo del footer */
@@ -27,7 +31,7 @@
 
 /* Estilos para enlaces de la lista sin viñetas */
 .footer-container .list-unstyled li a {
-    color: #201e1e;
+    color: #cacaca;
     text-decoration: none;
 }
 
