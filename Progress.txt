@@ -1,0 +1,17 @@
+Usuario normal
+
+    -Register: ok
+    -Login: ok
+
+    -Ver mascotas: ok
+    -Registrar mascotas: ok
+    -Editar mascotas: pendiente
+    -Eliminar mascotas: pendiente
+
+    -Ver turnos: pendiente
+    -Registrar turnos: pendiente
+    -Eliminar turnos: pendiente
+
+    -Ver adopciones: pendiente
+    -Solicitar adopciones: pendiente
+    -Cancelar adopciones: pendiente
