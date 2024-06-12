@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
+import { jwtDecode } from 'jwt-decode';
 
 const PetDetail = () => {
   const { id } = useParams();
@@ -11,13 +12,31 @@ const PetDetail = () => {
 
   useEffect(() => {
     const fetchPetDetails = async () => {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        setError("No token found");
+        return;
+      }
+
       try {
-        const response = await fetch(`http://localhost:5000/pet/${id}`);
+        const decodedToken = jwtDecode(token);
+        if (!decodedToken) {
+          throw new Error("Invalid token");
+        }
+
+        const response = await fetch(`http://localhost:5000/pet/${id}`, {
+          headers: {
+            "Authorization": `Bearer ${token}`,
+          },
+        });
+
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
+
         const data = await response.json();
         setPet(data);
+
       } catch (error) {
         setError(error.message);
         console.error('Error fetching pet details:', error);

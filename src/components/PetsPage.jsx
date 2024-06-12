@@ -21,13 +21,13 @@ const TurnosPage = () => {
               </tr>
             </thead>
             <tbody>
-              {pets.map(pets => (
-                <tr key={pets.id}>
-                  <td><img src={pets.urlImage} alt="Mascota" className='imagen-tabla-mascotas' /></td>
-                  <td>{pets.nombreMascota}</td>
-                  <td>{pets.servicioSolicitado}</td>
-                  <td>{pets.fecha}</td>
-                  <td><Button variant="danger" onClick={() => cancelarTurno(turno.id)}>Cancelar</Button></td>
+              {pets.map(pet => (
+                <tr key={pet.id}>
+                  <td><img src={pet.urlImage} alt="Mascota" className='imagen-tabla-mascotas' /></td>
+                  <td>{pet.nombreMascota}</td>
+                  <td>{pet.servicioSolicitado}</td>
+                  <td>{pet.fecha}</td>
+                  <td><Button variant="danger" onClick={() => cancelarTurno(pet.id)}>Cancelar</Button></td>
                 </tr>
               ))}
             </tbody>

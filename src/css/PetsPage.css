@@ -10,7 +10,7 @@
     flex-direction: column;
     justify-content: center;
     height: 60vh;
-    background-color: #fdf5e6  !important;
+    background-color: #fdf5e6 !important;
     padding: 0 3rem;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -20,7 +20,7 @@
     overflow-x: auto;
 }
 
-.contenedor-mascotas h1 {
+.text-center-mascotas {
     text-align: center;
     margin-bottom: 1rem;
     padding: 2rem;
@@ -32,29 +32,29 @@
     border-collapse: collapse;
 }
 
-.table th,
-.table td {
+.table-mascotas th,
+.table-mascotas td {
     padding: 8px;
     text-align: left;
     vertical-align: middle;
     text-align: center;
 }
 
-.table th {
+.table-mascotas th {
     background-color: #007bff;
     color: #fff;
 }
 
-.table th,
-.table td {
+.table-mascotas th,
+.table-mascotas td {
     border: 1px solid #dee2e6;
 }
 
-.table tbody tr:nth-of-type(odd) {
+.table-mascotas tbody tr:nth-of-type(odd) {
     background-color: #f8f9fa;
 }
 
-.table tbody tr:hover {
+.table-mascotas tbody tr:hover {
     background-color: #e9ecef;
 }
 

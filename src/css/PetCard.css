@@ -1,54 +1,53 @@
 .pet-card-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 20px;
-    background-color: #E3DCD6; /* Color Primario */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding: 20px;
+  background-color: #E3DCD6; /* Color Primario */
+}
+
+.pet-card {
+  border: 1px solid #2F6FA5; /* Color Secundario */
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: white;
+}
+
+.pet-card img {
+  border-bottom: 1px solid #E69A2B; /* Color Acento */
+}
+
+.pet-card-body {
+  padding: 1rem;
+}
+
+.pet-card-title {
+  color: #2F6FA5; /* Color Secundario */
+  font-weight: bold;
+}
+
+.pet-card-text {
+  color: #333;
+}
+
+.btn-primary.pet-btn-primary {
+  background-color: #E69A2B; /* Color Acento */
+  border-color: #E69A2B;
+}
+
+.btn-primary.pet-btn-primary:hover {
+  background-color: #d38726; /* Tono más oscuro del color acento */
+  border-color: #d38726;
+}
+
+@media (min-width: 576px) {
+  .pet-card-container {
+    grid-template-columns: 1fr 1fr;
   }
-  
-  .card {
-    border: 1px solid #2F6FA5; /* Color Secundario */
-    border-radius: 8px;
-    overflow: hidden;
-    background-color: white;
+}
+
+@media (min-width: 768px) {
+  .pet-card-container {
+    grid-template-columns: 1fr 1fr;
   }
-  
-  .card img {
-    border-bottom: 1px solid #E69A2B; /* Color Acento */
-  }
-  
-  .card-body {
-    padding: 1rem;
-  }
-  
-  .card-title {
-    color: #2F6FA5; /* Color Secundario */
-    font-weight: bold;
-  }
-  
-  .card-text {
-    color: #333;
-  }
-  
-  .btn-primary {
-    background-color: #E69A2B; /* Color Acento */
-    border-color: #E69A2B;
-  }
-  
-  .btn-primary:hover {
-    background-color: #d38726; /* Tono más oscuro del color acento */
-    border-color: #d38726;
-  }
-  
-  @media (min-width: 576px) {
-    .pet-card-container {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-  
-  @media (min-width: 768px) {
-    .pet-card-container {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-  
+}

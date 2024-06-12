@@ -1,29 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import {jwtDecode} from "jwt-decode"; // Importar jwtDecode correctamente
+import axios from 'axios';
 
 const PetEdit = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Para redireccionar después de la eliminación
   const [pet, setPet] = useState(null);
-  const [editedPet, setEditedPet] = useState({
-    name: '',
-    breed: '',
-    age: '',
-    gender: 'Macho',
-    size: '',
-    species: '',
-    image: null, // Agregar campo para la imagen
-  });
+  const [editedPet, setEditedPet] = useState({});
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchPetDetails = async () => {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        setError("No token found");
+        return;
+      }
+
       try {
-        const response = await fetch(`http://localhost:5000/pet/${id}`);
+        const decodedToken = jwtDecode(token);
+        if (!decodedToken) {
+          throw new Error("Invalid token");
+        }
+
+        const response = await fetch(`http://localhost:5000/pet/${id}`, {
+          headers: {
+            "Authorization": `Bearer ${token}`,
+          },
+        });
+
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
+
         const data = await response.json();
         setPet(data);
         setEditedPet(data);
@@ -36,77 +47,95 @@ const PetEdit = () => {
     fetchPetDetails();
   }, [id]);
 
-  if (error) {
-    return <p>Error: {error}</p>;
-  }
-
-  if (!pet) {
-    return <p>Loading...</p>;
-  }
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setEditedPet({
       ...editedPet,
-      [name]: value
-    });
-  };
-
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    setEditedPet({
-      ...editedPet,
-      image: file,
+      [name]: value,
     });
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    const formData = new FormData();
-    formData.append('name', editedPet.name);
-    formData.append('breed', editedPet.breed);
-    formData.append('age', editedPet.age);
-    formData.append('gender', editedPet.gender);
-    formData.append('size', editedPet.size);
-    formData.append('species', editedPet.species);
-    if (editedPet.image) {
-      formData.append('image', editedPet.image);
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setError("No token found");
+      return;
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/pet/update/${id}`, {
-        method: 'PATCH',
+      const decodedToken = jwtDecode(token);
+      if (!decodedToken) {
+        throw new Error("Invalid token");
+      }
+
+      const formData = new FormData();
+      formData.append("name", editedPet.name);
+      formData.append("race", editedPet.race);
+      formData.append("age", editedPet.age);
+      formData.append("sex", editedPet.sex);
+      formData.append("species", editedPet.species);
+      if (editedPet.image) {
+        formData.append("image", editedPet.image);
+      }
+
+      const response = await fetch(`http://localhost:5000/pet/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
         body: formData,
       });
 
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error("Network response was not ok");
       }
 
-      console.log('Pet edited:', editedPet);
-      navigate(`/pets`);
+      // Manejar actualización exitosa, redireccionar o mostrar mensaje de éxito
+      navigate('/pets'); // Redireccionar a la lista de mascotas
     } catch (error) {
-      console.error('Error editing pet:', error);
+      console.error("Error updating pet:", error);
+      setError(error.message);
+    }
+  };
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setEditedPet({
+        ...editedPet,
+        image: file,
+      });
     }
   };
 
   const handleDelete = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setError("No token found");
+      return;
+    }
+
     try {
-      const response = await fetch(`http://localhost:5000/pet/delete/${id}`, {
-        method: 'DELETE',
+      await axios.delete(`http://localhost:5000/admin/pets/delete/${id}`, {
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
       });
-
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-
-      console.log("Mascota eliminada:", id);
-      navigate('/pets');
-    } catch (error) {
-      console.error('Error deleting pet:', error);
+      navigate('/pets'); // Redireccionar después de la eliminación
+    } catch (err) {
+      setError('Error deleting pet');
+      console.error('Error deleting pet:', err);
     }
   };
+
+  if (error) {
+    return <p className="text-danger mt-3">Error: {error}</p>;
+  }
+
+  if (!pet) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <Container className="my-4">
@@ -121,14 +150,15 @@ const PetEdit = () => {
                 value={editedPet.name}
                 onChange={handleInputChange}
                 placeholder="Ingrese el nombre de la mascota"
+                required
               />
             </Form.Group>
-            <Form.Group controlId="formBreed">
+            <Form.Group controlId="formRace">
               <Form.Label>Raza</Form.Label>
               <Form.Control
                 type="text"
-                name="breed"
-                value={editedPet.breed}
+                name="race"
+                value={editedPet.race}
                 onChange={handleInputChange}
                 placeholder="Ingrese la raza de la mascota"
               />
@@ -141,31 +171,19 @@ const PetEdit = () => {
                 value={editedPet.age}
                 onChange={handleInputChange}
                 placeholder="Ingrese la edad de la mascota"
+                required
               />
             </Form.Group>
             <Form.Group controlId="formGender">
               <Form.Label>Sexo</Form.Label>
               <Form.Control
                 as="select"
-                name="gender"
-                value={editedPet.gender}
+                name="sex"
+                value={editedPet.sex}
                 onChange={handleInputChange}
               >
-                <option value="Macho">Macho</option>
-                <option value="Hembra">Hembra</option>
-              </Form.Control>
-            </Form.Group>
-            <Form.Group controlId="formSize">
-              <Form.Label>Tamaño</Form.Label>
-              <Form.Control
-                as="select"
-                name="size"
-                value={editedPet.size}
-                onChange={handleInputChange}
-              >
-                <option value="Grande">Grande</option>
-                <option value="Mediano">Mediano</option>
-                <option value="Pequeño">Pequeño</option>
+                <option value="male">Macho</option>
+                <option value="female">Hembra</option>
               </Form.Control>
             </Form.Group>
             <Form.Group controlId="formSpecies">
@@ -176,8 +194,8 @@ const PetEdit = () => {
                 value={editedPet.species}
                 onChange={handleInputChange}
               >
-                <option value="Canino">Canino</option>
-                <option value="Felino">Felino</option>
+                <option value="canine">Canino</option>
+                <option value="feline">Felino</option>
               </Form.Control>
             </Form.Group>
             <Form.Group controlId="formImage">
@@ -186,31 +204,17 @@ const PetEdit = () => {
                 type="file"
                 name="image"
                 onChange={handleImageChange}
+                accept="image/*"
               />
             </Form.Group>
             <Button variant="primary" type="submit">
-              Guardar Cambios
+              Actualizar Mascota
             </Button>
-            <Button variant="danger" onClick={handleDelete}>
+            <Button variant="danger" type="button" onClick={handleDelete} className="ml-2">
               Eliminar Mascota
             </Button>
           </Form>
-        </Col>
-        <Col md={4}>
-          <h2>Vista Previa</h2>
-          <p><strong>Nombre:</strong> {editedPet.name}</p>
-          <p><strong>Raza:</strong> {editedPet.breed}</p>
-          <p><strong>Edad:</strong> {editedPet.age} años</p>
-          <p><strong>Sexo:</strong> {editedPet.gender}</p>
-          <p><strong>Tamaño:</strong> {editedPet.size}</p>
-          <p><strong>Especie:</strong> {editedPet.species}</p>
-          {editedPet.image && (
-  <img
-    src={editedPet.image instanceof File ? URL.createObjectURL(editedPet.image) : editedPet.image}
-    alt="Preview"
-    style={{ width: '200px', height: '200px', objectFit: 'cover' }}
-  />
-)}
+          {error && <p className="text-danger mt-3">Error: {error}</p>}
         </Col>
       </Row>
     </Container>
@@ -218,4 +222,3 @@ const PetEdit = () => {
 };
 
 export default PetEdit;
-

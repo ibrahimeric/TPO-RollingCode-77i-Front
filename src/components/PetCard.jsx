@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../css/PetCard.css';
+import { jwtDecode } from "jwt-decode";
 
 const PetCard = () => {
   const [pets, setPets] = useState([]);
@@ -10,24 +11,58 @@ const PetCard = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setError("No token found");
+      return;
+    }
+
+    let userId;
+    try {
+      const decodedToken = jwtDecode(token);
+      userId = decodedToken.id;
+      console.log(userId);
+    } catch (error) {
+      setError("Invalid token");
+      console.error("Error decoding token:", error);
+      return;
+    }
+
     const fetchPets = async () => {
       try {
-        const response = await fetch('http://localhost:5000/pet', {  
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
+        const response = await fetch(
+          `http://localhost:5000/user/${userId}/pets`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`,
+            },
           }
-        });
+        );
 
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          if (response.status === 401) {
+            setError("Unauthorized access. Please check your token.");
+          } else {
+            setError("Network response was not ok");
+          }
+          throw new Error("Network response was not ok");
         }
 
         const data = await response.json();
-        setPets(data);
+
+        console.log("API response data:", data); // Log the response data
+
+        // Ensure data.pets is an array
+        if (Array.isArray(data.pets)) {
+          setPets(data.pets);
+        } else {
+          throw new Error("Received data.pets is not an array");
+        }
       } catch (error) {
         setError(error.message);
-        console.error('Error fetching pets:', error);
+        console.error("Error fetching pets:", error);
       }
     };
 
@@ -38,7 +73,7 @@ const PetCard = () => {
     setSearchTerm(event.target.value);
   };
 
-  const filteredPets = pets.filter(pet => 
+  const filteredPets = pets.filter(pet =>
     pet.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -71,19 +106,18 @@ const PetCard = () => {
         </Link>
       </div>
       {filteredPets.map((pet) => (
-        <Card key={pet._id} className="mb-3">
+        <Card key={pet._id} className="pet-card mb-3">
           <Card.Img variant="top" src={petimagen(pet)} alt={pet.name} />
           <Card.Body>
-            <Card.Title>{pet.name}</Card.Title>
-            <Card.Text>
-              <strong>Raza:</strong> {pet.breed}<br />
+            <Card.Title className="pet-card-title">{pet.name}</Card.Title>
+            <Card.Text className="pet-card-text">
+              <strong>Raza:</strong> {pet.race}<br />
               <strong>Edad:</strong> {pet.age} años<br />
-              <strong>Sexo:</strong> {pet.gender}<br />
-              <strong>Tamaño:</strong> {pet.size}<br />
+              <strong>Sexo:</strong> {pet.sex}<br />
               <strong>Especie:</strong> {pet.species}
             </Card.Text>
             <Link to={`/pet/${pet._id}/edit`}>
-              <Button variant="primary">Editar</Button>
+              <Button variant="primary" className="pet-btn-primary">Editar</Button>
             </Link>
           </Card.Body>
         </Card>
