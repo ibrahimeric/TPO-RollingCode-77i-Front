@@ -18,14 +18,14 @@ function FormTurnos() {
     // const [userId, setUserId] = useState('');
 
     useEffect(() => {
-        /* const token = localStorage.getItem('token');
+        const token = localStorage.getItem('token');
         if (!token) {
             setError('No token found');
             return;
-        } */
+        } 
 
-        // let userId = '666329fd7f4df62bdfa19115';
-        /* try {
+         let userId 
+         try {
             const decodedToken = jwtDecode(token);
             userId = decodedToken.id;
             console.log(userId);
@@ -33,12 +33,12 @@ function FormTurnos() {
             setError('Invalid token');
             console.error('Error decoding token:', error);
             return;
-        } */
+        } 
 
         const fetchPets = async () => {
             try {
-                // const response = await fetch(`http://localhost:5000/user/${userId}/pets`, {
-                const response = await fetch(`http://localhost:5000/user/666329fd7f4df62bdfa19115/pets`, {
+                const response = await fetch(`https://back-rum-rolling.onrender.com/user/${userId}/pets`, {
+                //const response = await fetch(`https://back-rum-rolling.onrender.com/user/666329fd7f4df62bdfa19115/pets`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
