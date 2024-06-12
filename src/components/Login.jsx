@@ -18,10 +18,6 @@ const Login = () => {
       newErrors.email = 'El email no es válido';
     }
 
-    if (password.length < 8) {
-      newErrors.password = 'La contraseña debe tener al menos 8 caracteres';
-    }
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };

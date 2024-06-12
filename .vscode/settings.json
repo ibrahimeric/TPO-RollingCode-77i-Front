@@ -1,9 +1,0 @@
-{
-    "window.zoomLevel": 2,
-    // "workbench.colorTheme": "Default Dark Modern",
-    "workbench.colorTheme": "Ayu Dark Bordered",
-    "workbench.iconTheme": "material-icon-theme",
-    "emmet.includeLanguages": {
-        "javascript":"javascriptreact"
-    }
-}
