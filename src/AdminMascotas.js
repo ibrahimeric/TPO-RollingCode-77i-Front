@@ -45,7 +45,7 @@ function AdminMascotas({ setPage }) {
 
   const handleEditMascota = async () => {
     try {
-      await axios.put(`http://localhost:5000/admin/pets/${selectedMascota._id}`, selectedMascota);
+      await axios.patch(`http://localhost:5000/admin/pets/update/${selectedMascota._id}`, selectedMascota);
       const updatedMascotas = mascotas.map(mascota =>
         mascota._id === selectedMascota._id ? selectedMascota : mascota
       );
@@ -59,7 +59,7 @@ function AdminMascotas({ setPage }) {
 
   const handleDeleteMascota = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/admin/pets/${id}`);
+      await axios.delete(`http://localhost:5000/admin/pets/delete/${id}`);
       const updatedMascotas = mascotas.filter(mascota => mascota._id !== id);
       setMascotas(updatedMascotas);
     } catch (err) {

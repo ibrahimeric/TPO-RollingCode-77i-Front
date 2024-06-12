@@ -20,16 +20,16 @@ function AdminTurnos({ setPage }) {
     fetchTurnos();
   }, []);
 
-  const handleChangeFecha = async (id, newFecha) => {
+  const handleDeleteFecha = async (id) => {
     try {
-      await axios.put(`http://localhost:5000/admin/appointments/${id}`, { date: newFecha });
+      await axios.delete(`http://localhost:5000/admin/appointments/delete/${id}`);
       const updatedTurnos = turnos.map(turno =>
-        turno._id === id ? { ...turno, date: newFecha } : turno
+        turno._id === id ? { ...turno, date: null } : turno
       );
       setTurnos(updatedTurnos);
     } catch (err) {
-      setError('Error updating turno');
-      console.error('Error updating turno:', err);
+      setError('Error deleting fecha');
+      console.error('Error deleting fecha:', err);
     }
   };
 
@@ -40,9 +40,9 @@ function AdminTurnos({ setPage }) {
       <ul className="item-list">
         {turnos.map(turno => (
           <li key={turno._id} className="item">
-            <span>{turno.pet ? turno.pet.name : "Sin Mascota"} - {new Date(turno.date).toLocaleDateString()}</span>
+            <span>{turno.pet ? turno.pet.name : "Sin Mascota"} - {turno.type} - {new Date(turno.date).toLocaleDateString()}</span>
             <div className="button-group">
-              <button className="edit-button" onClick={() => handleChangeFecha(turno._id, prompt('Nueva fecha:'))}>Editar Fecha</button>
+              <button className="delete-button" onClick={() => handleDeleteFecha(turno._id)}>Borrar</button>
             </div>
           </li>
         ))}
