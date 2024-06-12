@@ -1,14 +1,22 @@
+
 .header {
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  padding: 1.5rem;
+  padding: 1rem 2rem 1rem 2rem;
   background-color: #ffff;
 }
+
+#page-name{
+  margin-bottom: 0;
+}
+
 
 .header .navbar-brand {
   display: flex;
   align-items: center;
+  margin: 0;
+  padding: 0;
   color: #000;
   text-decoration: none;
 }
@@ -19,21 +27,22 @@
   width: 30px;
 }
 
-.header .nav-link {
-  color: #000;
+.nav-link {
+  color: #ffffff;
   text-decoration: none;
   margin: 0 10px;
 }
 
-.header .nav-link:hover,
-.navbar-brand:hover {
-  color: #646cff;
+.nav-btn button{
+  width: 10vw;
+  max-width: 95px;
+  font-size: 1.2vw;
 }
 
 .header .nav-btn {
   justify-self: end;
   text-decoration: none;
-  color: #000;
+  color: #ffffff;
   cursor: pointer;
 }
 
@@ -42,7 +51,23 @@
 }
 
 nav {
-  background-color: #2F6FA5 !important;
+  background-color: #1379ff !important;
+}
+
+.menu-toggle{
+  background-color: #1379ff;
+  border: none;
+  align-self: flex-start;
+}
+
+.navbar-expand-lg {
+  display: flex;
+  flex-direction: row;
+}
+
+.navbar-collapse{
+  display: flex;
+  flex-basis: 50%;
 }
 
 .navbar-nav {
@@ -55,15 +80,6 @@ nav {
   flex-grow: 1;
 }
 
-.nav-link-custom {
-  color: #ffff;
-  text-decoration: none;
-  margin: 0 10px;
-}
-
-.nav-link-custom:hover {
-  color: #646cff;
-}
 
 .menu-toggle {
   color: transparent;

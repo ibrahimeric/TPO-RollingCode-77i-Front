@@ -1,52 +1,62 @@
+/* Estilos para el contenedor principal de las tarjetas */
 .cards-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
-    gap: 40px;
-    background-color: #ffff ;
-    padding: 4rem 0;
+    gap: 1vw;
+    background-color: #ffff;
+    padding: 4rem 3rem;
     position: relative;
 }
-.titulo-cards{
-    width: 100%;
-    font-size: 40px;
+
+
+/* Estilos para el título de las tarjetas */
+.cards-container .titulo-cards {
+    width: 50%;
+    font-size: 2rem;
     text-align: center;
 }
-.custom-card {
-    margin: 10px;
-    border: none;
+
+
+/* Estilos para las tarjetas individuales */
+.cards-container .custom-card {
     box-shadow: transparent;
+    width: 20vw;
+    margin: 10px 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 400px;
+    max-height: 35vw;
     box-sizing: border-box;
     background-color: transparent !important;
 }
 
-.image-container {
+/* Estilos para el contenedor de la imagen de la tarjeta */
+.cards-container .custom-card .image-container {
     height: 0%;
-    max-height: 350px;
+    max-height: 20vw;
     border-radius: 30px;
+    margin: 5px;
     overflow: hidden;
     position: relative;
     background-color: transparent;
     border: transparent;
 }
 
-.image-container img {
+/* Estilos para la imagen dentro del contenedor de la tarjeta */
+.cards-container .custom-card .image-container img {
     width: 100%;
     height: auto;
     object-fit: cover;
     border-radius: 30px;
 }
 
-.image-container img:hover {
+/* Efecto de zoom al pasar el ratón por encima de la imagen */
+.cards-container .custom-card .image-container img:hover {
     transform: scale(1.10);
 }
 
-.custom-card .card-body {
+/* Estilos para el cuerpo de la tarjeta */
+.cards-container .custom-card .card-body {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -55,14 +65,36 @@
     background-color: transparent;
 }
 
-@media (max-width: 1200px) {
-    .custom-card {
-        width: calc(50% - 20px);
+.title-card {
+    font-size: 1.5vw;
+}
+
+.card-text{
+    font-size: 1.5vw;
+}
+
+/* Media queries para tamaños de pantalla específicos */
+
+@media (max-width: 768px) {
+
+
+    .cards-container .custom-card {
+        width: calc(100% - 20px);
+        max-width: 300px;
+    }
+
+    .cards-container .custom-card .image-container {
+        transform: scale(0);
     }
 }
 
-@media (max-width: 768px) {
-    .custom-card {
-        width: calc(100% - 20px);
+@media (max-width: 576px) {
+    .cards-container .titulo-cards {
+        font-size: 18px;
+        text-align: center;
+    }
+    
+    .cards-container .custom-card .btn {
+        font-size: 10px;
     }
 }

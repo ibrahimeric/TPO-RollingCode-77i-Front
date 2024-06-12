@@ -1,14 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Container, Table } from 'react-bootstrap';
-import { turnos } from '../js/data';
-import '../css/TurnosPage.css'
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import '../css/TurnosPage.css';
 
 const TurnosPage = () => {
-  const cancelarTurno = (id) => {
-    // Lógica para cancelar el turno con el ID proporcionado
-    console.log(`Se ha cancelado el turno con ID ${id}`);
+  const [turnos, setTurnos] = useState([]);
+  const userId = '6667a85b7da962f4c6e3959a'; // Esto es solo un ejemplo, asegúrate de obtener el ID del usuario de donde corresponda
+
+  useEffect(() => {
+    const fetchTurnos = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/user/${userId}/get_appointments`);
+        setTurnos(response.data);
+        console.log('IDs de los turnos:', response.data.map(turno => turno.id));
+      } catch (error) {
+        console.error('Error al obtener los turnos:', error);
+      }
+    };
+
+    fetchTurnos();
+  }, [userId]); // Agregar userId como dependencia
+
+  const cancelarTurno = async (userId, appointmentId) => {
+    try {
+      await axios.delete(`http://localhost:5000/user/${userId}/${appointmentId}`);
+      setTurnos(turnos.filter(turno => turno._id !== appointmentId)); // Aquí cambiamos turno.id por turno._id
+      console.log(`Se ha cancelado el turno con ID ${appointmentId}`);
+    } catch (error) {
+      console.error('Error al cancelar el turno:', error);
+    }
   };
+
+
   return (
     <div className='contenedor'>
       <Container>
@@ -17,21 +41,19 @@ const TurnosPage = () => {
           <Table striped bordered hover className='table'>
             <thead>
               <tr>
-                <th>Imagen</th>
-                <th>Nombre de la Mascota</th>
-                <th>Tipo de Servicio</th>
-                <th>Fecha del Turno</th>
+                <th>Tipo de Cita</th>
+                <th>Fecha de La Cita</th>
+                <th>Mascota</th>
                 <th>Cancelar Turno</th>
               </tr>
             </thead>
             <tbody>
-              {turnos.map(turno => (
-                <tr key={turno.id}>
-                  <td><img src={turno.urlImage} alt="Mascota" className='imagen-tabla' /></td>
-                  <td>{turno.nombreMascota}</td>
-                  <td>{turno.tipoServicio}</td>
-                  <td>{turno.fecha}</td>
-                  <td><Button variant="danger" onClick={() => cancelarTurno(turno.id)}>Cancelar</Button></td>
+              {turnos.map((turno, index) => (
+                <tr key={index}>
+                  <td>{turno.type}</td>
+                  <td>{turno.date}</td>
+                  <td>{turno.pet ? turno.pet.name : 'Sin mascota'}</td>
+                  <td><Button variant="danger" onClick={() => cancelarTurno(turno.user, turno._id)}>Cancelar</Button></td>
                 </tr>
               ))}
             </tbody>
@@ -48,4 +70,3 @@ const TurnosPage = () => {
 }
 
 export default TurnosPage;
-

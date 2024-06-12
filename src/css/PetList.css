@@ -1,0 +1,70 @@
+.body-petlist {
+  background-color: #E3DCD6;
+}
+
+.h1-petlist {
+  text-align: left;
+  margin-bottom: 1.5rem;
+  color: #2F6FA5;
+}
+
+.table-petlist {
+  background-color: white;
+  border: 1px solid #2F6FA5;
+  text-align: left !important;
+}
+
+.table-petlist th {
+  background-color: #2F6FA5;
+  color: white;
+}
+
+.table-petlist td {
+  vertical-align: middle;
+}
+
+.form-label {
+    text-align: left !important;
+}
+
+.table-petlist img {
+  border-radius: 4px;
+  border: 1px solid #E69A2B;
+  height: 75px;
+}
+
+.table-petlist .btn-primary {
+  background-color: #E69A2B;
+  border-color: #E69A2B;
+}
+
+.table-petlist .btn-primary:hover {
+  background-color: #d38726;
+  border-color: #d38726;
+}
+
+.container-petlist {
+  background-color: #E3DCD6;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.pets-table-petlist {
+  margin-top: 20px;
+}
+
+@media (max-width: 767px) {
+  .table-petlist img {
+    width: 75px;
+    height: 75px;
+  }
+
+  .table-petlist th,
+  .table-petlist td {
+    padding: 0.5rem;
+  }
+
+  .btn-primary-petlist {
+    font-size: 0.875rem;
+  }
+}

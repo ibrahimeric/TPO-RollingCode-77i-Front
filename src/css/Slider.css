@@ -1,27 +1,32 @@
-#carousel-principal {
+/* Estilos para el slider principal */
+
+/* Estilos para el contenedor principal del slider */
+.carousel-principal {
     display: block;
     justify-content: center;
     width: 100%;
     height: 40vw;
     max-height: calc(100vh - 80px);
-    /* font-family: 'Times New Roman', Times, serif; */
     object-fit: cover;
 }
 
-.carousel-item-wrapper {
+/* Estilos para los elementos del slider */
+.carousel-principal .carousel-item-wrapper {
     position: relative;
     width: 100%;
     height: 80vh;
     overflow: hidden;
 }
 
-.carousel-imagen {
+/* Estilos para las imágenes dentro del slider */
+.carousel-principal .carousel-item-wrapper .carousel-imagen {
     width: 100%;
     height: auto;
     object-fit: cover;
 }
 
-.custom-carousel-caption {
+/* Estilos para los subtítulos del slider */
+.carousel-principal .carousel-item-wrapper .custom-carousel-caption {
     position: absolute;
     top: 30%;
     left: 30%;
@@ -35,24 +40,28 @@
     height: auto;
 }
 
-.custom-carousel-caption h3 {
+/* Estilos para los títulos dentro del subtítulo */
+.carousel-principal .carousel-item-wrapper .custom-carousel-caption h3 {
     font-size: 1.7vw;
     margin-bottom: 10px;
 }
 
-.custom-carousel-caption p {
+/* Estilos para los párrafos dentro del subtítulo */
+.carousel-principal .carousel-item-wrapper .custom-carousel-caption p {
     font-size: 1.2vw;
     margin: 0;
 }
 
-.carousel-indicators {
+/* Estilos para los indicadores del slider */
+.carousel-principal .carousel-indicators {
     position: absolute;
     bottom: 10px;
     left: calc(50% - 15vw);
     transform: translateX(-50%);
 }
 
-.carousel-indicators li {
+/* Estilos para los elementos de los indicadores del slider */
+.carousel-principal .carousel-indicators li {
     background-color: #fff;
     border: 1px solid #ccc;
     width: 2vw;
@@ -61,22 +70,25 @@
     cursor: pointer;
 }
 
-#carousel-principal .carousel-control-prev,
-#carousel-principal .carousel-control-next {
+/* Estilos para los controles de navegación del slider */
+.carousel-principal #carousel-principal .carousel-control-prev,
+.carousel-principal #carousel-principal .carousel-control-next {
     width: 10%;
 }
 
-.user-experience-carousel .carousel-item {
+/* Estilos para las transiciones de los elementos del slider */
+.carousel-principal .user-experience-carousel .carousel-item {
     transition: opacity 0.5s ease-in-out;
 }
 
+/* Estilos para tamaños de pantalla específicos */
 @media (max-width: 1200px) {
-    .custom-carousel-caption {
+    .carousel-principal .carousel-item-wrapper .custom-carousel-caption {
         top: 10%;
         height: auto;
     }
 
-    .carousel-indicators {
+    .carousel-principal .carousel-indicators {
         left: calc(50% - 10vw);
         width: 200px;
         bottom: -2%;
@@ -84,24 +96,24 @@
 }
 
 @media (max-width: 768px) {
-    .custom-carousel-caption {
+    .carousel-principal .carousel-item-wrapper .custom-carousel-caption {
         top: 10%;
         height: auto;
     }
 
-    .carousel-indicators {
+    .carousel-principal .carousel-indicators {
         left: calc(50% - 15vw);
         width: 100px;
         bottom: -2%;
     }
 
     @media (max-width: 576px) {
-        .custom-carousel-caption {
+        .carousel-principal .carousel-item-wrapper .custom-carousel-caption {
             top: 8%;
             height: auto;
         }
 
-        .carousel-indicators {
+        .carousel-principal .carousel-indicators {
             left: calc(50% - 15vw);
             width: 80px;
             bottom: -10%;
@@ -109,22 +121,22 @@
     }
 
     @media (max-width: 400px) {
-        #carousel-principal {
+        .carousel-principal #carousel-principal {
             width: 100%;
         }
 
-        .custom-carousel-caption {
+        .carousel-principal .carousel-item-wrapper .custom-carousel-caption {
             top: 5%;
             height: auto;
         }
 
-        .carousel-indicators {
+        .carousel-principal .carousel-indicators {
             left: calc(50% - 15vw);
             width: 60px;
             bottom: -15%;
         }
 
-        .carousel-indicators li {
+        .carousel-principal .carousel-indicators li {
             width: 10px;
             height: 10px;
             margin: 0 3px;

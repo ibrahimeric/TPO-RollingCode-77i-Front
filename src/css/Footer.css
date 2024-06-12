@@ -1,92 +1,109 @@
+/* Estilos para el contenedor del footer */
 .footer-container {
     width: 100%;
-    background-color: #2F6FA5;
+    background-color: #1379ff;
     padding: 4rem 2rem 0;
 }
 
-.page-footer {
+/* Estilos generales del footer */
+.footer-container .page-footer {
     color: #fff;
 }
 
-.text-uppercase {
+.footer-container .row {
+    justify-content: center;
+}
+
+/* Estilos para el título del párrafo del footer */
+.footer-container .text-uppercase {
     color: #fff;
 }
 
-.text-uppercase a {
+/* Estilos para enlaces dentro del párrafo del footer */
+.footer-container .text-uppercase a {
     color: #fff;
 }
 
-.text-uppercase a:hover {
+/* Estilos para enlaces dentro del párrafo del footer cuando están en estado de hover */
+.footer-container .text-uppercase a:hover {
     color: #ccc;
 }
 
-.list-unstyled li a {
-    color: #201e1e;
+/* Estilos para enlaces de la lista sin viñetas */
+.footer-container .list-unstyled li a {
+    color: #cacaca;
     text-decoration: none;
 }
 
-.list-unstyled li a:hover {
+/* Estilos para enlaces de la lista sin viñetas cuando están en estado de hover */
+.footer-container .list-unstyled li a:hover {
     color: #535bf2;
 }
 
-.iconos {
+/* Estilos para los iconos */
+.footer-container .iconos {
     margin-top: 1rem;
     font-size: 1.5rem;
     display: flex;
     justify-content: center;
 }
 
-.icono-img {
+/* Estilos para las imágenes de los iconos */
+.footer-container .icono-img {
     width: 30px;
     height: 30px;
     margin: 0 1rem;
 }
 
-.icono-img:hover {
+/* Estilos para las imágenes de los iconos cuando están en estado de hover */
+.footer-container .icono-img:hover {
     transform: scale(1.2);
 }
 
-.footer-copyright {
+/* Estilos para el texto de derechos de autor */
+.footer-container .footer-copyright {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.footer-copyright li {
+.footer-container .footer-copyright li {
     display: inline;
     margin-left: 5px;
 }
 
+/* Media queries para tamaños de pantalla específicos */
 @media (max-width: 576px) {
-    .text-uppercase {
+    .footer-container .text-uppercase {
         font-size: 15px;
     }
 
-    .text-paragraph {
+    .footer-container .text-paragraph {
         font-size: 12px;
     }
 
-    .list-unstyled li a {
+    .footer-container .list-unstyled li a {
         font-size: 14px;
     }
 }
 
 @media (min-width: 577px) and (max-width: 992px) {
-    .text-uppercase {
+    .footer-container .text-uppercase {
         font-size: 20px;
     }
 
-    .list-unstyled li a {
+    .footer-container .list-unstyled li a {
         font-size: 16px;
     }
 }
 
 @media (min-width: 993px) {
-    .text-uppercase {
+
+    .footer-container .text-uppercase {
         font-size: 24px;
     }
 
-    .list-unstyled li a {
+    .footer-container .list-unstyled li a {
         font-size: 18px;
     }
 }

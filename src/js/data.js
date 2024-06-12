@@ -95,13 +95,8 @@ export const socialMediaLinks = [  /* enlaces de redes sociales */
 ];
 
 export const footerLinks = [
-  // { title: "Acerca de nosotros", items: ["Misión y visión", "Nuestro equipo", "Testimonios", "Blog"] },
   { title: "Servicios", items: ["Mis mascotas", "Adopcion", "Turnos"] },
   { title: "Contacto", items: ["Soporte", "Contacto", "Acerca de"] }
-];
-
-export const footerParagraph = [
-  { title: "Sobre Nosotros", paragraph: ["Descubre tu compañero ideal en nuestro portal de adopción de mascotas. Con un registro único y completo, facilitamos la conexión entre dueños amorosos y mascotas necesitadas. Únete a nuestra comunidad comprometida con el bienestar animal hoy mismo"] }
 ];
 
 /* Modal */
@@ -121,7 +116,7 @@ export const socialMediaLinksModal = {
   twitter: "https://x.com/Concepcion_Tuc/",
 };
 
-export const turnos = [
+/* export const turnos = [
     {
         id: 1,
         urlImage: turno1,
@@ -137,22 +132,9 @@ export const turnos = [
         fecha: '24-09-2024'
     },
     // Agrega más turnos
-];
+]; */
 
 export const pets = [
-    {
-        id: 1,
-        urlImage: pet1,
-        nombreMascota: 'Luna',
-        servicioSolicitado: 'Vacunación',
-        fecha: '15-07-2024'
-    },
-    {
-        id: 2,
-        urlImage: pet2,
-        nombreMascota: 'Max',
-        servicioSolicitado: 'Adopción',
-        fecha: '24-09-2024'
-    },
+
     // Agrega más turnos
 ];

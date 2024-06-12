@@ -5,7 +5,7 @@ import '../css/Slider.css';
 
 const Slider = () => {
     return (
-        <Carousel id="carousel-principal">
+        <Carousel className="carousel-principal">
             {sliderData.map((slide, index) => (
                 <Carousel.Item key={index}>
                     <div className="carousel-item-wrapper">
