@@ -1,17 +1,13 @@
-.contenedor {
-    padding: 3rem;
-    background-color: rgba(0, 0, 0, 0.539);
-    height: 100vh;
-}
+
 
 .container {
     margin-top: 20px;
     display: flex;
+    margin: 3rem;
     flex-direction: column;
     justify-content: center;
     height: 60vh;
     background-color: #f8f9fa;
-    padding: 0 3rem;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -20,12 +16,6 @@
     overflow-x: auto;
 }
 
-.container h1 {
-    text-align: center;
-    margin-bottom: 1rem;
-    padding: 2rem;
-    overflow-x: auto;
-}
 
 .table {
     width: 100%;
@@ -77,9 +67,6 @@
 }
 
 @media (min-width: 576px) {
-    .container {
-        padding: 0 3rem;
-    }
 
     .imagen-tabla {
         width: 100px;

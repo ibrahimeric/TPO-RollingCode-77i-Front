@@ -12,13 +12,13 @@ const Cards = () => {
       imagen: card1Image,
       title: "Registro de Mascotas",
       text: "Registra y gestiona la información de tus mascotas fácilmente",
-      route: '/pet'
+      route: './pet/add'
     },
     {
       imagen: card2Image,
       title: "Adopción de Mascotas",
       text: "Encuentra una nueva familia para mascotas necesitadas",
-      route: '/formTurnos'
+      route: '/adopciones'
     },
     {
       imagen: card3Image,

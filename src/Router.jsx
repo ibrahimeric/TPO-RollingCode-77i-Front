@@ -7,19 +7,19 @@ import Footer from './components/Footer';
 import Error404 from './components/Error404';
 import Loading from './components/Loading';
 import Contact from './components/Contact';
-import PetsPage from './components/PetsPage';
 import TurnosPage from './components/TurnosPage';
 import FormTurnos from './components/FormTurnos';
 import FormRegistro from './components/FormRegistro';
-import FormAdopcion from './components/FormAdopcion';
 import PublicRoute from './routes/PublicRoutes';
 import Login from './components/Login';
 import Register from './components/Register';
 import PetList from './components/PetList';
 import PetDetail from './components/PetDetail';
-// import PetCard from './components/PetCard';
 import PetEdit from './components/PetEdit';
 import PetAdd from './components/PetAdd';
+
+import AdopcionPage from './components/AdopcionPage';
+import FormAdopcion from './components/FormAdopcion';
 
 const AppRouter = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -48,7 +48,8 @@ const AppRouter = () => {
               <Route path="/page-turnos" element={<TurnosPage />} />
               <Route path="/formTurnos" element={<FormTurnos />} />
               <Route path="/formRegistro" element={<FormRegistro />} />
-              <Route path="/formAdopcion" element={<FormAdopcion />} />
+              <Route path="/pet/adopcion" element={<FormAdopcion />} />
+              <Route path="/adopciones" element={<AdopcionPage />} />
               <Route path="/login" element={<PublicRoute restricted={true} />}>
                 <Route path="/login" element={<Login />} />
               </Route>
