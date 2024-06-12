@@ -12,7 +12,7 @@ const Cards = () => {
       imagen: card1Image,
       title: "Registro de Mascotas",
       text: "Registra y gestiona la información de tus mascotas fácilmente",
-      route: '/formTurnos'
+      route: '/pet'
     },
     {
       imagen: card2Image,

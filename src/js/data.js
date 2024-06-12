@@ -121,7 +121,7 @@ export const socialMediaLinksModal = {
   twitter: "https://x.com/Concepcion_Tuc/",
 };
 
-export const turnos = [
+/* export const turnos = [
     {
         id: 1,
         urlImage: turno1,
@@ -137,7 +137,7 @@ export const turnos = [
         fecha: '24-09-2024'
     },
     // Agrega más turnos
-];
+]; */
 
 export const pets = [
     {

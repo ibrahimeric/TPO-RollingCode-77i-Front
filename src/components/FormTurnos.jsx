@@ -115,8 +115,8 @@ function FormTurnos() {
                                 <Form.Label>Tipo de cita</Form.Label>
                                 <Form.Select name="type" value={formData.type} onChange={handleChange}>
                                     <option>Selecciona un tipo</option>
-                                    <option value="neutering">neutering</option>
-                                    <option value="vaccination">vaccination</option>
+                                    <option value="neutering">Castracion</option>
+                                    <option value="vaccination">Vacunacion</option>
                                 </Form.Select>
                             </Form.Group>
 
@@ -145,20 +145,6 @@ function FormTurnos() {
 
                                 </Form.Select>
                             </Form.Group>
-
-
-
-
-
-                            {/* <Form.Group className="mb-3" controlId="formUser">
-                                <Form.Label>Usuario</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    name="user"
-                                    value={formData.user}
-                                    onChange={handleChange}
-                                />
-                            </Form.Group> */}
                             <div className='btn-enviar'>
                                 <Button variant="primary" type="submit">
                                     Enviar
