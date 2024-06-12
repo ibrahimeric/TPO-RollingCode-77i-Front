@@ -3,14 +3,14 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
-function AdminTurnos({ setPage }) {
+function AdminTurnos({ setPage, accessToken }) {
   const [turnos, setTurnos] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     // Define tu variable de accessToken
     // const accessToken = 'tu_token_de_acceso_aqui';
-    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTcxODIwNzg1MSwiZXhwIjoxNzE4MjExNDUxfQ.SV06qE_JHk21ioRP6ULJmvyxniv2NQ-SHrhKDy25_jQ';
+    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTcxODIxMzIxOSwiZXhwIjoxNzE4MjE2ODE5fQ.EXqVpNXN3igccDzLoI_MFqoJurIN9l-tMxRR2UzoiFA';
     const fetchTurnos = async () => {
       try {
         const response = await axios.get('http://localhost:5000/admin/appointments', {

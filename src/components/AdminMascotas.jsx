@@ -6,15 +6,15 @@ import { Button } from 'react-bootstrap';
 
 Modal.setAppElement('#root'); // Especificar el elemento root para accesibilidad
 
-function AdminMascotas({ setPage }) {
+function AdminMascotas({ setPage, accessToken }) {
   const [mascotas, setMascotas] = useState([]);
   const [selectedMascota, setSelectedMascota] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [error, setError] = useState(null);
   const [turnos, setTurnos] = useState([]); // Agregar estado para los turnos
 
-  useEffect(() => {
-    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTcxODIwNzg1MSwiZXhwIjoxNzE4MjExNDUxfQ.SV06qE_JHk21ioRP6ULJmvyxniv2NQ-SHrhKDy25_jQ';
+   useEffect(() => {
+    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTcxODIxMzIxOSwiZXhwIjoxNzE4MjE2ODE5fQ.EXqVpNXN3igccDzLoI_MFqoJurIN9l-tMxRR2UzoiFA';
     const fetchMascotas = async () => {
       try {
         const response = await axios.get('http://localhost:5000/admin/pets', {
@@ -31,7 +31,6 @@ function AdminMascotas({ setPage }) {
 
     fetchMascotas();
   }, []);
-
   const openModal = (mascota) => {
     setSelectedMascota(mascota);
     setModalIsOpen(true);
@@ -86,13 +85,6 @@ function AdminMascotas({ setPage }) {
           </li>
         ))}
       </ul>
-      <nav>
-        <ul className="nav-list">
-          <li><Link className="link" to="/admin/mascotas">Administrar Mascotas</Link></li>
-          <li><Link className="link" to="/admin/turnos">Administrar Turnos</Link></li>
-          <li><Link className="link" to="/admin/adopciones">Administrar Adopciones</Link></li>
-        </ul>
-      </nav>
       <Link to="/admin">
         <Button variant="primary">Regresar</Button>
       </Link>

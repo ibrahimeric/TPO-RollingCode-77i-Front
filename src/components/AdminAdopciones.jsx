@@ -12,7 +12,7 @@ const database = {
   ],
 };
 
-function AdminAdopciones({ setPage }) {
+function AdminAdopciones({ setPage, accessToken }) {
   const [adopciones, setAdopciones] = useState(database.adopciones);
 
   const handleChangeAdoptante = (id, newAdoptante) => {

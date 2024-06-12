@@ -4,7 +4,9 @@ import '../css/AdminHome.css'
 
 function AdminHomePage() {
   // const history = useHistory();
-  
+  /* Token */
+  const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTcxODIxMzIxOSwiZXhwIjoxNzE4MjE2ODE5fQ.EXqVpNXN3igccDzLoI_MFqoJurIN9l-tMxRR2UzoiFA';
+
   const handleNavigation = (path) => {
     history.push(path);
   };
@@ -14,10 +16,14 @@ function AdminHomePage() {
       <h1>Bienvenido Administrador</h1>
       <p>¿Qué desea hacer ?</p>
       <nav className='background-nav'>
-        <ul className="nav-list">
-          <li><Link className="link" to="/admin/mascotas">Administrar Mascotas</Link></li>
-          <li><Link className="link" to="/admin/turnos">Administrar Turnos</Link></li>
-          <li><Link className="link" to="/admin/adopciones">Administrar Adopciones</Link></li>
+        <ul className='sin-fondo'>
+          <nav>
+            <ul className="nav-list">
+              <li><Link className="link" to={{ pathname: "/admin/mascotas", state: { accessToken } }}>Administrar Mascotas</Link></li>
+              <li><Link className="link" to={{ pathname: "/admin/turnos", state: { accessToken } }}>Administrar Turnos</Link></li>
+              <li><Link className="link" to={{ pathname: "/admin/adopciones", state: { accessToken } }}>Administrar Adopciones</Link></li>
+            </ul>
+          </nav>
         </ul>
       </nav>
       <Link to="/">
