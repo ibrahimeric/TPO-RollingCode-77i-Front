@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Modal from 'react-modal';
+import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 Modal.setAppElement('#root'); // Especificar el elemento root para accesibilidad
 
@@ -9,11 +11,17 @@ function AdminMascotas({ setPage }) {
   const [selectedMascota, setSelectedMascota] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [error, setError] = useState(null);
+  const [turnos, setTurnos] = useState([]); // Agregar estado para los turnos
 
   useEffect(() => {
+    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTcxODIwNzg1MSwiZXhwIjoxNzE4MjExNDUxfQ.SV06qE_JHk21ioRP6ULJmvyxniv2NQ-SHrhKDy25_jQ';
     const fetchMascotas = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/admin/pets');
+        const response = await axios.get('http://localhost:5000/admin/pets', {
+          headers: {
+            Authorization: 'Bearer ' + accessToken // Reemplaza accessToken con tu token de acceso válido
+          }
+        });
         setMascotas(response.data);
       } catch (err) {
         setError('Error fetching mascotas');
@@ -68,47 +76,26 @@ function AdminMascotas({ setPage }) {
   };
 
   return (
-    <div className="admin-page">
-      <h2 className="header">Administrar Mascotas</h2>
+    <div className="admin-home-page">
+      <h2>Administrar Mascotas</h2>
       {error && <p className="error-message">{error}</p>}
       <ul className="item-list">
         {mascotas.map(mascota => (
           <li key={mascota._id} className="item">
-            <span>{mascota.name} - {mascota.species}</span>
-            <div className="button-group">
-              <button className="edit-button" onClick={() => openModal(mascota)}>Editar Mascota</button>
-              <button className="delete-button" onClick={() => handleDeleteMascota(mascota._id)}>Borrar</button>
-            </div>
+            <span>{mascota.name}</span>
           </li>
         ))}
       </ul>
-      <button className="nav-button" onClick={() => setPage('home')}>Volver a la página principal</button>
-
-      {selectedMascota && (
-        <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className="modal" overlayClassName="overlay">
-          <h3>Editar Mascota</h3>
-          <form onSubmit={(e) => { e.preventDefault(); handleEditMascota(); }}>
-            <label>
-              Especie:
-              <input type="text" name="species" value={selectedMascota.species} onChange={handleChangeAttribute} />
-            </label>
-            <label>
-              Nombre:
-              <input type="text" name="name" value={selectedMascota.name} onChange={handleChangeAttribute} />
-            </label>
-            <label>
-              Raza:
-              <input type="text" name="race" value={selectedMascota.race} onChange={handleChangeAttribute} />
-            </label>
-            <label>
-              Edad:
-              <input type="number" name="age" value={selectedMascota.age} onChange={handleChangeAttribute} />
-            </label>
-            <button type="submit" className="submit-button">Guardar</button>
-            <button type="button" className="cancel-button" onClick={closeModal}>Cancelar</button>
-          </form>
-        </Modal>
-      )}
+      <nav>
+        <ul className="nav-list">
+          <li><Link className="link" to="/admin/mascotas">Administrar Mascotas</Link></li>
+          <li><Link className="link" to="/admin/turnos">Administrar Turnos</Link></li>
+          <li><Link className="link" to="/admin/adopciones">Administrar Adopciones</Link></li>
+        </ul>
+      </nav>
+      <Link to="/admin">
+        <Button variant="primary">Regresar</Button>
+      </Link>
     </div>
   );
 }
