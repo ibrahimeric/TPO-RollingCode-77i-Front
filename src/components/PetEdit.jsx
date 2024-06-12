@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import {jwtDecode} from "jwt-decode";
+import {jwtDecode} from "jwt-decode"; // Importar jwtDecode correctamente
+import axios from 'axios';
 
 const PetEdit = () => {
   const { id } = useParams();
+  const navigate = useNavigate(); // Para redireccionar después de la eliminación
   const [pet, setPet] = useState(null);
   const [editedPet, setEditedPet] = useState({});
   const [error, setError] = useState(null);
@@ -89,7 +91,8 @@ const PetEdit = () => {
         throw new Error("Network response was not ok");
       }
 
-      // Handle successful update, e.g., navigate to pet list or show a success message
+      // Manejar actualización exitosa, redireccionar o mostrar mensaje de éxito
+      navigate('/pets'); // Redireccionar a la lista de mascotas
     } catch (error) {
       console.error("Error updating pet:", error);
       setError(error.message);
@@ -103,6 +106,26 @@ const PetEdit = () => {
         ...editedPet,
         image: file,
       });
+    }
+  };
+
+  const handleDelete = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setError("No token found");
+      return;
+    }
+
+    try {
+      await axios.delete(`http://localhost:5000/admin/pets/delete/${id}`, {
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
+      });
+      navigate('/pets'); // Redireccionar después de la eliminación
+    } catch (err) {
+      setError('Error deleting pet');
+      console.error('Error deleting pet:', err);
     }
   };
 
@@ -187,6 +210,9 @@ const PetEdit = () => {
             <Button variant="primary" type="submit">
               Actualizar Mascota
             </Button>
+            <Button variant="danger" type="button" onClick={handleDelete} className="ml-2">
+              Eliminar Mascota
+            </Button>
           </Form>
           {error && <p className="text-danger mt-3">Error: {error}</p>}
         </Col>
@@ -196,5 +222,3 @@ const PetEdit = () => {
 };
 
 export default PetEdit;
-
-
