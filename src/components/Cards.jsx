@@ -11,7 +11,7 @@ const Cards = () => {
     {
       imagen: card1Image,
       title: "Registro de Mascotas",
-      text: "Registra y gestiona la información de tus mascotas fácilmente",
+      text: "Registra y gestiona la información de tus mascotas",
       route: './pet/add'
     },
     {
