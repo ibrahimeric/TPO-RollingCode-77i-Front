@@ -116,23 +116,6 @@ export const socialMediaLinksModal = {
   twitter: "https://x.com/Concepcion_Tuc/",
 };
 
-/* export const turnos = [
-    {
-        id: 1,
-        urlImage: turno1,
-        nombreMascota: 'Luna',
-        tipoServicio: 'Vacunación',
-        fecha: '15-07-2024'
-    },
-    {
-        id: 2,
-        urlImage: turno2,
-        nombreMascota: 'Max',
-        tipoServicio: 'Adopción',
-        fecha: '24-09-2024'
-    },
-    // Agrega más turnos
-]; */
 
 export const pets = [
 

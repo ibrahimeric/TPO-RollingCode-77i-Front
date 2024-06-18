@@ -6,14 +6,14 @@ import NavBar from './components/Navbar';
 import Footer from './components/Footer';
 import Error404 from './components/Error404';
 import Loading from './components/Loading';
-import Contact from './components/Contact';
+import ContactPage from './components/ContactPage';
 import TurnosPage from './components/TurnosPage';
 import FormTurnos from './components/FormTurnos';
 import FormRegistro from './components/FormRegistro';
 import PublicRoute from './routes/PublicRoutes';
 import Login from './components/Login';
 import Register from './components/Register';
-import PetList from './components/PetList';
+import PetPage from './components/PetPage';
 import PetDetail from './components/PetDetail';
 import PetEdit from './components/PetEdit';
 import PetAdd from './components/PetAdd';
@@ -42,43 +42,89 @@ const AppRouter = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <AuthProvider> {/* Agregar el proveedor de autenticación alrededor del Router */}
+        <AuthProvider>
           <Router>
             <NavBar />
             <Routes>
-              <Route path="/" element={<App />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="*" element={<Error404 />} />
-              <Route path="/page-mascotas" element={<PetList />} />
-              <Route path="/page-turnos" element={<TurnosPage />} />
-              <Route path="/formTurnos" element={<FormTurnos />} />
-              <Route path="/formRegistro" element={<FormRegistro />} />
-              <Route path="/pet/adopcion" element={<FormAdopcion />} />
-              <Route path="/adopciones" element={<AdopcionPage />} />
-              <Route path="/login" element={
-                <PublicRoute restricted={true} />}>
-                  <Route path="/login" element={<Login />} />
-                </Route>
+
+              <Route path="/" element={<App />} />  
+              /*
+                *ruta andando */
+
+              <Route path="/login" element={ 
+                <PublicRoute restricted={true}>
+                  <Login />
+                </PublicRoute>} />
+              /*
+                *ruta andando 
+                TODO: no se loguea*/
+
               <Route path="/register" element={
-                <PublicRoute restricted={true} />}>
-                  <Route path="/register" element={<Register />} />
-                </Route>
-              <Route path="/pets" element={<PetList />} />
+                <PublicRoute restricted={true}>
+                  <Register />
+                </PublicRoute>} />
+              /*
+                *ruta andando */
+
+
+              <Route path="/contacto" element={<ContactPage />} /> 
+              /*
+                *ruta andando 
+                TODO: conectar con el link del footer*/
+            
+              <Route path="/mascotas" element={<PetPage />} />
+              /*
+                *ruta andando 
+                TODO: no anda el boton */
+
+              <Route path="/turnos" element={<TurnosPage />} />
+              /*
+                *ruta andando 
+                TODO: no anda el boton */
+
+              <Route path="/adopciones" element={<AdopcionPage />} />
+              /*
+                *ruta andando
+                TODO: no hay boton */
+              
+              <Route path='/acerca-de' element={<AboutPage/>}/>
+              /*
+                *ruta andando
+                TODO: conectar el boton del footer */
+
+              <Route path="/formTurnos" element={<FormTurnos />} />
+              /*
+                *ruta andando */
+
+              <Route path="/formRegistro" element={<FormRegistro />} />
+              /*
+                !no anda */
+
+              <Route path="/formAdopcion" element={<FormAdopcion />} />
+              /*
+                !no anda */
+
+
               <Route path="/pet/:id" element={<PetDetail />} />
               <Route path="/pet/:id/edit" element={<PetEdit />} />
               <Route path="/pet/add" element={<PetAdd />} />
             
-              <Route path='/about-us' element={<AboutPage/>}/>
               
-              {/* Administrador */}
+              // Administrador
               <Route path="/admin" element={<AdminHomePage />} />
               <Route path="/admin/mascotas" element={<AdminMascotas />} />
               <Route path="/admin/turnos" element={<AdminTurnos />} />
               <Route path="/admin/adopciones" element={<AdminAdopciones />} />
 
 
+              <Route path='*' element={<Error404 />} />
+              /*
+                *ruta andando */
+
             </Routes>
+
             <Footer />
+
           </Router>
         </AuthProvider>
       )}
