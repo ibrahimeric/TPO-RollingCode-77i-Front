@@ -3,9 +3,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import {jwtDecode} from "jwt-decode";
+import config from '../utils/config'
 
 const PetAdd = () => {
   const [error, setError] = useState(null);
+  const backServerUrl = config.backServerUrl;
   const navigate = useNavigate();
   const [newPet, setNewPet] = useState({
     name: "",
@@ -55,7 +57,7 @@ const PetAdd = () => {
 
     try {
       const response = await fetch(
-        `https://back-rum-rolling.onrender.com/pet/register/${userId}`,
+        `${backServerUrl}pet/register/${userId}`,
         {
           method: "POST",
           headers: {

@@ -74,7 +74,7 @@ const AppRouter = () => {
 
                 /* FORMULARIOS */
                 <Route path="form-mascota" element={<PetAdd />} />
-                <Route path="form-turnos" element={<FormTurnos />} />
+                <Route path="form-turno" element={<FormTurnos />} />
                 <Route path="form-adopcion" element={<FormAdopcion />} />
 
                 /* CRUDS */

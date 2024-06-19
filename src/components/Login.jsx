@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../context/Context';
 import '../css/Login.css';
+import config from '../utils/config';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -10,6 +11,7 @@ const Login = () => {
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
+  const backServerUrl = config.backServerUrl
 
   const validateForm = () => {
     const newErrors = {};
@@ -28,7 +30,7 @@ const Login = () => {
       return;
     }
     try {
-      const response = await fetch('https://back-rum-rolling.onrender.com/auth/login', {
+      const response = await fetch(`${backServerUrl}auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

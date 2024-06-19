@@ -3,6 +3,7 @@ import axios from 'axios';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import config from '../utils/config'
 
 Modal.setAppElement('#root'); // Especificar el elemento root para accesibilidad
 
@@ -12,12 +13,13 @@ function AdminMascotas({ setPage }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [error, setError] = useState(null);
   const [turnos, setTurnos] = useState([]); // Agregar estado para los turnos
+  const backServerUrl = config.backServerUrl
 
   useEffect(() => {
     const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTcxODIwNzg1MSwiZXhwIjoxNzE4MjExNDUxfQ.SV06qE_JHk21ioRP6ULJmvyxniv2NQ-SHrhKDy25_jQ';
     const fetchMascotas = async () => {
       try {
-        const response = await axios.get('https://back-rum-rolling.onrender.com/admin/pets', {
+        const response = await axios.get(`${backServerUrl}admin/pets`, {
           headers: {
             Authorization: 'Bearer ' + accessToken // Reemplaza accessToken con tu token de acceso válido
           }
@@ -52,7 +54,7 @@ function AdminMascotas({ setPage }) {
 
   const handleEditMascota = async () => {
     try {
-      await axios.patch(`https://back-rum-rolling.onrender.com/admin/pets/update/${selectedMascota._id}`, selectedMascota);
+      await axios.patch(`${backServerUrl}admin/pets/update/${selectedMascota._id}`, selectedMascota);
       const updatedMascotas = mascotas.map(mascota =>
         mascota._id === selectedMascota._id ? selectedMascota : mascota
       );
@@ -66,7 +68,7 @@ function AdminMascotas({ setPage }) {
 
   const handleDeleteMascota = async (id) => {
     try {
-      await axios.delete(`https://back-rum-rolling.onrender.com/admin/pets/delete/${id}`);
+      await axios.delete(`${backServerUrl}admin/pets/delete/${id}`);
       const updatedMascotas = mascotas.filter(mascota => mascota._id !== id);
       setMascotas(updatedMascotas);
     } catch (err) {

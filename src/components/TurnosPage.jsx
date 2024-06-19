@@ -3,15 +3,17 @@ import { Button, Container, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import '../css/TurnosPage.css';
+import config from '../utils/config';
 
 const TurnosPage = () => {
   const [turnos, setTurnos] = useState([]);
-  const userId = '6667a85b7da962f4c6e3959a'; // Esto es solo un ejemplo, asegúrate de obtener el ID del usuario de donde corresponda
+  // const userId = '6667a85b7da962f4c6e3959a'; // TODO traer id de usuario
+  const backServerUrl = config.backServerUrl;
 
   useEffect(() => {
     const fetchTurnos = async () => {
       try {
-        const response = await axios.get(`https://back-rum-rolling.onrender.com/user/${userId}/get_appointments`);
+        const response = await axios.get(`${backServerUrl}user/${userId}/get_appointments`);
         setTurnos(response.data);
         console.log('IDs de los turnos:', response.data.map(turno => turno.id));
       } catch (error) {
@@ -24,7 +26,7 @@ const TurnosPage = () => {
 
   const cancelarTurno = async (userId, appointmentId) => {
     try {
-      await axios.delete(`http://localhost:5000/user/${userId}/${appointmentId}`);
+      await axios.delete(`${backServerUrl}user/${userId}/${appointmentId}`);
       setTurnos(turnos.filter(turno => turno._id !== appointmentId)); // Aquí cambiamos turno.id por turno._id
       console.log(`Se ha cancelado el turno con ID ${appointmentId}`);
     } catch (error) {

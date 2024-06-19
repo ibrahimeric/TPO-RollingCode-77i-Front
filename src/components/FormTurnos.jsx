@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import '../css/FormTurnos.css';
 import axios from 'axios'; // Importar axios para hacer solicitudes HTTP
+import config from '../utils/config';
 // import { jwtDecode } from 'jwt-decode';
 
 function FormTurnos() {
@@ -13,6 +14,8 @@ function FormTurnos() {
         pet: ''
         // user: ''
     });
+
+    const backServerUrl = config.backServerUrl;
 
     const [pets, setPets] = useState([]);
     // const [userId, setUserId] = useState('');
@@ -37,8 +40,8 @@ function FormTurnos() {
 
         const fetchPets = async () => {
             try {
-                const response = await fetch(`https://back-rum-rolling.onrender.com/user/${userId}/pets`, {
-                //const response = await fetch(`https://back-rum-rolling.onrender.com/user/666329fd7f4df62bdfa19115/pets`, {
+                const response = await fetch(`${backServerUrl}user/${userId}/pets`, {
+                    
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -91,7 +94,7 @@ function FormTurnos() {
             setFormData(updatedFormData);
 
             // Hacemos la solicitud POST con los datos actualizados
-            await axios.post(`http://localhost:5000/user/666329fd7f4df62bdfa19115/new_appointment`, updatedFormData);
+            await axios.post(`${backServerUrl}user/666329fd7f4df62bdfa19115/new_appointment`, updatedFormData);
             console.log('Datos enviados exitosamente a la base de datos');
             console.log('ID de la mascota seleccionada:', updatedFormData.petId);
         } catch (error) {

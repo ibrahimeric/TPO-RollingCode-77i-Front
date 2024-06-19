@@ -3,11 +3,13 @@ import { Container, Table, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../css/PetList.css";
 import { jwtDecode } from "jwt-decode"; // Importing as default
+import config from "../utils/config";
 
 const PetList = () => {
   const [pets, setPets] = useState([]);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const backServerUrl = config.backServerUrl;
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -30,7 +32,7 @@ const PetList = () => {
     const fetchPets = async () => {
       try {
         const response = await fetch(
-          `https://back-rum-rolling.onrender.com/user/${userId}/pets`,
+          `${backServerUrl}user/${userId}/pets`,
           {
             method: "GET",
             headers: {

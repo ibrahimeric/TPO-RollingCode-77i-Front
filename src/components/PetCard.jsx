@@ -4,11 +4,13 @@ import { Card, Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../css/PetCard.css';
 import { jwtDecode } from "jwt-decode";
+import config from '../utils/config';
 
 const PetCard = () => {
   const [pets, setPets] = useState([]);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const backServerUrl = config.backServerUrl;
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -31,7 +33,7 @@ const PetCard = () => {
     const fetchPets = async () => {
       try {
         const response = await fetch(
-          `https://back-rum-rolling.onrender.com/user/${userId}/pets`,
+          `${backServerUrl}user/${userId}/pets`,
           {
             method: "GET",
             headers: {
