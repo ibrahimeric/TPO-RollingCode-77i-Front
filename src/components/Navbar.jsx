@@ -28,7 +28,7 @@ const NavBar = () => {
               Logout
             </Button>
           ) : (
-            <Link to="/login">
+            <Link to="/public/login">
               <Button variant="outline-primary" className="btn-login">
                 Login
               </Button>

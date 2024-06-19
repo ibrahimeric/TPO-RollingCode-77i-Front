@@ -1,15 +1,11 @@
 import React, { useContext } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import { AuthContext } from '../context/Context';
 
-const PublicRoute = ({ restricted, children }) => {
-  const { isAuthenticated } = useContext(AuthContext);
+const PublicRoute = ({ restricted }) => {
+  const isAuthenticated = useContext(AuthContext);
 
-  if (isAuthenticated && restricted) {
-    return <Navigate to="/" />;
-  }
-
-  return children;
+  return <Outlet />;
 };
 
 export default PublicRoute;
