@@ -53,52 +53,47 @@ const AppRouter = () => {
             <Routes>
 
               <Route path="/" element={<App />} />  
-              /*
-                *ruta andando */
 
               /* RUTAS PUBLICAS */
               <Route path='/public/*' element={<PublicRoute restricted={true} />}>
-                  <Route path='login' element={<Login/>}/>
-                  <Route path='register' element={<Register />}/>
-                  <Route path='contacto' element={<ContactPage />} />
-                  <Route path='acerca-de' element={<AboutPage/>}/> 
+                  <Route path='login' element={<Login/>}/>  // JOYA
+                  <Route path='register' element={<Register />}/> // JOYA
+                  <Route path='contacto' element={<ContactPage />} /> // JOYA
+                  <Route path='acerca-de' element={<AboutPage/>}/> // en esa
               </Route>
 
               /* RUTAS PRIVADAS */
               <Route path='/private/*' element={<PrivateRoute restricted={true} />} >
                 
                 /* PAGINAS */
-                <Route path='mascotas' element={<PetPage />} />
-                <Route path='turnos' element={<TurnosPage />} />
-                <Route path="adopciones" element={<AdopcionPage />} />
+                <Route path='mascotas' element={<PetPage />} /> // JOYA
+                <Route path='turnos' element={<TurnosPage />} /> // en esa
+                <Route path="adopciones" element={<AdopcionPage />} /> // en esa
 
                 /* FORMULARIOS */
-                <Route path="form-mascota" element={<PetAdd />} />
-                <Route path="form-turno" element={<FormTurnos />} />
-                <Route path="form-adopcion" element={<FormAdopcion />} />
+                <Route path="form-mascota" element={<PetAdd />} /> // JOYA
+                <Route path="form-turno" element={<FormTurnos />} /> // en esa
+                <Route path="form-adopcion" element={<FormAdopcion />} /> // en esa
 
                 /* CRUDS */
 
                   /* MASCOTA */
-                  <Route path="mascota/:id" element={<PetDetail />} />
-                  <Route path="mascota/:id/editar" element={<PetEdit />} />
+                  <Route path="mascota/:id" element={<PetDetail />} /> // casi joya
+                  <Route path="mascota/:id/editar" element={<PetEdit />} /> // casi joya
 
                   /* TURNO */
+                  /* Eliminar turno*/ // nada
 
                   /* ADOPCION */
+                  /* Cancelar adopcion*/ // nada
 
               </Route>
-            
-
-
-              
-            
               
               // Administrador
-              <Route path="/admin" element={<AdminHomePage />} />
-              <Route path="/admin/mascotas" element={<AdminMascotas />} />
-              <Route path="/admin/turnos" element={<AdminTurnos />} />
-              <Route path="/admin/adopciones" element={<AdminAdopciones />} />
+              <Route path="/admin" element={<AdminHomePage />} /> // nada
+              <Route path="/admin/mascotas" element={<AdminMascotas />} /> // nada
+              <Route path="/admin/turnos" element={<AdminTurnos />} /> // nada
+              <Route path="/admin/adopciones" element={<AdminAdopciones />} /> // nada
 
 
               <Route path='*' element={<Error404 />} />
