@@ -52,44 +52,46 @@ const AppRouter = () => {
             <NavBar />
             <Routes>
 
-              <Route path="/" element={<App />} />  
+              <Route path="/" element={<App />} /> 
+              <Route path='contacto' element={<ContactPage />} /> // JOYA
+              <Route path='acerca-de' element={<AboutPage/>}/> // en esa 
 
               /* RUTAS PUBLICAS */
-              <Route path='/public/*' element={<PublicRoute restricted={true} />}>
+              <Route path='/public/*' element={<PublicRoute restricted={true} />}> //Estar Deslogeado
                   <Route path='login' element={<Login/>}/>  // JOYA
                   <Route path='register' element={<Register />}/> // JOYA
-                  <Route path='contacto' element={<ContactPage />} /> // JOYA
-                  <Route path='acerca-de' element={<AboutPage/>}/> // en esa
+                  
               </Route>
 
               /* RUTAS PRIVADAS */
-              <Route path='/private/*' element={<PrivateRoute restricted={true} />} >
+              <Route path='/private/*' element={<PublicRoute restricted={true} />} > //Estar logeado
                 
                 /* PAGINAS */
                 <Route path='mascotas' element={<PetPage />} /> // JOYA
-                <Route path='turnos' element={<TurnosPage />} /> // en esa
-                <Route path="adopciones" element={<AdopcionPage />} /> // en esa
+                <Route path='turnos' element={<TurnosPage />} /> // en esa TurnPage
+                <Route path="adopciones" element={<AdopcionPage />} /> // en esa mas pa triki AdoptPage
 
                 /* FORMULARIOS */
                 <Route path="form-mascota" element={<PetAdd />} /> // JOYA
-                <Route path="form-turno" element={<FormTurnos />} /> // en esa
-                <Route path="form-adopcion" element={<FormAdopcion />} /> // en esa
+                <Route path="form-turno" element={<FormTurnos />} /> // en esa TurnAdd
+                <Route path="form-adopcion" element={<FormAdopcion />} /> // en esa mas pa triki AdoptAdd
 
                 /* CRUDS */
 
                   /* MASCOTA */
-                  <Route path="mascota/:id" element={<PetDetail />} /> // casi joya
-                  <Route path="mascota/:id/editar" element={<PetEdit />} /> // casi joya
+                  <Route path="mascota/:id" element={<PetDetail />} /> // casi joya 
+                  <Route path="mascota/:id/editar" element={<PetEdit />} /> // casi joya 
+
 
                   /* TURNO */
-                  /* Eliminar turno*/ // nada
+                  /* Eliminar turno*/ // nada  TurnCancel
 
                   /* ADOPCION */
-                  /* Cancelar adopcion*/ // nada
+                  /* Cancelar adopcion*/ // nada  AdoptCancel
 
               </Route>
-              
-              // Administrador
+
+              // Administrador // nada
               <Route path="/admin" element={<AdminHomePage />} /> // nada
               <Route path="/admin/mascotas" element={<AdminMascotas />} /> // nada
               <Route path="/admin/turnos" element={<AdminTurnos />} /> // nada
