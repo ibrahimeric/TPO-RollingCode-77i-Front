@@ -3,7 +3,7 @@ import { Container, Table, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../../css/PrivatePages-styles/PetsPage.css";
 import { jwtDecode } from "jwt-decode"; // Importing as default
-import config from "../utils/config";
+import config from "../../utils/config";
 
 const PetList = () => {
   const [pets, setPets] = useState([]);

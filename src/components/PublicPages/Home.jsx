@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import './App.css';
-import AdminHomePage from './AdminHome';
-import AdminMascotas from './AdminMascotas';
-import AdminTurnos from './AdminTurnos';
-import AdminAdopciones from './AdminAdopciones';
+import '../../App';
+import AdminHomePage from '../Admin/AdminHome';
+import AdminMascotas from '../Admin/AdminMascotas';
+import AdminTurnos from '../Admin/AdminTurnos';
+import AdminAdopciones from '../Admin/AdminAdopciones';
 
 function App() {
   const [page, setPage] = useState('home');

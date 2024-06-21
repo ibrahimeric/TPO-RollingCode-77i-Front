@@ -3,8 +3,8 @@ import { Modal } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faWhatsapp, faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
-import { contactData, socialMediaLinksModal } from '../js/data';
-import '../css/Contact.css';
+import { contactData, socialMediaLinksModal } from '../../js/data';
+import '../../css/PublicPages-styles/Contact.css';
 
 const Contact = ({ isOpen, onClose }) => {
     return (

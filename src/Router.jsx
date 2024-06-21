@@ -9,23 +9,23 @@ import Loading from './components/Loading';
 import PublicRoute from './routes/PublicRoutes';
 import PrivateRoute from './routes/PrivateRoutes';
 
-import ContactPage from './components/ContactPage';
-import TurnosPage from './components/TurnosPage';
+import ContactPage from './components/PublicPages/ContactPage';
+import TurnosPage from './components/PrivatePages/TurnosPage';
 import FormTurnos from './components/Forms/FormTurnos';
 
 
 import Login from './components/Login';
 import Register from './components/Register';
 
-import PetPage from './components/PetPage';
-import PetDetail from './components/PetDetail';
-import PetEdit from './components/PetEdit';
+import PetPage from './components/PrivatePages/PetPage';
+import PetDetail from './components/Cruds/PetDetail';
+import PetEdit from './components/Cruds/PetEdit';
 import PetAdd from './components/Forms/PetAdd';
 
 import AdminHomePage from './components/Admin/AdminHome';
 import AdminAdopciones from './components/Admin/AdminAdopciones';
-import AdminMascotas from './components/AdminMascotas';
-import AdminTurnos from './components/AdminTurnos';
+import AdminMascotas from './components/Admin/AdminMascotas';
+import AdminTurnos from './components/Admin/AdminTurnos';
 
 import AdopcionPage from './components/PrivatePages/AdopcionPage';
 import FormAdopcion from './components/Forms/FormAdopcion';

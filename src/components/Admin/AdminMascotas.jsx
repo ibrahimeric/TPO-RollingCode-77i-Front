@@ -3,7 +3,7 @@ import axios from 'axios';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import config from '../utils/config'
+import config from '../../utils/config'
 
 Modal.setAppElement('#root'); // Especificar el elemento root para accesibilidad
 
