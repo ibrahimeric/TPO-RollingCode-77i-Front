@@ -1,6 +1,6 @@
 import { Modal, Form, Button } from 'react-bootstrap';
 import { useState } from 'react'; // Importa useState desde react
-import '../css/Form.css';
+import '../../css/Forms-styles/Form.css';
 
 function FormAdopcion({ formData, showModal, closeModal}) {
   // Agrega el estado local para formData

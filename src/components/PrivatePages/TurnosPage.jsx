@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Container, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import '../css/TurnosPage.css';
+import '../../css/PrivatePages-styles/TurnosPage.css';
 import config from '../utils/config';
 
 const TurnosPage = () => {

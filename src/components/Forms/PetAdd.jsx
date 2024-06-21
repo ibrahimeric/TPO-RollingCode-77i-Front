@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import {jwtDecode} from "jwt-decode";
-import config from '../utils/config'
+import config from '../../utils/config'
 
 const PetAdd = () => {
   const [error, setError] = useState(null);

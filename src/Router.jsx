@@ -11,7 +11,7 @@ import PrivateRoute from './routes/PrivateRoutes';
 
 import ContactPage from './components/ContactPage';
 import TurnosPage from './components/TurnosPage';
-import FormTurnos from './components/FormTurnos';
+import FormTurnos from './components/Forms/FormTurnos';
 
 
 import Login from './components/Login';
@@ -20,17 +20,17 @@ import Register from './components/Register';
 import PetPage from './components/PetPage';
 import PetDetail from './components/PetDetail';
 import PetEdit from './components/PetEdit';
-import PetAdd from './components/PetAdd';
+import PetAdd from './components/Forms/PetAdd';
 
-import AdminHomePage from './components/AdminHome';
-import AdminAdopciones from './components/AdminAdopciones';
+import AdminHomePage from './components/Admin/AdminHome';
+import AdminAdopciones from './components/Admin/AdminAdopciones';
 import AdminMascotas from './components/AdminMascotas';
 import AdminTurnos from './components/AdminTurnos';
 
-import AdopcionPage from './components/AdopcionPage';
-import FormAdopcion from './components/FormAdopcion';
+import AdopcionPage from './components/PrivatePages/AdopcionPage';
+import FormAdopcion from './components/Forms/FormAdopcion';
 
-import AboutPage from './components/AcercaDe';
+import AboutPage from './components/PublicPages/AcercaDe';
 
 
 const AppRouter = () => {

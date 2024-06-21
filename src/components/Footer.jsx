@@ -1,5 +1,5 @@
 import { socialMediaLinks, footerLinks} from '../js/data';
-import '../css/Footer.css';
+import '../css/Components-styles/Footer.css';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
