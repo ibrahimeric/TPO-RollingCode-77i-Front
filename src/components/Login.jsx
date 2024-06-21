@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../context/Context';
-import '../css';
+import '../css/Login.css';
 import config from '../utils/config';
 
 const Login = () => {
