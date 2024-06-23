@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
-import { jwtDecode } from 'jwt-decode';
-import config from '../../utils/config';
+import jwtDecode from 'jwt-decode';
+import config from '../utils/config';
+import FormAdopcion from './FormAdopcion';
 
-const PetDetail = () => {
+const PetDetailAdopt = () => {
   const backServerUrl = config.backServerUrl;
-
   const { id } = useParams();
-  console.log(id);
-
   const [pet, setPet] = useState(null);
   const [error, setError] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [userId, setUserId] = useState(null);
 
   useEffect(() => {
     const fetchPetDetails = async () => {
@@ -27,6 +27,8 @@ const PetDetail = () => {
           throw new Error("Invalid token");
         }
 
+        setUserId(decodedToken.user_id);
+
         const response = await fetch(`${backServerUrl}pet/${id}`, {
           headers: {
             "Authorization": `Bearer ${token}`,
@@ -39,7 +41,6 @@ const PetDetail = () => {
 
         const data = await response.json();
         setPet(data);
-
       } catch (error) {
         setError(error.message);
         console.error('Error fetching pet details:', error);
@@ -57,6 +58,9 @@ const PetDetail = () => {
     return <p>Loading...</p>;
   }
 
+  const openModal = () => setShowModal(true);
+  const closeModal = () => setShowModal(false);
+
   return (
     <Container className="my-4">
       <Row>
@@ -70,11 +74,18 @@ const PetDetail = () => {
           <p><strong>Sexo:</strong> {pet.gender}</p>
           <p><strong>Tamaño:</strong> {pet.size}</p>
           <p><strong>Especie:</strong> {pet.species}</p>
-          <Link to={`/pet/${id}/edit`}><Button>Editar</Button></Link>
+          <Button onClick={openModal}>Solicitar Adopción</Button>
         </Col>
       </Row>
+      <FormAdopcion
+        formData={{ name: '', email: '', message: '' }}
+        showModal={showModal}
+        closeModal={closeModal}
+        userId={userId}
+        petId={id}
+      />
     </Container>
   );
 };
 
-export default PetDetail;
+export default PetDetailAdopt;

@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import {jwtDecode} from "jwt-decode"; // Importar jwtDecode correctamente
 import axios from 'axios';
-import config from "../../utils/config";
+import config from "../utils/config";
 
 const PetEdit = () => {
   const { id } = useParams();

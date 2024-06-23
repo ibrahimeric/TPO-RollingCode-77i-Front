@@ -1,18 +1,26 @@
 import { Modal, Form, Button } from 'react-bootstrap';
-import { useState } from 'react'; // Importa useState desde react
-import '../../css/Forms-styles/Form.css';
+import { useState, useEffect } from 'react';
+import '../css/Forms-styles/Form.css';
 
-function FormAdopcion({ formData, showModal, closeModal}) {
-  // Agrega el estado local para formData
+function FormAdopcion({ formData, showModal, closeModal, userId, petId }) {
   const [localFormData, setLocalFormData] = useState(formData);
 
-  // Función para manejar cambios en los campos del formulario
+  useEffect(() => {
+    setLocalFormData({ ...formData, userId, petId });
+  }, [formData, userId, petId]);
+
   const handleFormChange = (event) => {
     const { name, value } = event.target;
     setLocalFormData({
       ...localFormData,
       [name]: value
     });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Aquí puedes enviar la data al servidor si es necesario
+    closeModal();
   };
 
   return (
@@ -23,15 +31,15 @@ function FormAdopcion({ formData, showModal, closeModal}) {
         </div>
       </Modal.Header>
       <Modal.Body>
-        <Form onSubmit={closeModal}>
+        <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formName">
             <Form.Label className='text-label'>Nombre</Form.Label>
             <Form.Control
               type="text"
               placeholder="Ingresa tu nombre"
               name="name"
-              value={localFormData.name} // Usa localFormData en lugar de formData
-              onChange={handleFormChange} // Usa handleFormChange en lugar de handleChange
+              value={localFormData.name}
+              onChange={handleFormChange}
             />
           </Form.Group>
 
@@ -41,8 +49,8 @@ function FormAdopcion({ formData, showModal, closeModal}) {
               type="email"
               placeholder="Ingresa tu email"
               name="email"
-              value={localFormData.email} // Usa localFormData en lugar de formData
-              onChange={handleFormChange} // Usa handleFormChange en lugar de handleChange
+              value={localFormData.email}
+              onChange={handleFormChange}
             />
             <Form.Text className="text-muted">
               Nunca compartiremos tu email con nadie.
@@ -56,8 +64,28 @@ function FormAdopcion({ formData, showModal, closeModal}) {
               rows={3}
               placeholder="Ingresa un Mensaje"
               name="message"
-              value={localFormData.message} // Usa localFormData en lugar de formData
-              onChange={handleFormChange} // Usa handleFormChange en lugar de handleChange
+              value={localFormData.message}
+              onChange={handleFormChange}
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formUserId">
+            <Form.Label className='text-label'>User ID</Form.Label>
+            <Form.Control
+              type="text"
+              name="userId"
+              value={localFormData.userId}
+              readOnly
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formPetId">
+            <Form.Label className='text-label'>Pet ID</Form.Label>
+            <Form.Control
+              type="text"
+              name="petId"
+              value={localFormData.petId}
+              readOnly
             />
           </Form.Group>
 

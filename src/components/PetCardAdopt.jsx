@@ -1,15 +1,18 @@
-// src/components/PetCard.jsx
 import React, { useState, useEffect } from 'react';
-import { Card, Button, Form } from 'react-bootstrap';
+import { Card, Button, Form, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import '../../css/Cruds-styles/PetCard.css';
-import { jwtDecode } from "jwt-decode";
-import config from '../../utils/config';
+import jwtDecode from 'jwt-decode';
+import config from '../utils/config';
+import '../css/Cruds-styles/PetCard.css';
+import FormAdopcion from './FormAdopcion';
 
-const PetCard = () => {
+const PetCardAdopt = () => {
   const [pets, setPets] = useState([]);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  const [selectedPet, setSelectedPet] = useState(null);
+  const [userId, setUserId] = useState(null);
   const backServerUrl = config.backServerUrl;
 
   useEffect(() => {
@@ -23,6 +26,7 @@ const PetCard = () => {
     try {
       const decodedToken = jwtDecode(token);
       userId = decodedToken.id;
+      setUserId(userId);
       console.log(userId);
     } catch (error) {
       setError("Invalid token");
@@ -33,7 +37,7 @@ const PetCard = () => {
     const fetchPets = async () => {
       try {
         const response = await fetch(
-          `${backServerUrl}user/${userId}/pets`,
+          `${backServerUrl}pets/adoptable`, // URL para mascotas adoptables
           {
             method: "GET",
             headers: {
@@ -75,12 +79,22 @@ const PetCard = () => {
     setSearchTerm(event.target.value);
   };
 
+  const handleAdoptClick = (pet) => {
+    setSelectedPet(pet);
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    setSelectedPet(null);
+  };
+
   const filteredPets = pets.filter(pet =>
     pet.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const petimagen = (pet) => {
-    if (pet.imagen === undefined) {
+    if (!pet.imagen) {
       return 'src/assets/pet.imagen.jpg';
     } else {
       return pet.imagen;
@@ -101,11 +115,6 @@ const PetCard = () => {
           onChange={handleSearchChange}
           className="mb-3"
         />
-        <Link to="/pet/add">
-          <Button variant="success">
-            Agregar otra mascota
-          </Button>
-        </Link>
       </div>
       {filteredPets.map((pet) => (
         <Card key={pet._id} className="pet-card mb-3">
@@ -118,14 +127,21 @@ const PetCard = () => {
               <strong>Sexo:</strong> {pet.sex}<br />
               <strong>Especie:</strong> {pet.species}
             </Card.Text>
-            <Link to={`/pet/${pet._id}/edit`}>
-              <Button variant="primary" className="pet-btn-primary">Editar</Button>
-            </Link>
+            <Button variant="primary" className="pet-btn-primary" onClick={() => handleAdoptClick(pet)}>Solicitar Adopción</Button>
           </Card.Body>
         </Card>
       ))}
+      {selectedPet && (
+        <FormAdopcion
+          formData={{ name: '', email: '', message: '' }}
+          showModal={showModal}
+          closeModal={closeModal}
+          userId={userId}
+          petId={selectedPet._id}
+        />
+      )}
     </div>
   );
 };
 
-export default PetCard;
+export default PetCardAdopt;
