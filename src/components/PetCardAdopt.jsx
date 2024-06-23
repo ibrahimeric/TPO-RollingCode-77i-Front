@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Button, Form, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import jwtDecode from 'jwt-decode';
+import {jwtDecode} from 'jwt-decode';
+
 import config from '../utils/config';
-import '../css/Cruds-styles/PetCard.css';
+import '../css/PetCard.css';
 import FormAdopcion from './FormAdopcion';
 
 const PetCardAdopt = () => {

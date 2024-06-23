@@ -10,6 +10,10 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 
+import Pet from './pages/Pet';
+import PetDetail from './components/PetDetail';
+import PetEdit from './components/PetEdit';
+
 const AppRouter = () => {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -31,7 +35,9 @@ const AppRouter = () => {
               <Route path="/" element={<Home/>} />
               <Route path="login" element={<Login />} />
               <Route path="register" element={<Register />} />
-
+              <Route path='mascotas' element={<Pet/>} />
+              <Route path='mascota/:id' element={<PetDetail/>} />
+              <Route path='mascota/:id/edit' element={<PetEdit/>} />
 
               <Route path="*" element={<Error404 />} />
             </Routes>

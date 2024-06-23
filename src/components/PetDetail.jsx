@@ -70,7 +70,7 @@ const PetDetail = () => {
           <p><strong>Sexo:</strong> {pet.gender}</p>
           <p><strong>Tamaño:</strong> {pet.size}</p>
           <p><strong>Especie:</strong> {pet.species}</p>
-          <Link to={`/pet/${id}/edit`}><Button>Editar</Button></Link>
+          <Link to={`/mascota/${id}/edit`}><Button>Editar</Button></Link>
         </Col>
       </Row>
     </Container>

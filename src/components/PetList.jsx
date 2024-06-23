@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Table, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "../css/PrivatePages-styles/PetsPage.css";
+import "../css/PetList.css";
 import { jwtDecode } from "jwt-decode"; // Importing as default
 import config from "../utils/config";
 
@@ -128,7 +128,7 @@ return (
               <td>{pet.sex}</td>
               <td>{pet.species}</td>
               <td>
-                <Link to={`/pet/${pet._id}`}>
+                <Link to={`/mascota/${pet._id}`}>
                   <Button variant="primary" className="btn-primary-petlist">Ver Detalles</Button>
                 </Link>
               </td>

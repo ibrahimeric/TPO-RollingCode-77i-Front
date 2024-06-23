@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import '../css/Cruds-styles/PetCard.css';
+import '../css/PetCard.css';
 import { jwtDecode } from "jwt-decode";
 import config from '../utils/config';
 
@@ -118,7 +118,7 @@ const PetCard = () => {
               <strong>Sexo:</strong> {pet.sex}<br />
               <strong>Especie:</strong> {pet.species}
             </Card.Text>
-            <Link to={`/pet/${pet._id}/edit`}>
+            <Link to={`/mascota/${pet._id}/edit`}>
               <Button variant="primary" className="pet-btn-primary">Editar</Button>
             </Link>
           </Card.Body>

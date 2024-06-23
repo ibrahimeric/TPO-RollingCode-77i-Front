@@ -1,6 +1,6 @@
 import { Modal, Form, Button } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
-import '../css/Forms-styles/Form.css';
+import '../css/Form.css';
 
 function FormAdopcion({ formData, showModal, closeModal, userId, petId }) {
   const [localFormData, setLocalFormData] = useState(formData);

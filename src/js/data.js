@@ -23,8 +23,8 @@ import pet2 from '../assets/pets/pet2.webp';
 // Exportación Datos
 /* navbar */
 export const menuItems = [
-  { title: "Mascotas", url: "/private/mascotas" },
-  { title: "Turnos", url: "/private/turnos" },
+  { title: "Mascotas", url: "/mascotas" },
+  { title: "Turnos", url: "/turnos" },
   // Agrega más elementos de menú según sea necesario
 ];
 
