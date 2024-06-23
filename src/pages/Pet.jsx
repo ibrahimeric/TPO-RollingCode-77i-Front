@@ -5,6 +5,7 @@ import PetList from '../components/PetList';
 import PetListAdopt from '../components/PetListAdopt';
 import PetCard from '../components/PetCard';
 import PetCardAdopt from '../components/PetCardAdopt';
+import '../css/Pet.css';
 
 function Pet() {
   const [showMyPets, setShowMyPets] = useState(true);
@@ -17,7 +18,7 @@ function Pet() {
 
   return (
     <>
-      <Button onClick={togglePets}>
+      <Button onClick={togglePets} className='button-toggle'>
         {showMyPets ? 'Mostrar Mascotas para Adopción' : 'Mostrar Mis Mascotas'}
       </Button>
       {isMobile ? (

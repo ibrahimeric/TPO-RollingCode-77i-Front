@@ -13,7 +13,7 @@ import Register from './pages/Register';
 import Pet from './pages/Pet';
 import PetDetail from './components/PetDetail';
 import PetEdit from './components/PetEdit';
-
+import PetAdd from './components/PetAdd';
 const AppRouter = () => {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -38,7 +38,7 @@ const AppRouter = () => {
               <Route path='mascotas' element={<Pet/>} />
               <Route path='mascota/:id' element={<PetDetail/>} />
               <Route path='mascota/:id/edit' element={<PetEdit/>} />
-
+              <Route path='mascota/add' element={<PetAdd/>} />
               <Route path="*" element={<Error404 />} />
             </Routes>
             <Footer />

@@ -97,7 +97,7 @@ return (
           onChange={handleSearchChange}
           className="mb-3"
         />
-        <Link to="/pet/add">
+        <Link to="/mascota/add">
           <Button variant="success">Agregar otra mascota</Button>
         </Link>
       </div>
