@@ -23,12 +23,12 @@ const PetCardAdopt = () => {
       return;
     }
 
-    let userId;
+    let decodedUserId;
     try {
       const decodedToken = jwtDecode(token);
-      userId = decodedToken.id;
-      setUserId(userId);
-      console.log(userId);
+      decodedUserId = decodedToken.id;
+      setUserId(decodedUserId);
+      console.log(decodedUserId);
     } catch (error) {
       setError("Invalid token");
       console.error("Error decoding token:", error);
@@ -38,7 +38,7 @@ const PetCardAdopt = () => {
     const fetchPets = async () => {
       try {
         const response = await fetch(
-          `${backServerUrl}pets/adoptable`, // URL para mascotas adoptables
+          `${backServerUrl}user/${decodedUserId}/pets`,
           {
             method: "GET",
             headers: {
@@ -132,7 +132,7 @@ const PetCardAdopt = () => {
           </Card.Body>
         </Card>
       ))}
-      {selectedPet && (
+      {selectedPet && (<>
         <FormAdopcion
           formData={{ name: '', email: '', message: '' }}
           showModal={showModal}
@@ -140,6 +140,9 @@ const PetCardAdopt = () => {
           userId={userId}
           petId={selectedPet._id}
         />
+        {console.log('user id:', userId)}
+        {console.log('selectedPet:',selectedPet._id)}
+        </>
       )}
     </div>
   );

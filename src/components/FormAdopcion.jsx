@@ -27,7 +27,7 @@ function FormAdopcion({ formData, showModal, closeModal, userId, petId }) {
     <Modal show={showModal} onHide={closeModal} className="modal">
       <Modal.Header className='modal-header-adoption' closeButton>
         <div className='titulo-form'>
-          <Modal.Title>Solicitar Adopcion</Modal.Title>
+          <Modal.Title>Solicitar Adopción</Modal.Title>
         </div>
       </Modal.Header>
       <Modal.Body>
@@ -66,26 +66,6 @@ function FormAdopcion({ formData, showModal, closeModal, userId, petId }) {
               name="message"
               value={localFormData.message}
               onChange={handleFormChange}
-            />
-          </Form.Group>
-
-          <Form.Group className="mb-3" controlId="formUserId">
-            <Form.Label className='text-label'>User ID</Form.Label>
-            <Form.Control
-              type="text"
-              name="userId"
-              value={localFormData.userId}
-              readOnly
-            />
-          </Form.Group>
-
-          <Form.Group className="mb-3" controlId="formPetId">
-            <Form.Label className='text-label'>Pet ID</Form.Label>
-            <Form.Control
-              type="text"
-              name="petId"
-              value={localFormData.petId}
-              readOnly
             />
           </Form.Group>
 

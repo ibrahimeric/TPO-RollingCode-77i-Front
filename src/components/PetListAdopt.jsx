@@ -126,7 +126,7 @@ return (
               <td>{pet.sex}</td>
               <td>{pet.species}</td>
               <td>
-                <Link to={`/mascota/${pet._id}`}>
+                <Link to={`/mascota/${pet._id}/adopt`}>
                   <Button variant="primary" className="btn-primary-petlist">Ver Detalles</Button>
                 </Link>
               </td>
