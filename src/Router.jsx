@@ -36,11 +36,6 @@ const AppRouter = () => {
               <Route path="/" element={<Home/>} />
               <Route path="login" element={<Login />} />
               <Route path="register" element={<Register />} />
-              <Route path='mascotas' element={<Pet/>} />
-              <Route path='mascota/:id' element={<PetDetail/>} />
-              <Route path='mascota/:id/edit' element={<PetEdit/>} />
-              <Route path='mascota/:id/adopt' element={<PetDetailAdopt/>} />
-              <Route path='mascota/add' element={<PetAdd/>} />
               <Route path="*" element={<Error404 />} />
             </Routes>
             <Footer />
