@@ -10,7 +10,9 @@ const PetListAdopt = () => {
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const backServerUrl = config.backServerUrl;
+  const [userId, setUserId] = useState();
 
+  
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -18,21 +20,22 @@ const PetListAdopt = () => {
       return;
     }
 
-    let userId;
+    let decodedUserId;
     try {
       const decodedToken = jwtDecode(token);
-      userId = decodedToken.id;
-      console.log(userId);
+      decodedUserId = decodedToken.id;
+      setUserId(decodedUserId);
+      console.log(decodedUserId);
     } catch (error) {
       setError("Invalid token");
       console.error("Error decoding token:", error);
       return;
     }
 
-    const fetchPets = async () => {
+    const fetchPets = async (userId) => {
       try {
         const response = await fetch(
-          `${backServerUrl}user/${userId}/pets`,
+          `${backServerUrl}user/adoption/adopt_pets`,
           {
             method: "GET",
             headers: {
@@ -55,11 +58,11 @@ const PetListAdopt = () => {
 
         console.log("API response data:", data); // Log the response data
 
-        // Ensure data.pets is an array
-        if (Array.isArray(data.pets)) {
-          setPets(data.pets);
+        // Ensure data is an array
+        if (Array.isArray(data)) {
+          setPets(data);
         } else {
-          throw new Error("Received data.pets is not an array");
+          throw new Error("Received data is not an array");
         }
       } catch (error) {
         setError(error.message);
@@ -67,7 +70,9 @@ const PetListAdopt = () => {
       }
     };
 
-    fetchPets();
+    if (decodedUserId) {
+      fetchPets(decodedUserId);
+    }
   }, []);
 
   const handleSearchChange = (event) => {

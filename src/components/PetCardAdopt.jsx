@@ -35,10 +35,10 @@ const PetCardAdopt = () => {
       return;
     }
 
-    const fetchPets = async () => {
+    const fetchPets = async (userId) => {
       try {
         const response = await fetch(
-          `${backServerUrl}user/${decodedUserId}/pets`,
+          `${backServerUrl}user/adoption/adopt_pets`,
           {
             method: "GET",
             headers: {
@@ -61,11 +61,11 @@ const PetCardAdopt = () => {
 
         console.log("API response data:", data); // Log the response data
 
-        // Ensure data.pets is an array
-        if (Array.isArray(data.pets)) {
-          setPets(data.pets);
+        // Ensure data is an array
+        if (Array.isArray(data)) {
+          setPets(data);
         } else {
-          throw new Error("Received data.pets is not an array");
+          throw new Error("Received data is not an array");
         }
       } catch (error) {
         setError(error.message);
@@ -73,7 +73,9 @@ const PetCardAdopt = () => {
       }
     };
 
-    fetchPets();
+    if (decodedUserId) {
+      fetchPets(decodedUserId);
+    }
   }, []);
 
   const handleSearchChange = (event) => {
