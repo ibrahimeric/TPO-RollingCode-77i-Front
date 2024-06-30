@@ -1,25 +1,31 @@
 /* Estilos para el contenedor principal de las tarjetas */
 .cards-container {
-    display: flex;
-    align-items: center;
-    gap: 1vw;
     background-color: #ffff;
     padding: 4rem 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5vw;
     position: relative;
 }
 
-
 /* Estilos para el título de las tarjetas */
 .cards-container .titulo-cards {
-    width: 50%;
-    font-size: 2rem;
+    width: 100%;
     text-align: center;
 }
 
+/* Estilo por defecto para el título */
+.cards-container .titulo-cards .titulo-size {
+    font-size: 2.5vw;
+}
 
 /* Estilos para las tarjetas individuales */
 .cards-container .custom-card {
+    display: flex;
     box-shadow: transparent;
+    border: none;
     width: 20vw;
     margin: 10px 0px;
     display: flex;
@@ -27,7 +33,7 @@
     align-items: center;
     max-height: 35vw;
     box-sizing: border-box;
-    background-color: transparent !important;
+    background-color: transparent;
 }
 
 /* Estilos para el contenedor de la imagen de la tarjeta */

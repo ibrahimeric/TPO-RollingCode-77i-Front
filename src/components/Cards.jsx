@@ -30,7 +30,9 @@ const Cards = () => {
 
   return (
     <div className="cards-container">
-      <h3 className='titulo-cards'>Nuestros Servicios</h3>
+      <div className='titulo-cards'>
+        <h3 className='titulo-size'>Nuestros Servicios</h3>
+      </div>
       {cardsData.map((card, index) => (
         <div className="custom-card" key={index}>
           <CardComponent
