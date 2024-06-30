@@ -1,0 +1,28 @@
+/* Pet.css */
+
+.pet-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .button-toggle {
+    margin-bottom: 20px;
+    background-color: #4CAF50; /* Color de fondo normal */
+    color: white; /* Color del texto */
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .button-toggle:hover {
+    background-color: #45a049; /* Color de fondo al pasar el mouse */
+    transform: scale(1.1); /* Escala ligeramente más grande al pasar el mouse */
+  }
+  

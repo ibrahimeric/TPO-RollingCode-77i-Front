@@ -1,15 +1,14 @@
-// src/components/PetCard.jsx
-import React, { useState, useEffect } from 'react';
-import { Card, Button, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import '../../css/Cruds-styles/PetCard.css';
-import { jwtDecode } from "jwt-decode";
-import config from '../../utils/config';
+import React, { useState, useEffect } from "react";
+import { Container, Table, Button, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import "../css/PetList.css";
+import { jwtDecode } from "jwt-decode"; // Importing as default
+import config from "../utils/config";
 
-const PetCard = () => {
+const PetList = () => {
   const [pets, setPets] = useState([]);
   const [error, setError] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const backServerUrl = config.backServerUrl;
 
   useEffect(() => {
@@ -75,24 +74,21 @@ const PetCard = () => {
     setSearchTerm(event.target.value);
   };
 
-  const filteredPets = pets.filter(pet =>
+  const filteredPets = pets.filter((pet) =>
     pet.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const petimagen = (pet) => {
-    if (pet.imagen === undefined) {
-      return 'src/assets/pet.imagen.jpg';
-    } else {
-      return pet.imagen;
-    }
+  const petImage = (pet) => {
+    return pet.imagen ? pet.imagen : "src/assets/pet.imagen.jpg";
   };
 
   if (error) {
     return <div>Error: {error}</div>;
   }
 
-  return (
-    <div className="pet-card-container">
+return (
+    <Container className="container-petlist">
+      <h1 className="h1-petlist">Listado de Mascotas</h1>
       <div className="pet-card-header">
         <Form.Control
           type="text"
@@ -101,31 +97,47 @@ const PetCard = () => {
           onChange={handleSearchChange}
           className="mb-3"
         />
-        <Link to="/pet/add">
-          <Button variant="success">
-            Agregar otra mascota
-          </Button>
+        <Link to="/mascota/add">
+          <Button variant="success">Agregar otra mascota</Button>
         </Link>
       </div>
-      {filteredPets.map((pet) => (
-        <Card key={pet._id} className="pet-card mb-3">
-          <Card.Img variant="top" src={petimagen(pet)} alt={pet.name} />
-          <Card.Body>
-            <Card.Title className="pet-card-title">{pet.name}</Card.Title>
-            <Card.Text className="pet-card-text">
-              <strong>Raza:</strong> {pet.race}<br />
-              <strong>Edad:</strong> {pet.age} años<br />
-              <strong>Sexo:</strong> {pet.sex}<br />
-              <strong>Especie:</strong> {pet.species}
-            </Card.Text>
-            <Link to={`/pet/${pet._id}/edit`}>
-              <Button variant="primary" className="pet-btn-primary">Editar</Button>
-            </Link>
-          </Card.Body>
-        </Card>
-      ))}
-    </div>
+      <Table striped bordered hover responsive className="table-petlist">
+        <thead>
+          <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Raza</th>
+            <th>Edad</th>
+            <th>Sexo</th>
+            <th>Especie</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredPets.map((pet) => (
+            <tr key={pet._id}>
+              <td>
+                <img
+                  src={petImage(pet)}
+                  alt={pet.name}
+                />
+              </td>
+              <td>{pet.name}</td>
+              <td>{pet.raice}</td>
+              <td>{pet.age} años</td>
+              <td>{pet.sex}</td>
+              <td>{pet.species}</td>
+              <td>
+                <Link to={`/mascota/${pet._id}`}>
+                  <Button variant="primary" className="btn-primary-petlist">Ver Detalles</Button>
+                </Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </Container>
   );
 };
 
-export default PetCard;
+export default PetList;

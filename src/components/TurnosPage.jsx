@@ -3,7 +3,7 @@ import { Button, Container, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import '../../css/PrivatePages-styles/TurnosPage.css';
-import config from '../../utils/config';
+import config from '../utils/config';
 
 const TurnosPage = () => {
   const [turnos, setTurnos] = useState([]);
