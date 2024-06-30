@@ -1,0 +1,75 @@
+/* App.css */
+
+.admin-home-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.admin-home-page h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.admin-home-page p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.error-message {
+    color: red;
+    font-size: 16px;
+}
+
+.item-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.item {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.item span {
+    font-size: 16px;
+}
+
+.nav-list {
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.nav-list li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.nav-list li:last-child {
+    margin-right: 0;
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+}
+
+.link {
+    background-color: #164e8e;
+
+    padding: 10px 20px; 
+    font-size: 16px;
+    cursor: pointer; 
+}
+
+.link:hover {
+    background-color: #ccc; 
+}

@@ -97,7 +97,7 @@ const Login = () => {
             <Link to="/recover-password">¿Olvidaste tu contraseña?</Link>
           </div>
           <div className="text-center">
-            <Link to="/register">¿No tienes una cuenta? Registrarse</Link>
+            <Link to="/public/register">¿No tienes una cuenta? Registrarse</Link>
           </div>
         </form>
       </div>

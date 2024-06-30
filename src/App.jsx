@@ -1,10 +1,14 @@
+import Slider from './components/Slider';
+import Cards from './components/Cards';
+import UserExperience from './components/UserExperience';
 import './css/PublicPages-styles/App.css';
-import AppRouter from './Router';
 
 function App() {
   return (
     <>
-      <AppRouter/>
+      <Slider />
+      <Cards />
+      <UserExperience />
     </>
   );
 }
