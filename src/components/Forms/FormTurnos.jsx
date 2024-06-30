@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import '../css/Forms-styles/FormTurnos.css';
+import '../../css/Forms-styles/FormTurnos.css';
 import axios from 'axios'; // Importar axios para hacer solicitudes HTTP
-import config from '../utils/config';
+import config from '../../utils/config';
 // import { jwtDecode } from 'jwt-decode';
 
 function FormTurnos() {

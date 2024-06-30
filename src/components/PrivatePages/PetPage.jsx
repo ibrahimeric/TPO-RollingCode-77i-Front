@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Container, Table, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "../css/PetList.css";
+import "../../css/PrivatePages-styles/PetsPage.css";
 import { jwtDecode } from "jwt-decode"; // Importing as default
-import config from "../utils/config";
+import config from "../../utils/config";
 
-const PetListAdopt = () => {
+const PetList = () => {
   const [pets, setPets] = useState([]);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const backServerUrl = config.backServerUrl;
-  const [userId, setUserId] = useState();
 
-  
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -20,22 +18,21 @@ const PetListAdopt = () => {
       return;
     }
 
-    let decodedUserId;
+    let userId;
     try {
       const decodedToken = jwtDecode(token);
-      decodedUserId = decodedToken.id;
-      setUserId(decodedUserId);
-      console.log(decodedUserId);
+      userId = decodedToken.id;
+      console.log(userId);
     } catch (error) {
       setError("Invalid token");
       console.error("Error decoding token:", error);
       return;
     }
 
-    const fetchPets = async (userId) => {
+    const fetchPets = async () => {
       try {
         const response = await fetch(
-          `${backServerUrl}user/adoption/adopt_pets`,
+          `${backServerUrl}user/${userId}/pets`,
           {
             method: "GET",
             headers: {
@@ -58,11 +55,11 @@ const PetListAdopt = () => {
 
         console.log("API response data:", data); // Log the response data
 
-        // Ensure data is an array
-        if (Array.isArray(data)) {
-          setPets(data);
+        // Ensure data.pets is an array
+        if (Array.isArray(data.pets)) {
+          setPets(data.pets);
         } else {
-          throw new Error("Received data is not an array");
+          throw new Error("Received data.pets is not an array");
         }
       } catch (error) {
         setError(error.message);
@@ -70,9 +67,7 @@ const PetListAdopt = () => {
       }
     };
 
-    if (decodedUserId) {
-      fetchPets(decodedUserId);
-    }
+    fetchPets();
   }, []);
 
   const handleSearchChange = (event) => {
@@ -102,7 +97,9 @@ return (
           onChange={handleSearchChange}
           className="mb-3"
         />
-
+        <Link to="/pet/add">
+          <Button variant="success">Agregar otra mascota</Button>
+        </Link>
       </div>
       <Table striped bordered hover responsive className="table-petlist">
         <thead>
@@ -131,7 +128,7 @@ return (
               <td>{pet.sex}</td>
               <td>{pet.species}</td>
               <td>
-                <Link to={`/mascota/${pet._id}/adopt`}>
+                <Link to={`/pet/${pet._id}`}>
                   <Button variant="primary" className="btn-primary-petlist">Ver Detalles</Button>
                 </Link>
               </td>
@@ -143,4 +140,4 @@ return (
   );
 };
 
-export default PetListAdopt;
+export default PetList;
