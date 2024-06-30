@@ -1,7 +1,7 @@
 import Carousel from 'react-bootstrap/Carousel';
 import Image from 'react-bootstrap/Image';
 import { userExperiences } from '../js/data';
-import '../css/UserExperience.css';
+import '../css/Components-styles/UserExperience.css';
 
 const UserExperience = () => {
     return (

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Container, Table, Button, Form, Modal } from "react-bootstrap"; // Importa Modal desde react-bootstrap
 import { Link } from "react-router-dom";
-import FormAdopcion from './FormAdopcion';
-import "../css/AdopcionPage.css";
+import FormAdopcion from '../Forms/FormAdopcion';
+import "../../css/PrivatePages-styles/AdopcionPage.css";
 
 const AdopcionPage = () => {
 

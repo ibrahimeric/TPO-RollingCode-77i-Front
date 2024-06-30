@@ -8,6 +8,7 @@ const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   // Estado que indica si el usuario está autenticado.
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // Estado de carga
 
   // Efecto que se ejecuta una vez cuando el componente se monta.
   // Revisa si hay un token almacenado en localStorage para determinar
@@ -17,6 +18,7 @@ const AuthProvider = ({ children }) => {
     if (token) {
       setIsAuthenticated(true);
     }
+    setIsLoading(false); // Marca que la carga ha finalizado
   }, []);
 
   // Función para iniciar sesión. Guarda el token en localStorage y
@@ -37,7 +39,7 @@ const AuthProvider = ({ children }) => {
   // a los componentes hijos a través del contexto.
   return (
     <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
-      {children}
+      {!isLoading && children} {/* Renderiza children solo cuando isLoading sea false */}
     </AuthContext.Provider>
   );
 };

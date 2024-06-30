@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import config from '../../utils/config';
 
 function AdminTurnos({ setPage }) {
   const [turnos, setTurnos] = useState([]);
   const [error, setError] = useState(null);
+  const backServerUrl = config.backServerUrl
 
   useEffect(() => {
     // Define tu variable de accessToken
@@ -13,7 +15,7 @@ function AdminTurnos({ setPage }) {
     const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTcxODIwNzg1MSwiZXhwIjoxNzE4MjExNDUxfQ.SV06qE_JHk21ioRP6ULJmvyxniv2NQ-SHrhKDy25_jQ';
     const fetchTurnos = async () => {
       try {
-        const response = await axios.get('https://back-rum-rolling.onrender.com/admin/appointments', {
+        const response = await axios.get(`${backServerUrl}admin/appointments`, {
           headers: {
             Authorization: 'Bearer ' + accessToken // Reemplaza accessToken con tu token de acceso válido
           }
@@ -31,7 +33,7 @@ function AdminTurnos({ setPage }) {
   /* useEffect(() => {
     const fetchTurnos = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/admin/appointments');
+        const response = await axios.get(`${backServerUrl}admin/appointments`);
         setTurnos(response.data);
       } catch (err) {
         setError('Error fetching appointments');
@@ -44,7 +46,7 @@ function AdminTurnos({ setPage }) {
  */
   const handleDeleteFecha = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/admin/appointments/delete/${id}`);
+      await axios.delete(`${backServerUrl}admin/appointments/delete/${id}`);
       const updatedTurnos = turnos.map(turno =>
         turno._id === id ? { ...turno, date: null } : turno
       );

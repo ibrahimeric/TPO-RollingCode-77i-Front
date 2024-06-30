@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 import { jwtDecode } from 'jwt-decode';
+import config from '../../utils/config';
 
 const PetDetail = () => {
+  const backServerUrl = config.backServerUrl;
+
   const { id } = useParams();
   console.log(id);
 
@@ -24,7 +27,7 @@ const PetDetail = () => {
           throw new Error("Invalid token");
         }
 
-        const response = await fetch(`https://back-rum-rolling.onrender.com/pet/${id}`, {
+        const response = await fetch(`${backServerUrl}pet/${id}`, {
           headers: {
             "Authorization": `Bearer ${token}`,
           },

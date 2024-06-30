@@ -1,18 +1,18 @@
-import { useState, useContext } from 'react'; // Importa useState y useContext de React
-import { useNavigate, Link } from 'react-router-dom'; // Importa useNavigate y Link de react-router-dom para navegación
-import { AuthContext } from '../context/Context'; // Importa AuthContext desde el contexto de autenticación
-import '../css/Login.css'; // Importa el archivo de estilos CSS
+import { useState, useContext } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { AuthContext } from '../context/Context';
+import '../css/Login.css';
+import config from '../utils/config';
 
 const Login = () => {
-  // Declaración de estados locales para los campos del formulario y otros estados necesarios
-  const [email, setEmail] = useState(''); // Estado para el email
-  const [password, setPassword] = useState(''); // Estado para la contraseña
-  const [showPassword, setShowPassword] = useState(false); // Estado para mostrar/ocultar la contraseña
-  const [errors, setErrors] = useState({}); // Estado para manejar los errores del formulario
-  const navigate = useNavigate(); // Hook de navegación de react-router-dom
-  const { login } = useContext(AuthContext); // Obtiene la función login del contexto de autenticación
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
+  const backServerUrl = config.backServerUrl
 
-  // Función para validar el formulario
   const validateForm = () => {
     const newErrors = {}; // Objeto para almacenar errores
 
@@ -32,8 +32,7 @@ const Login = () => {
       return; // Si el formulario no es válido, no continúa
     }
     try {
-      // Realiza una solicitud POST al servidor para iniciar sesión
-      const response = await fetch('https://back-rum-rolling.onrender.com/auth/login', {
+      const response = await fetch(`${backServerUrl}auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -100,7 +99,7 @@ const Login = () => {
             <Link to="/recover-password">¿Olvidaste tu contraseña?</Link> {/* Enlace para recuperar contraseña */}
           </div>
           <div className="text-center">
-            <Link to="/register">¿No tienes una cuenta? Registrarse</Link> {/* Enlace para registrarse */}
+            <Link to="/public/register">¿No tienes una cuenta? Registrarse</Link>
           </div>
         </form>
       </div>

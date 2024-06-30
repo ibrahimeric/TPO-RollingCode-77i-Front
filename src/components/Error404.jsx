@@ -1,6 +1,6 @@
-// import { Link } from 'react-router-dom';
-// import { Container, Row, Col, Button } from 'react-bootstrap';
-import '../css/Error404.css'
+import { Link } from 'react-router-dom';
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import '../css/Components-styles/Error404.css'
 
 const Error404 = () => {
   return (

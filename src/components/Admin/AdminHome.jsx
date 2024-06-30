@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import '../css/AdminHome.css'
+import '../../css/Admin-styles/AdminHome.css'
 
 function AdminHomePage() {
   // const history = useHistory();

@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import {jwtDecode} from "jwt-decode"; // Importar jwtDecode correctamente
 import axios from 'axios';
+import config from "../../utils/config";
 
 const PetEdit = () => {
   const { id } = useParams();
@@ -10,6 +11,7 @@ const PetEdit = () => {
   const [pet, setPet] = useState(null);
   const [editedPet, setEditedPet] = useState({});
   const [error, setError] = useState(null);
+  const backServerUrl = config.backServerUrl
 
   useEffect(() => {
     const fetchPetDetails = async () => {
@@ -25,7 +27,7 @@ const PetEdit = () => {
           throw new Error("Invalid token");
         }
 
-        const response = await fetch(`https://back-rum-rolling.onrender.com/pet/${id}`, {
+        const response = await fetch(`${backServerUrl}pet/${id}`, {
           headers: {
             "Authorization": `Bearer ${token}`,
           },
@@ -79,7 +81,7 @@ const PetEdit = () => {
         formData.append("image", editedPet.image);
       }
 
-      const response = await fetch(`https://back-rum-rolling.onrender.com/pet/${id}`, {
+      const response = await fetch(`${backServerUrl}pet/${id}`, {
         method: "PATCH",
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -117,7 +119,7 @@ const PetEdit = () => {
     }
 
     try {
-      await axios.delete(`https://back-rum-rolling.onrender.com/delete/${id}`, {
+      await axios.delete(`${backServerUrl}delete/${id}`, {
         headers: {
           "Authorization": `Bearer ${token}`,
         },

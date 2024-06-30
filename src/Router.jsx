@@ -6,24 +6,32 @@ import NavBar from './components/Navbar';
 import Footer from './components/Footer';
 import Error404 from './components/Error404';
 import Loading from './components/Loading';
-import Contact from './components/Contact';
-import TurnosPage from './components/TurnosPage';
-import FormTurnos from './components/FormTurnos';
-import FormRegistro from './components/FormRegistro';
 import PublicRoute from './routes/PublicRoutes';
+import PrivateRoute from './routes/PrivateRoutes';
+
+import ContactPage from './components/PublicPages/ContactPage';
+import TurnosPage from './components/PrivatePages/TurnosPage';
+import FormTurnos from './components/Forms/FormTurnos';
+
+
 import Login from './components/Login';
 import Register from './components/Register';
-import PetList from './components/PetList';
-import PetDetail from './components/PetDetail';
-import PetEdit from './components/PetEdit';
-import PetAdd from './components/PetAdd';
-import AdminHomePage from './components/AdminHome';
-import AdminAdopciones from './components/AdminAdopciones';
-import AdminMascotas from './components/AdminMascotas';
-import AdminTurnos from './components/AdminTurnos';
-import AdopcionPage from './components/AdopcionPage';
-import FormAdopcion from './components/FormAdopcion';
-import AboutPage from './components/AcercaDe';
+
+import PetPage from './components/PrivatePages/PetPage';
+import PetDetail from './components/Cruds/PetDetail';
+import PetEdit from './components/Cruds/PetEdit';
+import PetAdd from './components/Forms/PetAdd';
+
+import AdminHomePage from './components/Admin/AdminHome';
+import AdminAdopciones from './components/Admin/AdminAdopciones';
+import AdminMascotas from './components/Admin/AdminMascotas';
+import AdminTurnos from './components/Admin/AdminTurnos';
+
+import AdopcionPage from './components/PrivatePages/AdopcionPage';
+import FormAdopcion from './components/Forms/FormAdopcion';
+
+import AboutPage from './components/PublicPages/AcercaDe';
+
 
 const AppRouter = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -40,45 +48,67 @@ const AppRouter = () => {
 
   return (
     <React.StrictMode>
-      {/* Muestra el componente Loading si isLoading es verdadero */}
-      {isLoading ? (
-        <Loading />
-      ) : (
-        // Proveedor de autenticación envuelve el Router para proporcionar contexto de autenticación a todos los componentes hijos
+      {isLoading ? (<Loading />) : (
         <AuthProvider>
           <Router>
             <NavBar /> {/* Componente de barra de navegación */}
             <Routes>
-              {/* Define las rutas de la aplicación */}
-              <Route path="/" element={<App />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="*" element={<Error404 />} /> {/* Ruta para página no encontrada */}
-              <Route path="/page-mascotas" element={<PetList />} />
-              <Route path="/page-turnos" element={<TurnosPage />} />
-              <Route path="/formTurnos" element={<FormTurnos />} />
-              <Route path="/formRegistro" element={<FormRegistro />} />
-              <Route path="/pet/adopcion" element={<FormAdopcion />} />
-              <Route path="/adopciones" element={<AdopcionPage />} />
-              <Route path="/login" element={<PublicRoute restricted={true} />}>
-                <Route path="/login" element={<Login />} />
+
+              <Route path="/" element={<App />} /> 
+              <Route path='contacto' element={<ContactPage />} />
+              <Route path='acerca-de' element={<AboutPage/>}/>
+
+              {/* /* RUTAS PUBLICAS */}
+              <Route path='/public/*' element={<PublicRoute restricted={true} />}>
+                  <Route path='login' element={<Login/>}/> 
+                  <Route path='register' element={<Register />}/>
+                  
               </Route>
-              <Route path="/register" element={<PublicRoute restricted={true} />}>
-                <Route path="/register" element={<Register />} />
+
+              {/* /* RUTAS PRIVADAS */}
+              <Route path='/private/*' element={<PublicRoute restricted={true} />} >
+                
+                {/* /* PAGINAS */}
+                <Route path='mascotas' element={<PetPage />} /> 
+                <Route path='turnos' element={<TurnosPage />} /> 
+                <Route path="adopciones" element={<AdopcionPage />} />
+
+                {/* /* FORMULARIOS */}
+                <Route path="form-mascota" element={<PetAdd />} /> 
+                <Route path="form-turno" element={<FormTurnos />} /> 
+                <Route path="form-adopcion" element={<FormAdopcion />} />
+
+                {/* CRUDS  */}
+
+                  {/* MASCOTA */}
+                  <Route path="mascota/:id" element={<PetDetail />} /> 
+                  <Route path="mascota/:id/editar" element={<PetEdit />} />
+
+
+                  {/*  TURNO */}
+                   {/* Eliminar turno */} 
+
+                   {/* ADOPCION */} 
+                  {/* Cancelar adopcion */}
+
               </Route>
-              <Route path="/pets" element={<PetList />} />
-              <Route path="/pet/:id" element={<PetDetail />} />
-              <Route path="/pet/:id/edit" element={<PetEdit />} />
-              <Route path="/pet/add" element={<PetAdd />} />
-              <Route path="/about-us" element={<AboutPage />} />
-              {/* Rutas para el administrador */}
+
+              {/* Administrador */}
               <Route path="/admin" element={<AdminHomePage />} />
               <Route path="/admin/mascotas" element={<AdminMascotas />} />
-              <Route path="/admin/turnos" element={<AdminTurnos />} />
+              <Route path="/admin/turnos" element={<AdminTurnos />} /> 
               <Route path="/admin/adopciones" element={<AdminAdopciones />} />
+
+
+              <Route path='*' element={<Error404 />} />
+
             </Routes>
-            <Footer /> {/* Componente de pie de página */}
+
+            <Footer />
+
           </Router>
         </AuthProvider>
+
       )}
     </React.StrictMode>
   );

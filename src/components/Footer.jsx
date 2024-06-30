@@ -1,5 +1,5 @@
 import { socialMediaLinks, footerLinks} from '../js/data';
-import '../css/Footer.css';
+import '../css/Components-styles/Footer.css';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -45,7 +45,6 @@ const Footer = () => {
                             </div>
                             <div className="justify-content-center footer-copyright text-center py-3 list-unstyled">
                                 <span>© 2024 Copyright:</span>
-                                {/* https://petwebportal.com/ */}
                                 <li><a href="/error-404" target="_blank" rel="noopener noreferrer">PetWebPortal.com</a></li>
                             </div>
                         </div>

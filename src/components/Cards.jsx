@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import card1Image from '../assets/cards/card1.webp';
 import card2Image from '../assets/cards/card2.webp';
 import card3Image from '../assets/cards/card3.webp';
-import '../css/Cards.css';
+import '../css/Components-styles/Cards.css';
 
 const Cards = () => {
   const cardsData = [
@@ -30,7 +30,9 @@ const Cards = () => {
 
   return (
     <div className="cards-container">
-      <h3 className='titulo-cards'>Nuestros Servicios</h3>
+      <div className='titulo-cards'>
+        <h3 className='titulo-size'>Nuestros Servicios</h3>
+      </div>
       {cardsData.map((card, index) => (
         <div className="custom-card" key={index}>
           <CardComponent

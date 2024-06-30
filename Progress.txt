@@ -1,18 +1,43 @@
-Usuario normal
+/* PUBLICAS */
+    {<ContactPage />} /> // JOYA
+    {<AboutPage/>}/> // en esa 
+    {<PublicRoute restricted={true} />}> //Estar Deslogeado
+    {<Login/>}/>  // JOYA
+    {<Register />}/> // JOYA
+    {<PublicRoute restricted={true} />} > //Estar logeado
 
-    -Register: ok
-    -Login: ok
-    -Logout: ok
+    
 
-    -Ver mascotas: (sin foto)
-    -Registrar mascotas: ok
-    -Editar mascotas: no anda
-    -Eliminar mascotas: no anda
+                /* PAGINAS */
+                    {<PetPage />} /> // JOYA
+                    {<TurnosPage />} /> // en esa TurnPage
+                    {<AdopcionPage />} /> // en esa mas pa triki AdoptPage
+JUAN
+                /* FORMULARIOS ANADIR */
+                    {<PetAdd />} /> // JOYA
+                    {<FormTurnos />} /> // en esa TurnAdd
+                    {<FormAdopcion />} /> // en esa mas pa triki AdoptAdd
 
-    -Ver turnos: pendiente
-    -Registrar turnos: pendiente
-    -Eliminar turnos: pendiente
 
-    -Ver adopciones: maquetado
-    -Solicitar adopciones: maquetado
+
+
+                /* CRUDS */
+
+                    /*MASCOTAS*/
+                        {<PetDetail />} /> // casi joya 
+                        {<PetEdit />} /> // casi joya 
+NICO
+                    /* TURNO */
+                        /* Eliminar turno*/ // nada  TurnCancel
+
+                    /* ADOPCION */
+                        /* Cancelar adopcion*/ // nada  AdoptCancel
+
+
+
+                    /* ADMINISTRADOR */ nada
+                        {<AdminHomePage />} /> // nada
+LUCAS                   {<AdminMascotas />} /> // nada
+                        {<AdminTurnos />} /> // nada
+                        {<AdminAdopciones />} /> // nada
 

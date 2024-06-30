@@ -1,20 +1,20 @@
-import React, { useState } from 'react'; // Importa React y el hook useState
-import { Link, useNavigate } from 'react-router-dom'; // Importa Link y useNavigate de react-router-dom para la navegación
-import '../css/Register.css'; // Importa el archivo de estilos CSS
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import '../css/Register.css';
+import config from '../utils/config';
 
 const Register = () => {
-  // Declaración de estados locales para los campos del formulario y otros estados necesarios
-  const [name, setName] = useState(''); // Estado para el nombre
-  const [DNI, setDNI] = useState(''); // Estado para el DNI
-  const [email, setEmail] = useState(''); // Estado para el email
-  const [phone, setPhone] = useState(''); // Estado para el teléfono
-  const [password, setPassword] = useState(''); // Estado para la contraseña
-  const [repeatPassword, setRepeatPassword] = useState(''); // Estado para repetir la contraseña
-  const [showPassword, setShowPassword] = useState(false); // Estado para mostrar/ocultar la contraseña
-  const [errors, setErrors] = useState({}); // Estado para manejar los errores del formulario
-  const navigate = useNavigate(); // Hook de navegación de react-router-dom
+  const [name, setName] = useState('');
+  const [DNI, setDNI] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
+  const [repeatPassword, setRepeatPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
+  const backServerUrl = config.backServerUrl;
 
-  // Función para validar el formulario
   const validateForm = () => {
     const newErrors = {}; // Objeto para almacenar errores
 
@@ -50,8 +50,7 @@ const Register = () => {
       return; // Si el formulario no es válido, no continúa
     }
     try {
-      // Realiza una solicitud POST al servidor para registrar al usuario
-      const response = await fetch('https://back-rum-rolling.onrender.com/auth/register', {
+      const response = await fetch(`${backServerUrl}auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
