@@ -3,18 +3,18 @@
   grid-template-columns: 1fr;
   gap: 20px;
   padding: 20px;
-  background-color: #E3DCD6; /* Color Primario */
+  background-color: #E3DCD6;
 }
 
 .pet-card {
-  border: 1px solid #2F6FA5; /* Color Secundario */
+  border: 1px solid #2F6FA5;
   border-radius: 8px;
   overflow: hidden;
   background-color: white;
 }
 
 .pet-card img {
-  border-bottom: 1px solid #E69A2B; /* Color Acento */
+  border-bottom: 1px solid #E69A2B;
 }
 
 .pet-card-body {
@@ -22,7 +22,7 @@
 }
 
 .pet-card-title {
-  color: #2F6FA5; /* Color Secundario */
+  color: #2F6FA5;
   font-weight: bold;
 }
 
@@ -31,12 +31,12 @@
 }
 
 .btn-primary.pet-btn-primary {
-  background-color: #E69A2B; /* Color Acento */
+  background-color: #E69A2B;
   border-color: #E69A2B;
 }
 
 .btn-primary.pet-btn-primary:hover {
-  background-color: #d38726; /* Tono más oscuro del color acento */
+  background-color: #d38726;
   border-color: #d38726;
 }
 

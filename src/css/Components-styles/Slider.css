@@ -1,6 +1,3 @@
-/* Estilos para el slider principal */
-
-/* Estilos para el contenedor principal del slider */
 .carousel-principal {
     display: block;
     justify-content: center;
@@ -10,7 +7,6 @@
     object-fit: cover;
 }
 
-/* Estilos para los elementos del slider */
 .carousel-principal .carousel-item-wrapper {
     position: relative;
     width: 100%;
@@ -18,14 +14,12 @@
     overflow: hidden;
 }
 
-/* Estilos para las imágenes dentro del slider */
 .carousel-principal .carousel-item-wrapper .carousel-imagen {
     width: 100%;
     height: auto;
     object-fit: cover;
 }
 
-/* Estilos para los subtítulos del slider */
 .carousel-principal .carousel-item-wrapper .custom-carousel-caption {
     position: absolute;
     top: 30%;
@@ -40,19 +34,16 @@
     height: auto;
 }
 
-/* Estilos para los títulos dentro del subtítulo */
 .carousel-principal .carousel-item-wrapper .custom-carousel-caption h3 {
     font-size: 1.7vw;
     margin-bottom: 10px;
 }
 
-/* Estilos para los párrafos dentro del subtítulo */
 .carousel-principal .carousel-item-wrapper .custom-carousel-caption p {
     font-size: 1.2vw;
     margin: 0;
 }
 
-/* Estilos para los indicadores del slider */
 .carousel-principal .carousel-indicators {
     position: absolute;
     bottom: 10px;
@@ -60,7 +51,6 @@
     transform: translateX(-50%);
 }
 
-/* Estilos para los elementos de los indicadores del slider */
 .carousel-principal .carousel-indicators li {
     background-color: #fff;
     border: 1px solid #ccc;
@@ -70,18 +60,15 @@
     cursor: pointer;
 }
 
-/* Estilos para los controles de navegación del slider */
 .carousel-principal #carousel-principal .carousel-control-prev,
 .carousel-principal #carousel-principal .carousel-control-next {
     width: 10%;
 }
 
-/* Estilos para las transiciones de los elementos del slider */
 .carousel-principal .user-experience-carousel .carousel-item {
     transition: opacity 0.5s ease-in-out;
 }
 
-/* Estilos para tamaños de pantalla específicos */
 @media (max-width: 1200px) {
     .carousel-principal .carousel-item-wrapper .custom-carousel-caption {
         top: 10%;

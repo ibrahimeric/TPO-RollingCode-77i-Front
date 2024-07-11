@@ -1,12 +1,10 @@
 import { Modal, Form, Button } from 'react-bootstrap';
-import { useState } from 'react'; // Importa useState desde react
+import { useState } from 'react';
 import '../../css/Forms-styles/Form.css';
 
 function FormAdopcion({ formData, showModal, closeModal}) {
-  // Agrega el estado local para formData
   const [localFormData, setLocalFormData] = useState(formData);
 
-  // Función para manejar cambios en los campos del formulario
   const handleFormChange = (event) => {
     const { name, value } = event.target;
     setLocalFormData({
@@ -30,8 +28,8 @@ function FormAdopcion({ formData, showModal, closeModal}) {
               type="text"
               placeholder="Ingresa tu nombre"
               name="name"
-              value={localFormData.name} // Usa localFormData en lugar de formData
-              onChange={handleFormChange} // Usa handleFormChange en lugar de handleChange
+              value={localFormData.name}
+              onChange={handleFormChange}
             />
           </Form.Group>
 
@@ -41,8 +39,8 @@ function FormAdopcion({ formData, showModal, closeModal}) {
               type="email"
               placeholder="Ingresa tu email"
               name="email"
-              value={localFormData.email} // Usa localFormData en lugar de formData
-              onChange={handleFormChange} // Usa handleFormChange en lugar de handleChange
+              value={localFormData.email} 
+              onChange={handleFormChange} 
             />
             <Form.Text className="text-muted">
               Nunca compartiremos tu email con nadie.
@@ -56,8 +54,8 @@ function FormAdopcion({ formData, showModal, closeModal}) {
               rows={3}
               placeholder="Ingresa un Mensaje"
               name="message"
-              value={localFormData.message} // Usa localFormData en lugar de formData
-              onChange={handleFormChange} // Usa handleFormChange en lugar de handleChange
+              value={localFormData.message} 
+              onChange={handleFormChange} 
             />
           </Form.Group>
 

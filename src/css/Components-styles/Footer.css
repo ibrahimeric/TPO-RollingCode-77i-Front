@@ -1,11 +1,9 @@
-/* Estilos para el contenedor del footer */
 .footer-container {
     width: 100%;
     background-color: #1379ff;
     padding: 4rem 2rem 0;
 }
 
-/* Estilos generales del footer */
 .footer-container .page-footer {
     color: #fff;
 }
@@ -14,33 +12,27 @@
     justify-content: center;
 }
 
-/* Estilos para el título del párrafo del footer */
 .footer-container .text-uppercase {
     color: #fff;
 }
 
-/* Estilos para enlaces dentro del párrafo del footer */
 .footer-container .text-uppercase a {
     color: #fff;
 }
 
-/* Estilos para enlaces dentro del párrafo del footer cuando están en estado de hover */
 .footer-container .text-uppercase a:hover {
     color: #ccc;
 }
 
-/* Estilos para enlaces de la lista sin viñetas */
 .footer-container .list-unstyled li a {
     color: #cacaca;
     text-decoration: none;
 }
 
-/* Estilos para enlaces de la lista sin viñetas cuando están en estado de hover */
 .footer-container .list-unstyled li a:hover {
     color: #535bf2;
 }
 
-/* Estilos para los iconos */
 .footer-container .iconos {
     margin-top: 1rem;
     font-size: 1.5rem;
@@ -48,19 +40,16 @@
     justify-content: center;
 }
 
-/* Estilos para las imágenes de los iconos */
 .footer-container .icono-img {
     width: 30px;
     height: 30px;
     margin: 0 1rem;
 }
 
-/* Estilos para las imágenes de los iconos cuando están en estado de hover */
 .footer-container .icono-img:hover {
     transform: scale(1.2);
 }
 
-/* Estilos para el texto de derechos de autor */
 .footer-container .footer-copyright {
     display: flex;
     align-items: center;
@@ -72,7 +61,6 @@
     margin-left: 5px;
 }
 
-/* Media queries para tamaños de pantalla específicos */
 @media (max-width: 576px) {
     .footer-container .text-uppercase {
         font-size: 15px;

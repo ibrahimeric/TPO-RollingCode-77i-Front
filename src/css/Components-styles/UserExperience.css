@@ -1,41 +1,34 @@
-/* Estilos para el contenedor principal de las tarjetas de experiencia de usuario */
 .contenedor-experiences {
     padding: 0 4rem;
     background-color: rgba(19, 113, 255, 0.372);
 }
 
-/* Estilos para el carrusel de experiencia de usuario dentro del contenedor principal */
 .contenedor-experiences .user-experience-carousel {
     background-color: transparent;
     max-width: 100%;
     padding: 4rem 5rem;
 }
 
-/* Estilos para el contenedor de cada item dentro del carrusel de experiencia de usuario */
 .contenedor-experiences .user-experience-carousel .item-container {
     background-color: transparent;
     padding: 0 1rem;
 }
 
-/* Estilos para cada slide del carrusel de experiencia de usuario */
 .contenedor-experiences .user-experience-carousel .user-slide {
     background-color: transparent;
     padding: 0;
 }
 
-/* Estilos para el contenedor de la imagen dentro de cada slide del carrusel de experiencia de usuario */
 .contenedor-experiences .user-experience-carousel .image-container {
     background-color: transparent;
     padding: 0.5rem 0;
 }
 
-/* Estilos para el contenedor del texto dentro de cada slide del carrusel de experiencia de usuario */
 .contenedor-experiences .user-experience-carousel .text-container {
     background-color: transparent;
     padding: 0.5rem 0;
 }
 
-/* Estilos para las imágenes de perfil redondeadas dentro de cada slide del carrusel de experiencia de usuario */
 .contenedor-experiences .user-experience-carousel .rounded-circle {
     width: 100px;
     height: 100px;
@@ -45,23 +38,19 @@
     align-items: left;
 }
 
-/* Estilos para el comentario de la experiencia dentro de cada slide del carrusel de experiencia de usuario */
 .contenedor-experiences .user-experience-carousel .text-comment {
     font-size: 20px;
 }
 
-/* Estilos para el nombre de la persona que realizó la experiencia dentro de cada slide del carrusel de experiencia de usuario */
 .contenedor-experiences .user-experience-carousel .text-name {
     font-size: 20px;
 }
 
-/* Estilos para los controles de navegación del carrusel de experiencia de usuario */
 .contenedor-experiences .user-experience-carousel a.carousel-control-prev,
 .contenedor-experiences .user-experience-carousel a.carousel-control-next {
     width: 80px;
 }
 
-/* Estilos para los iconos de los controles de navegación del carrusel de experiencia de usuario */
 .contenedor-experiences .user-experience-carousel .carousel-control-prev-icon,
 .contenedor-experiences .user-experience-carousel .carousel-control-next-icon {
     width: 50px;
@@ -70,24 +59,20 @@
     border-radius: 50%;
 }
 
-/* Estilos para los iconos de los controles de navegación del carrusel de experiencia de usuario (span) */
 .contenedor-experiences .user-experience-carousel span.carousel-control-prev-icon,
 .contenedor-experiences .user-experience-carousel span.carousel-control-next-icon {
     width: 40px;
     height: 40px;
 }
 
-/* Estilos para el icono de flecha izquierda del control de navegación del carrusel de experiencia de usuario */
 .contenedor-experiences .user-experience-carousel .carousel-control-prev-icon {
     background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'%23FFFFFF\' viewBox=\'0 0 8 8\'%3e%3cpath d=\'M4.5 0L0 4l4.5 4V5h3V3h-3V0z\'/%3e%3c/svg%3e');
 }
 
-/* Estilos para el icono de flecha derecha del control de navegación del carrusel de experiencia de usuario */
 .contenedor-experiences .user-experience-carousel .carousel-control-next-icon {
     background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'%23FFFFFF\' viewBox=\'0 0 8 8\'%3e%3cpath d=\'M3.5 0v3H0v2h3.5v3L8 4 3.5 0z\'/%3e%3c/svg%3e');
 }
 
-/* Estilos para los elementos del carrusel de experiencia de usuario */
 .contenedor-experiences #carousel-principal .carousel-item {
     transition: opacity 0.1s ease-in-out;
 }

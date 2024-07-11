@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import {jwtDecode} from "jwt-decode"; // Importar jwtDecode correctamente
+import {jwtDecode} from "jwt-decode"; 
 import axios from 'axios';
 import config from "../../utils/config";
 
 const PetEdit = () => {
   const { id } = useParams();
-  const navigate = useNavigate(); // Para redireccionar después de la eliminación
+  const navigate = useNavigate(); 
   const [pet, setPet] = useState(null);
   const [editedPet, setEditedPet] = useState({});
   const [error, setError] = useState(null);
@@ -93,8 +93,7 @@ const PetEdit = () => {
         throw new Error("Network response was not ok");
       }
 
-      // Manejar actualización exitosa, redireccionar o mostrar mensaje de éxito
-      navigate('/pets'); // Redireccionar a la lista de mascotas
+      navigate('/pets'); 
     } catch (error) {
       console.error("Error updating pet:", error);
       setError(error.message);
@@ -124,7 +123,7 @@ const PetEdit = () => {
           "Authorization": `Bearer ${token}`,
         },
       });
-      navigate('/pets'); // Redireccionar después de la eliminación
+      navigate('/pets');
     } catch (err) {
       setError('Error deleting pet');
       console.error('Error deleting pet:', err);

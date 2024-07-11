@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AuthProvider } from './context/Context'; // Importa el proveedor de autenticación
+import { AuthProvider } from './context/Context';
 import App from './App';
 import NavBar from './components/Navbar';
 import Footer from './components/Footer';
@@ -36,13 +36,11 @@ import AboutPage from './components/PublicPages/AcercaDe';
 const AppRouter = () => {
   const [isLoading, setIsLoading] = useState(true);
 
-  // useEffect se utiliza para ejecutar un efecto secundario después de que el componente se monte.
   useEffect(() => {
     const timeout = setTimeout(() => {
-      setIsLoading(false); // Después de 1 segundo, cambia isLoading a false
+      setIsLoading(false);
     }, 1000);
 
-    // Limpia el timeout si el componente se desmonta antes de que el timeout termine.
     return () => clearTimeout(timeout);
   }, []);
 
@@ -51,27 +49,27 @@ const AppRouter = () => {
       {isLoading ? (<Loading />) : (
         <AuthProvider>
           <Router>
-            <NavBar /> {/* Componente de barra de navegación */}
+            <NavBar />
             <Routes>
 
               <Route path="/" element={<App />} /> 
               <Route path='contacto' element={<ContactPage />} />
               <Route path='acerca-de' element={<AboutPage/>}/>
 
-              {/* /* RUTAS PUBLICAS */}
               <Route path='/public/*' element={<PublicRoute restricted={true} />}>
                   <Route path='login' element={<Login/>}/> 
                   <Route path='register' element={<Register />}/>
                   
               </Route>
 
-              {/* /* RUTAS PRIVADAS */}
               <Route path='/private/*' element={<PublicRoute restricted={true} />} >
                 
+
                 {/* /* PAGINAS */}
                 <Route path='mascotas' element={<PetPage />} /> 
                 <Route path='turnos' element={<TurnosPage />} /> 
                 <Route path="adopciones" element={<AdopcionPage />} />
+                
 
                 {/* /* FORMULARIOS */}
                 <Route path="form-mascota" element={<PetAdd />} /> 
@@ -84,7 +82,6 @@ const AppRouter = () => {
                   <Route path="mascota/:id" element={<PetDetail />} /> 
                   <Route path="mascota/:id/editar" element={<PetEdit />} />
 
-
                   {/*  TURNO */}
                    {/* Eliminar turno */} 
 
@@ -93,7 +90,6 @@ const AppRouter = () => {
 
               </Route>
 
-              {/* Administrador */}
               <Route path="/admin" element={<AdminHomePage />} />
               <Route path="/admin/mascotas" element={<AdminMascotas />} />
               <Route path="/admin/turnos" element={<AdminTurnos />} /> 

@@ -10,14 +10,12 @@ function AdminTurnos({ setPage }) {
   const backServerUrl = config.backServerUrl
 
   useEffect(() => {
-    // Define tu variable de accessToken
-    // const accessToken = 'tu_token_de_acceso_aqui';
     const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsImlhdCI6MTcxODIwNzg1MSwiZXhwIjoxNzE4MjExNDUxfQ.SV06qE_JHk21ioRP6ULJmvyxniv2NQ-SHrhKDy25_jQ';
     const fetchTurnos = async () => {
       try {
         const response = await axios.get(`${backServerUrl}admin/appointments`, {
           headers: {
-            Authorization: 'Bearer ' + accessToken // Reemplaza accessToken con tu token de acceso válido
+            Authorization: 'Bearer ' + accessToken 
           }
         });
         setTurnos(response.data);
@@ -30,20 +28,6 @@ function AdminTurnos({ setPage }) {
     fetchTurnos();
   }, []);
 
-  /* useEffect(() => {
-    const fetchTurnos = async () => {
-      try {
-        const response = await axios.get(`${backServerUrl}admin/appointments`);
-        setTurnos(response.data);
-      } catch (err) {
-        setError('Error fetching appointments');
-        console.error('Error fetching appointments:', err);
-      }
-    };
-
-    fetchTurnos();
-  }, []);
- */
   const handleDeleteFecha = async (id) => {
     try {
       await axios.delete(`${backServerUrl}admin/appointments/delete/${id}`);

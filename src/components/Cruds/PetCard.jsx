@@ -1,4 +1,3 @@
-// src/components/PetCard.jsx
 import React, { useState, useEffect } from 'react';
 import { Card, Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -54,9 +53,8 @@ const PetCard = () => {
 
         const data = await response.json();
 
-        console.log("API response data:", data); // Log the response data
+        console.log("API response data:", data); 
 
-        // Ensure data.pets is an array
         if (Array.isArray(data.pets)) {
           setPets(data.pets);
         } else {

@@ -1,5 +1,3 @@
-// config.js
-
 const config = {
     backServerUrl: 'http://localhost:5000/',
 
@@ -11,8 +9,8 @@ const config = {
     formTurnoRoute: 'private/mascotas/',
     formAdopcionRoute: 'private/mascotas/',
 
-    tokenKey: 'token', // nombre de la clave del token en localStorage
-    intervalTime: 5000, // tiempo en milisegundos para el intervalo
+    tokenKey: 'token',
+    intervalTime: 5000,
   };
   
   export default config;

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Table, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../../css/PrivatePages-styles/PetsPage.css";
-import { jwtDecode } from "jwt-decode"; // Importing as default
+import { jwtDecode } from "jwt-decode"; 
 import config from "../../utils/config";
 
 const PetList = () => {
@@ -53,9 +53,8 @@ const PetList = () => {
 
         const data = await response.json();
 
-        console.log("API response data:", data); // Log the response data
+        console.log("API response data:", data); 
 
-        // Ensure data.pets is an array
         if (Array.isArray(data.pets)) {
           setPets(data.pets);
         } else {

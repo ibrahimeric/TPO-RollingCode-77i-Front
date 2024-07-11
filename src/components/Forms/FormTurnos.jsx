@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import '../../css/Forms-styles/FormTurnos.css';
-import axios from 'axios'; // Importar axios para hacer solicitudes HTTP
+import axios from 'axios';
 import config from '../../utils/config';
-// import { jwtDecode } from 'jwt-decode';
 
 function FormTurnos() {
     const [error, setError] = useState(null);
@@ -12,13 +11,11 @@ function FormTurnos() {
         type: '',
         date: '',
         pet: ''
-        // user: ''
     });
 
     const backServerUrl = config.backServerUrl;
 
     const [pets, setPets] = useState([]);
-    // const [userId, setUserId] = useState('');
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -45,7 +42,6 @@ function FormTurnos() {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
-                        // 'Authorization': `Bearer ${token}`,
                     }
                 });
 
@@ -60,9 +56,8 @@ function FormTurnos() {
 
                 const data = await response.json();
 
-                console.log('API response data:', data); // Log the response data
+                console.log('API response data:', data);
 
-                // Ensure data.pets is an array
                 if (Array.isArray(data.pets)) {
                     setPets(data.pets);
                 } else {
@@ -90,10 +85,9 @@ function FormTurnos() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const updatedFormData = { ...formData, petId: formData.pet }; // Renombrar 'pet' a 'petId'
+            const updatedFormData = { ...formData, petId: formData.pet };
             setFormData(updatedFormData);
 
-            // Hacemos la solicitud POST con los datos actualizados
             await axios.post(`${backServerUrl}user/666329fd7f4df62bdfa19115/new_appointment`, updatedFormData);
             console.log('Datos enviados exitosamente a la base de datos');
             console.log('ID de la mascota seleccionada:', updatedFormData.petId);

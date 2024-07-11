@@ -1,9 +1,7 @@
-/* Estilo para el modal */
 .modal-content {
   border-radius: 10px;
 }
 
-/* Estilo para el encabezado del modal */
 .modal-header-register {
   background-color: #00eaff;
   color: #fff;
@@ -23,7 +21,6 @@
   border-bottom: none;
 }
 
-/* Estilo para el cuerpo del modal */
 .modal-body  {
   padding: 20px;
 }
@@ -32,24 +29,21 @@
     text-align: left !important;
 }
 
-/* Estilo para el pie del modal */
 .modal-footer {
   border-top: none;
   border-radius: 0 0 10px 10px;
 }
 
-/* Estilo para el botón de cancelar */
 .modal-footer .btn-secondary {
   background-color: #6c757d;
 }
 
-/* Estilo para el botón de enviar */
 .modal-footer .btn-primary {
   background-color: #28a745;
 }
 
 .modal-dialog {
-  margin-top: 100px; /* Ajusta este valor según sea necesario */
+  margin-top: 100px;
 }
 
 .form-group {

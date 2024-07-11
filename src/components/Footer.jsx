@@ -18,7 +18,6 @@ const Footer = () => {
                                     <ul className="list-unstyled">
                                         {items.map((item, i) => (
                                             <li key={i}>
-                                                {/* Agrega un manejador de eventos onClick a cada elemento de enlace */}
                                                 <Link
                                                     className="support-link"
                                                     to={getRoute(item)}
@@ -55,8 +54,6 @@ const Footer = () => {
     );
 }
 
-
-// Definir la función getRoute fuera del componente Footer
 const getRoute = (text) => {
     switch (text) {
         case "Mis mascotas":
@@ -71,7 +68,6 @@ const getRoute = (text) => {
             return "/form";
         case "Acerca de":
             return "/about-us";
-        // Agrega más casos según tus necesidades
         default:
             return "/";
     }

@@ -1,65 +1,51 @@
-// Importacion imágenes
-/* slider */
 import slider1 from '../assets/slider/slider1.jpg';
 import slider2 from '../assets/slider/slider2.jpg';
 import slider3 from '../assets/slider/slider3.jpg';
 import slider4 from '../assets/slider/slider4.jpg';
 import slider5 from '../assets/slider/slider5.jpg';
 
-// footer: redes sociales
 import GitHubIco from '../../public/social-media/github.ico';
 import LinkedInIco from '../../public/social-media/linkedin.ico';
 import InstagramIco from '../../public/social-media/instagram.ico';
 
-// Page Turnos
 import turno1 from '../assets/turnos/turno1.webp';
 import turno2 from '../assets/turnos/turno2.webp';
 
-// Page Mascotas
 import pet1 from '../assets/pets/pet1.webp';
 import pet2 from '../assets/pets/pet2.webp';
 
 
-// Exportación Datos
-/* navbar */
 export const menuItems = [
   { title: "Mascotas", url: "/private/mascotas" },
   { title: "Turnos", url: "/private/turnos" },
-  // Agrega más elementos de menú según sea necesario
 ];
 
-/* slider */
 export const sliderData = [
   {
-    // Primera diapositiva
     image: slider1,
     alt: "First slide",
     title: "Registro Único de Mascotas",
     description: "Facilitamos el registro único de mascotas, brindando una plataforma centralizada para almacenar y acceder a la información de tus mascotas de forma fácil y segura.",
   },
   {
-    // Segunda diapositiva
     image: slider2,
     alt: "Second slide",
     title: "Portal de Adopción",
     description: "Conectamos a dueños cariñosos con animales necesitados de un hogar amoroso. Nuestro portal de adopción simplifica el proceso de búsqueda y encuentro de tu nueva mascota.",
   },
   {
-    // Tercera diapositiva
     image: slider3,
     alt: "Third slide",
     title: "Vacunación Completa",
     description: "Garantizamos registros completos de vacunación para todas las mascotas en nuestro sistema. La salud y el bienestar de tu mascota son nuestra prioridad.",
   },
   {
-    // Cuarta diapositiva
     image: slider4,
     alt: "Fourth slide",
     title: "Comunidad de Amantes de las Mascotas",
     description: "Únete a nuestra comunidad de amantes de las mascotas. Comparte tus experiencias, consejos y fotos con otros dueños de mascotas apasionados como tú.",
   },
   {
-    // Quinta diapositiva
     image: slider5,
     alt: "Fifth slide",
     title: "Apoyo Experto",
@@ -67,7 +53,6 @@ export const sliderData = [
   }
 ];
 
-/* experiencias de usuarios */
 export const userExperiences = [
   {
     image: '/src/assets/user-experience/perfil1.jpg',
@@ -86,8 +71,7 @@ export const userExperiences = [
   }
 ];
 
-/* footer */
-export const socialMediaLinks = [  /* enlaces de redes sociales */
+export const socialMediaLinks = [ 
   { href: "https://github.com/petwebportal", icon: GitHubIco, alt: "Pet Web Portal GitHub" },
   { href: "https://www.linkedin.com/in/petwebportal", icon: LinkedInIco, alt: "Pet Web Portal LinkedIn" },
   { href: "https://instagram.com/@petwebportal", icon: InstagramIco, alt: "Pet Web Portal Instagram" }
@@ -98,7 +82,6 @@ export const footerLinks = [
   { title: "Contacto", items: ["Soporte", "Contacto", "Acerca de"] }
 ];
 
-/* Modal */
 export const contactData = {
   address: "9 de Julio 112, Concepción, Tucumán, Argentina.",
   addressLink: "https://www.google.com.gt/maps/place/La+Oferta/@-27.3477648,-65.5910017,18z/data=!4m10!1m2!2m1!1sla+oferta!3m6!1s0x9423cf5c99bfe997:0x1e14071c27ac474d!8m2!3d-27.3466769!4d-65.5894634!15sCglsYSBvZmVydGFaCyIJbGEgb2ZlcnRhkgEOY2xvdGhpbmdfc3RvcmXgAQA!16s%2Fg%2F11b7xmqvg8?entry=ttu",
@@ -118,5 +101,4 @@ export const socialMediaLinksModal = {
 
 export const pets = [
 
-    // Agrega más turnos
 ];

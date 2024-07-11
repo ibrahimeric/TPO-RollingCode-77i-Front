@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import config from '../../utils/config'
 
-Modal.setAppElement('#root'); // Especificar el elemento root para accesibilidad
+Modal.setAppElement('#root');
 
 function AdminMascotas({ setPage }) {
   const [mascotas, setMascotas] = useState([]);
   const [selectedMascota, setSelectedMascota] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [error, setError] = useState(null);
-  const [turnos, setTurnos] = useState([]); // Agregar estado para los turnos
+  const [turnos, setTurnos] = useState([]); 
   const backServerUrl = config.backServerUrl
 
   useEffect(() => {
@@ -21,7 +21,7 @@ function AdminMascotas({ setPage }) {
       try {
         const response = await axios.get(`${backServerUrl}admin/pets`, {
           headers: {
-            Authorization: 'Bearer ' + accessToken // Reemplaza accessToken con tu token de acceso válido
+            Authorization: 'Bearer ' + accessToken
           }
         });
         setMascotas(response.data);

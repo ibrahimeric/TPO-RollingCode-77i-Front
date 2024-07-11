@@ -1,4 +1,3 @@
-// src/components/PetAdd.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
@@ -71,7 +70,6 @@ const PetAdd = () => {
         throw new Error("Network response was not ok");
       }
       console.log("Mascota Agregada correctamente");
-      // Redirigir a la página de listado de mascotas después de agregar
       navigate("/pets");
     } catch (error) {
       console.error("Error adding pet:", error);

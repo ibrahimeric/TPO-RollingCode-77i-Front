@@ -8,10 +8,10 @@ const UserExperience = () => {
         <div className='contenedor-experiences'>
             <Carousel
                 className='user-experience-carousel'
-                controls={true} // botones de control
-                indicators={false} // indicadores
-                interval={3000} // reproducción automática
-                pause={false} // No pausa el Carousel al pasar el mouse
+                controls={true}
+                indicators={false} 
+                interval={3000}
+                pause={false}
             >
                 {userExperiences.map((experience, index) => (
                     <Carousel.Item key={index} className='item-container'>

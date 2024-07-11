@@ -6,8 +6,7 @@ import '../../css/PrivatePages-styles/TurnosPage.css';
 import config from '../../utils/config';
 
 const TurnosPage = () => {
-  const [turnos, setTurnos] = useState([]);
-  // const userId = '6667a85b7da962f4c6e3959a'; // TODO traer id de usuario
+  const [turnos, setTurnos] = useState([]);// TODO traer id de usuario
   const backServerUrl = config.backServerUrl;
 
   useEffect(() => {
@@ -22,12 +21,12 @@ const TurnosPage = () => {
     };
 
     fetchTurnos();
-  }, [userId]); // Agregar userId como dependencia
+  }, [userId]);
 
   const cancelarTurno = async (userId, appointmentId) => {
     try {
       await axios.delete(`${backServerUrl}user/${userId}/${appointmentId}`);
-      setTurnos(turnos.filter(turno => turno._id !== appointmentId)); // Aquí cambiamos turno.id por turno._id
+      setTurnos(turnos.filter(turno => turno._id !== appointmentId));
       console.log(`Se ha cancelado el turno con ID ${appointmentId}`);
     } catch (error) {
       console.error('Error al cancelar el turno:', error);

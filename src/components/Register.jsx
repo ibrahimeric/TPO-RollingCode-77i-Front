@@ -16,9 +16,8 @@ const Register = () => {
   const backServerUrl = config.backServerUrl;
 
   const validateForm = () => {
-    const newErrors = {}; // Objeto para almacenar errores
+    const newErrors = {};
 
-    // Validaciones de cada campo
     if (name.trim().length < 2) {
       newErrors.name = 'El nombre debe tener al menos 2 caracteres';
     }
@@ -39,15 +38,14 @@ const Register = () => {
       newErrors.repeatPassword = 'Las contraseñas no coinciden';
     }
 
-    setErrors(newErrors); // Actualiza el estado de errores
-    return Object.keys(newErrors).length === 0; // Retorna true si no hay errores
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0; 
   };
 
-  // Función para manejar el envío del formulario
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Previene el comportamiento por defecto del formulario
+    e.preventDefault();
     if (!validateForm()) {
-      return; // Si el formulario no es válido, no continúa
+      return; 
     }
     try {
       const response = await fetch(`${backServerUrl}auth/register`, {
@@ -55,115 +53,115 @@ const Register = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, DNI, email, phone, password }), // Datos del formulario en el cuerpo de la solicitud
+        body: JSON.stringify({ name, DNI, email, phone, password }),
       });
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.error || 'Network response was not ok'); // Maneja errores de la respuesta
+        throw new Error(errorData.error || 'Network response was not ok'); 
       }
 
       const data = await response.json();
       if (data.usuario) {
-        navigate('/login'); // Redirige al usuario a la página de inicio de sesión si el registro es exitoso
+        navigate('/login');
       }
     } catch (error) {
       console.error('Error registering:', error);
-      setErrors({ general: error.message }); // Maneja errores generales y los muestra en el formulario
+      setErrors({ general: error.message });
     }
   };
 
   return (
-    <div className="container-register register-container d-flex justify-content-center align-items-center vh-100"> {/* Contenedor principal */}
-      <div className="col-md-6"> {/* Columna para centrar el formulario */}
-        <h1 className="register-heading text-center mb-4">Registrarse</h1> {/* Encabezado */}
-        <form onSubmit={handleSubmit} className="register-form"> {/* Formulario */}
-          <div className="form-group register-form-group"> {/* Grupo de formulario para el nombre */}
+    <div className="container-register register-container d-flex justify-content-center align-items-center vh-100"> 
+      <div className="col-md-6"> 
+        <h1 className="register-heading text-center mb-4">Registrarse</h1> 
+        <form onSubmit={handleSubmit} className="register-form">
+          <div className="form-group register-form-group"> 
             <label htmlFor="name">Nombre y Apellido:</label>
             <input
               type="text"
               className="form-control register-form-control"
               id="name"
               value={name}
-              onChange={e => setName(e.target.value)} // Actualiza el estado del nombre
+              onChange={e => setName(e.target.value)} 
               required
             />
-            {errors.name && <div className="text-danger">{errors.name}</div>} {/* Muestra el error si existe */}
+            {errors.name && <div className="text-danger">{errors.name}</div>} 
           </div>
-          <div className="form-group register-form-group"> {/* Grupo de formulario para el DNI */}
+          <div className="form-group register-form-group">
             <label htmlFor="DNI">DNI:</label>
             <input
               type="text"
               className="form-control register-form-control"
               id="DNI"
               value={DNI}
-              onChange={e => setDNI(e.target.value)} // Actualiza el estado del DNI
+              onChange={e => setDNI(e.target.value)} 
               required
             />
-            {errors.DNI && <div className="text-danger">{errors.DNI}</div>} {/* Muestra el error si existe */}
+            {errors.DNI && <div className="text-danger">{errors.DNI}</div>} 
           </div>
-          <div className="form-group register-form-group"> {/* Grupo de formulario para el email */}
+          <div className="form-group register-form-group"> 
             <label htmlFor="email">Email:</label>
             <input
               type="email"
               className="form-control register-form-control"
               id="email"
               value={email}
-              onChange={e => setEmail(e.target.value)} // Actualiza el estado del email
+              onChange={e => setEmail(e.target.value)}
               required
             />
-            {errors.email && <div className="text-danger">{errors.email}</div>} {/* Muestra el error si existe */}
+            {errors.email && <div className="text-danger">{errors.email}</div>} 
           </div>
-          <div className="form-group register-form-group"> {/* Grupo de formulario para el teléfono */}
+          <div className="form-group register-form-group"> 
             <label htmlFor="phone">Celular:</label>
             <input
               type="text"
               className="form-control register-form-control"
               id="phone"
               value={phone}
-              onChange={e => setPhone(e.target.value)} // Actualiza el estado del teléfono
+              onChange={e => setPhone(e.target.value)} 
               required
             />
-            {errors.phone && <div className="text-danger">{errors.phone}</div>} {/* Muestra el error si existe */}
+            {errors.phone && <div className="text-danger">{errors.phone}</div>} 
           </div>
-          <div className="form-group register-form-group"> {/* Grupo de formulario para la contraseña */}
+          <div className="form-group register-form-group"> 
             <label htmlFor="password">Contraseña:</label>
             <input
-              type={showPassword ? "text" : "password"} // Muestra u oculta la contraseña
+              type={showPassword ? "text" : "password"} 
               className="form-control register-form-control"
               id="password"
               value={password}
-              onChange={e => setPassword(e.target.value)} // Actualiza el estado de la contraseña
+              onChange={e => setPassword(e.target.value)} 
               required
             />
-            {errors.password && <div className="text-danger">{errors.password}</div>} {/* Muestra el error si existe */}
+            {errors.password && <div className="text-danger">{errors.password}</div>} 
           </div>
-          <div className="form-group register-form-group"> {/* Grupo de formulario para repetir la contraseña */}
+          <div className="form-group register-form-group"> 
             <label htmlFor="repeatPassword">Repetir Contraseña:</label>
             <input
-              type={showPassword ? "text" : "password"} // Muestra u oculta la contraseña
+              type={showPassword ? "text" : "password"} 
               className="form-control register-form-control"
               id="repeatPassword"
               value={repeatPassword}
-              onChange={e => setRepeatPassword(e.target.value)} // Actualiza el estado de repetir la contraseña
+              onChange={e => setRepeatPassword(e.target.value)}
               required
             />
-            {errors.repeatPassword && <div className="text-danger">{errors.repeatPassword}</div>} {/* Muestra el error si existe */}
+            {errors.repeatPassword && <div className="text-danger">{errors.repeatPassword}</div>} 
           </div>
-          <div className="form-check mb-3"> {/* Checkbox para mostrar/ocultar contraseñas */}
+          <div className="form-check mb-3"> 
             <input
               type="checkbox"
               className="form-check-input"
               id="showPassword"
-              checked={showPassword} // Estado del checkbox
-              onChange={e => setShowPassword(e.target.checked)} // Actualiza el estado del checkbox
+              checked={showPassword} 
+              onChange={e => setShowPassword(e.target.checked)} 
             />
             <label className="form-check-label" htmlFor="showPassword">Ver contraseñas</label>
           </div>
-          {errors.general && <div className="text-danger mb-3">{errors.general}</div>} {/* Muestra el error general si existe */}
-          <button type="submit" className="btn btn-primary register-btn-primary btn-block mb-3">Registrarse</button> {/* Botón de registro */}
+          {errors.general && <div className="text-danger mb-3">{errors.general}</div>}
+          <button type="submit" className="btn btn-primary register-btn-primary btn-block mb-3">Registrarse</button>
           <div className="text-center">
-            <Link to="/login">¿Ya tienes una cuenta? Iniciar Sesión</Link> {/* Enlace a la página de inicio de sesión */}
+            <Link to="/login">¿Ya tienes una cuenta? Iniciar Sesión</Link>
           </div>
         </form>
       </div>
@@ -171,4 +169,4 @@ const Register = () => {
   );
 };
 
-export default Register; // Exporta el componente Register
+export default Register;

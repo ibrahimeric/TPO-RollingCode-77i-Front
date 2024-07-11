@@ -3,8 +3,7 @@ import { Button } from 'react-bootstrap';
 import '../../css/Admin-styles/AdminHome.css'
 
 function AdminHomePage() {
-  // const history = useHistory();
-  
+
   const handleNavigation = (path) => {
     history.push(path);
   };

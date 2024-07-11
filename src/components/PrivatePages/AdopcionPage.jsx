@@ -1,42 +1,34 @@
 import React, { useState } from "react";
-import { Container, Table, Button, Form, Modal } from "react-bootstrap"; // Importa Modal desde react-bootstrap
+import { Container, Table, Button, Form, Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import FormAdopcion from '../Forms/FormAdopcion';
 import "../../css/PrivatePages-styles/AdopcionPage.css";
 
 const AdopcionPage = () => {
 
-    // Estado para controlar la visibilidad del modal
   const [showModal, setShowModal] = useState(false);
 
-  // Estado para los datos del formulario de adopción
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: ""
   });
 
-  // Función para manejar cambios en el formulario
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  // Función para manejar el envío del formulario
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Aquí puedes agregar la lógica para enviar los datos del formulario
     console.log("Formulario enviado:", formData);
-    // Cerrar el modal después de enviar el formulario
     closeModal();
   };
 
-  // Función para cerrar el modal
   const closeModal = () => {
     setShowModal(false);
   };
 
-  // Función para abrir el modal
   const openModal = () => {
     setShowModal(true);
   };
@@ -78,7 +70,6 @@ const AdopcionPage = () => {
             <td>Macho</td>
             <td>Especie 1</td>
             <td>
-              {/* Aquí se abre el modal al hacer clic en el botón */}
               <Button variant="primary" className="btn-primary-adopcion" onClick={openModal}>
                 Solicitar Adopción
               </Button>
@@ -98,17 +89,14 @@ const AdopcionPage = () => {
             <td>Hembra</td>
             <td>Especie 2</td>
             <td>
-              {/* Aquí se abre el modal al hacer clic en el botón */}
               <Button variant="primary" className="btn-primary-adopcion" onClick={openModal}>
                 Solicitar Adopción
               </Button>
             </td>
           </tr>
-          {/* Agrega más filas según sea necesario */}
         </tbody>
       </Table>
       
-      {/* Modal del formulario de adopción */}
           <FormAdopcion
             formData={formData}
             showModal={showModal}

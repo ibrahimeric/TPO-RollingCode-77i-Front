@@ -5,7 +5,7 @@ import { menuItems } from '../js/data';
 import Contact from './PublicPages/ContactPage';
 import '../css/Components-styles/Navbar.css';
 import { Link } from 'react-router-dom';
-import { AuthContext } from '../context/Context'; // Asegúrate de ajustar la ruta según tu estructura de archivos
+import { AuthContext } from '../context/Context';
 
 const NavBar = () => {
   const [showContactModal, setShowContactModal] = useState(false);
