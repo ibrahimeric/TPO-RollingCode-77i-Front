@@ -35,18 +35,18 @@ const AppRouter = () => {
           <Router>
             <NavBar />
             <Routes>
+                <Route path="/" element={<Home/>} />
+                <Route path="*" element={<Error404 />} />
               <Route element={<PublicRoutes/>} >
                 <Route path="login" element={<Login />} />
                 <Route path="register" element={<Register />} />
               </Route>
               <Route element={<PrivateRoute/>} >
-                <Route path="/" element={<Home/>} />
                 <Route path='mascotas' element={<Pet/>} />
                 <Route path='mascota/:id' element={<PetDetail/>} />
                 <Route path='mascota/:id/edit' element={<PetEdit/>} />
                 <Route path='mascota/:id/adopt' element={<PetDetailAdopt/>} />
                 <Route path='mascota/add' element={<PetAdd/>} />
-                <Route path="*" element={<Error404 />} />
               </Route>
             </Routes>
             <Footer />
