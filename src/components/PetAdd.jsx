@@ -1,9 +1,8 @@
-// src/components/PetAdd.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import {jwtDecode} from "jwt-decode";
-import config from '../utils/config'
+import config from '../utils/config';
 
 const PetAdd = () => {
   const [error, setError] = useState(null);
@@ -56,22 +55,18 @@ const PetAdd = () => {
     }
 
     try {
-      const response = await fetch(
-        `${backServerUrl}pet/register/${userId}`,
-        {
-          method: "POST",
-          headers: {
-            "Authorization": `Bearer ${token}`,
-          },
-          body: formData,
-        }
-      );
+      const response = await fetch(`${backServerUrl}pet/register/${userId}`, {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
+        body: formData,
+      });
 
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-      console.log("Mascota Agregada correctamente");
-      // Redirigir a la página de listado de mascotas después de agregar
+      console.log("Mascota agregada correctamente");
       navigate("/pets");
     } catch (error) {
       console.error("Error adding pet:", error);

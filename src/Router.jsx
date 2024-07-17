@@ -17,6 +17,9 @@ import PetAdd from './components/PetAdd';
 import PetDetailAdopt from './components/PetDetailAdopt';
 import PrivateRoute from './routes/PrivateRoutes';
 import PublicRoutes from './routes/PublicRoutes';
+import FormTurnos from './components/FormTurnos';
+import TurnosPage from './pages/TurnosPage';
+import Adoption from './pages/Adoption';
 const AppRouter = () => {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -47,6 +50,9 @@ const AppRouter = () => {
                 <Route path='mascota/:id/edit' element={<PetEdit/>} />
                 <Route path='mascota/:id/adopt' element={<PetDetailAdopt/>} />
                 <Route path='mascota/add' element={<PetAdd/>} />
+                <Route path='turnos' element={<TurnosPage/>} />
+                <Route path='turnos/add' element={<FormTurnos/>} />
+                <Route path='adopcion' element={<Adoption/>} />
               </Route>
             </Routes>
             <Footer />

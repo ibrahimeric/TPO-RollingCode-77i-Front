@@ -12,19 +12,19 @@ const Cards = () => {
       imagen: card1Image,
       title: "Registro de Mascotas",
       text: "Registra y gestiona la información de tus mascotas",
-      route: './pet/add'
+      route: './mascotas'
     },
     {
       imagen: card2Image,
       title: "Adopción de Mascotas",
       text: "Encuentra una nueva familia para mascotas necesitadas",
-      route: '/adopciones'
+      route: '/adopcion'
     },
     {
       imagen: card3Image,
       title: "Reserva de Turnos",
       text: "Agenda turnos para vacunación y castración de manera sencilla",
-      route: '/formTurnos'
+      route: '/turnos'
     }
   ];
 

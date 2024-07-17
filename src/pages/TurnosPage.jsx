@@ -2,18 +2,38 @@ import React, { useState, useEffect } from 'react';
 import { Button, Container, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import '../../css/PrivatePages-styles/TurnosPage.css';
+import {jwtDecode} from 'jwt-decode';
+import '../../src/css/PrivatePages-styles/TurnosPage.css';
 import config from '../utils/config';
 
 const TurnosPage = () => {
   const [turnos, setTurnos] = useState([]);
-  // const userId = '6667a85b7da962f4c6e3959a'; // TODO traer id de usuario
   const backServerUrl = config.backServerUrl;
+
+  // Obtener el token del usuario (asumiendo que lo tienes almacenado en localStorage)
+  const token = localStorage.getItem('token');
+  if (!token) {
+    console.error('No token found');
+    return;
+  }
+
+  let userId;
+  try {
+    const decodedToken = jwtDecode(token);
+    userId = decodedToken.id; // Asegúrate de que el campo del ID del usuario en el token es 'id'
+  } catch (error) {
+    console.error('Invalid token:', error);
+    return;
+  }
 
   useEffect(() => {
     const fetchTurnos = async () => {
       try {
-        const response = await axios.get(`${backServerUrl}user/${userId}/get_appointments`);
+        const response = await axios.get(`${backServerUrl}user/${userId}/get_appointments`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
         setTurnos(response.data);
         console.log('IDs de los turnos:', response.data.map(turno => turno.id));
       } catch (error) {
@@ -22,22 +42,28 @@ const TurnosPage = () => {
     };
 
     fetchTurnos();
-  }, [userId]); // Agregar userId como dependencia
+  }, [userId, token]);
 
   const cancelarTurno = async (userId, appointmentId) => {
     try {
-      await axios.delete(`${backServerUrl}user/${userId}/${appointmentId}`);
-      setTurnos(turnos.filter(turno => turno._id !== appointmentId)); // Aquí cambiamos turno.id por turno._id
+      await axios.delete(`${backServerUrl}user/${userId}/${appointmentId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      setTurnos(turnos.filter(turno => turno._id !== appointmentId));
       console.log(`Se ha cancelado el turno con ID ${appointmentId}`);
     } catch (error) {
       console.error('Error al cancelar el turno:', error);
     }
   };
 
-
   return (
     <div className='contenedor'>
       <Container>
+      <Link to="/mascota/add">
+          <Button variant="success">Solicitar Nuevo Turno</Button>
+        </Link>
         <h1 className="text-center">Mis Turnos</h1>
         <div className='table-responsive'>
           <Table striped bordered hover className='table'>
