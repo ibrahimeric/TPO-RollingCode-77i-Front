@@ -93,7 +93,7 @@ const Adoption = () => {
 
 return (
     <Container className="container-petlist">
-      <h1 className="h1-petlist">Listado de Mascotas</h1>
+      <h1 className="h1-petlist">Mascotas en Adopción</h1>
       <div className="pet-card-header">
         <Form.Control
           type="text"
