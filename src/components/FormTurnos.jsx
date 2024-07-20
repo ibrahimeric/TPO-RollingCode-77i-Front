@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {jwtDecode} from 'jwt-decode';
 import '../css/Forms-styles/FormTurnos.css';
 import axios from 'axios';
 import config from '../utils/config';
 
 function FormTurnos() {
+    const navigate = useNavigate();
     const [error, setError] = useState(null);
     const [formData, setFormData] = useState({
         type: '',
@@ -91,6 +92,7 @@ function FormTurnos() {
             });
             console.log('Datos enviados exitosamente a la base de datos');
             console.log('ID de la mascota seleccionada:', updatedFormData.petId);
+            navigate("/turnos"); 
         } catch (error) {
             console.error('Error al enviar los datos a la base de datos:', error);
         }
@@ -115,8 +117,8 @@ function FormTurnos() {
                                 <Form.Label>Tipo de cita</Form.Label>
                                 <Form.Select name="type" value={formData.type} onChange={handleChange}>
                                     <option>Selecciona un tipo</option>
-                                    <option value="neutering">Castracion</option>
-                                    <option value="vaccination">Vacunacion</option>
+                                    <option value="Antirrabico">Antirrabico</option>
+                                    <option value="Antiparasitario">Antiparasitario</option>
                                 </Form.Select>
                             </Form.Group>
 
@@ -145,9 +147,9 @@ function FormTurnos() {
                                 </Form.Select>
                             </Form.Group>
                             <div className='btn-enviar'>
-                                <Button variant="primary" type="submit">
+                                    <Button variant="primary" type="submit">
                                     Enviar
-                                </Button>
+                                    </Button>
                             </div>
                         </Form>
                     </div>

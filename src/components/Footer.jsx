@@ -74,10 +74,9 @@ const getRoute = (text) => {
             return "/turnos";
         case "Soporte":
             return "/soporte";
-        // Eliminar "Contacto" ya que ahora es un modal
         case "Acerca de":
             return "/about-us";
-        // Agrega más casos según tus necesidades
+        // Agregar más casos según tus necesidades
         default:
             return "/";
     }

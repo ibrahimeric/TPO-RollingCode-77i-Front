@@ -61,7 +61,7 @@ const TurnosPage = () => {
   return (
     <div className='contenedor'>
       <Container>
-      <Link to="/mascota/add">
+      <Link to="/turnos/add">
           <Button variant="success">Solicitar Nuevo Turno</Button>
         </Link>
         <h1 className="text-center">Mis Turnos</h1>
