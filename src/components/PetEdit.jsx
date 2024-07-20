@@ -4,6 +4,7 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import {jwtDecode} from "jwt-decode"; // Importar jwtDecode correctamente
 import axios from 'axios';
 import config from "../utils/config";
+import "../css/PetEdit.css";
 
 const PetEdit = () => {
   const { id } = useParams();
@@ -135,7 +136,7 @@ const PetEdit = () => {
           "Authorization": `Bearer ${token}`,
         },
       });
-      navigate('/mascota'); // Redireccionar después de la eliminación
+      navigate('/mascotas'); // Redireccionar después de la eliminación
     } catch (err) {
       setError('Error deleting pet');
       console.error('Error deleting pet:', err);
@@ -195,8 +196,8 @@ const PetEdit = () => {
                 value={editedPet.sex || ''}
                 onChange={handleInputChange}
               >
-                <option value="male">Macho</option>
-                <option value="female">Hembra</option>
+                <option value="macho">Macho</option>
+                <option value="hembra">Hembra</option>
               </Form.Control>
             </Form.Group>
             <Form.Group controlId="formSpecies">
@@ -207,8 +208,8 @@ const PetEdit = () => {
                 value={editedPet.species || ''}
                 onChange={handleInputChange}
               >
-                <option value="canine">Canino</option>
-                <option value="feline">Felino</option>
+                <option value="canino">Canino</option>
+                <option value="felino">Felino</option>
               </Form.Control>
             </Form.Group>
             <Form.Group controlId="formImage">

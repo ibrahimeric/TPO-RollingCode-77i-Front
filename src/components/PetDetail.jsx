@@ -65,10 +65,10 @@ const PetDetail = () => {
         </Col>
         <Col md={6}>
           <h2>{pet.name}</h2>
-          <p><strong>Raza:</strong> {pet.breed}</p>
+          <p><strong>Raza:</strong> {pet.race}</p>
           <p><strong>Edad:</strong> {pet.age} años</p>
-          <p><strong>Sexo:</strong> {pet.gender}</p>
-          <p><strong>Tamaño:</strong> {pet.size}</p>
+          <p><strong>Sexo:</strong> {pet.sex}</p>
+          {/* <p><strong>Tamaño:</strong> {pet.size}</p> */}
           <p><strong>Especie:</strong> {pet.species}</p>
           <Link to={`/mascota/${id}/edit`}><Button>Editar</Button></Link>
         </Col>

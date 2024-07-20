@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Table, Button, Form } from "react-bootstrap";
+import { Container, Table, Button, Form, Image} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../css/PetList.css";
 import { jwtDecode } from "jwt-decode"; // Importing as default
@@ -79,7 +79,7 @@ const PetList = () => {
   );
 
   const petImage = (pet) => {
-    return pet.imagen ? pet.imagen : "src/assets/pet.imagen.jpg";
+    return pet.image ? pet.image : "src/assets/pet.imagen.jpg";
   };
 
   if (error) {
@@ -117,13 +117,13 @@ return (
           {filteredPets.map((pet) => (
             <tr key={pet._id}>
               <td>
-                <img
+                <Image
                   src={petImage(pet)}
-                  alt={pet.name}
+                  alt={pet.name} fluid
                 />
               </td>
               <td>{pet.name}</td>
-              <td>{pet.raice}</td>
+              <td>{pet.race}</td>
               <td>{pet.age} años</td>
               <td>{pet.sex}</td>
               <td>{pet.species}</td>
