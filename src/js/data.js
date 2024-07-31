@@ -24,8 +24,9 @@ import pet2 from '../assets/pets/pet2.webp';
 /* navbar */
 export const menuItems = [
   { title: "Inicio", url: "/" },
-  { title: "Mascotas", url: "/page-mascotas" },
-  { title: "Turnos", url: "/page-turnos" },
+  { title: "Mascotas", url: "/mascotas" },
+  { title: "Turnos", url: "/turnos" },
+  { title: "Adopción", url: "/adopcion" },
   // Agrega más elementos de menú según sea necesario
 ];
 
@@ -71,17 +72,17 @@ export const sliderData = [
 /* experiencias de usuarios */
 export const userExperiences = [
   {
-    image: '/src/assets/user-experience/perfil1.jpg',
+    image: 'https://www.cronica.com.ar/img/2022/12/20/compleja_1_crop1671549518508.jpg?__scale=w:720,h:406,t:2',
     text: '"Fácil de encontrar a mi compañero y rastrear registros de vacunación."',
     name: '- Maria'
   },
   {
-    image: '/src/assets/user-experience/perfil2.jpg',
+    image: 'https://images.unsplash.com/photo-1517256673644-36ad11246d21?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     text: '"Proceso de registro único y función de registro de vacunación eficiente".',
     name: '- Ana'
   },
   {
-    image: '/src/assets/user-experience/perfil3.jpg',
+    image: 'https://images.unsplash.com/photo-1557862921-37829c790f19?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     text: '"Encontré al amigo peludo perfecto para mi familia."',
     name: '- Pablo'
   }
@@ -89,9 +90,9 @@ export const userExperiences = [
 
 /* footer */
 export const socialMediaLinks = [  /* enlaces de redes sociales */
-  { href: "https://github.com/petwebportal", icon: GitHubIco, alt: "Pet Web Portal GitHub" },
+  { href: "https://github.com/ibrahimeric/TPO-RollingCode-77i-Front", icon: GitHubIco, alt: "Pet Web Portal GitHub" },
   { href: "https://www.linkedin.com/in/petwebportal", icon: LinkedInIco, alt: "Pet Web Portal LinkedIn" },
-  { href: "https://instagram.com/@petwebportal", icon: InstagramIco, alt: "Pet Web Portal Instagram" }
+  { href: "https://www.instagram.com/municipalidadconcepcion/", icon: InstagramIco, alt: "Pet Web Portal Instagram" }
 ];
 
 export const footerLinks = [
@@ -116,23 +117,6 @@ export const socialMediaLinksModal = {
   twitter: "https://x.com/Concepcion_Tuc/",
 };
 
-/* export const turnos = [
-    {
-        id: 1,
-        urlImage: turno1,
-        nombreMascota: 'Luna',
-        tipoServicio: 'Vacunación',
-        fecha: '15-07-2024'
-    },
-    {
-        id: 2,
-        urlImage: turno2,
-        nombreMascota: 'Max',
-        tipoServicio: 'Adopción',
-        fecha: '24-09-2024'
-    },
-    // Agrega más turnos
-]; */
 
 export const pets = [
 

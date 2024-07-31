@@ -1,7 +1,7 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import { sliderData } from '../js/data';
-import '../css/Slider.css';
+import '../css/Components-styles/Slider.css';
 
 const Slider = () => {
     return (

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import card1Image from '../assets/cards/card1.webp';
 import card2Image from '../assets/cards/card2.webp';
 import card3Image from '../assets/cards/card3.webp';
-import '../css/Cards.css';
+import '../css/Components-styles/Cards.css';
 
 const Cards = () => {
   const cardsData = [
@@ -12,19 +12,19 @@ const Cards = () => {
       imagen: card1Image,
       title: "Registro de Mascotas",
       text: "Registra y gestiona la información de tus mascotas",
-      route: './pet/add'
+      route: './mascotas'
     },
     {
       imagen: card2Image,
       title: "Adopción de Mascotas",
       text: "Encuentra una nueva familia para mascotas necesitadas",
-      route: '/adopciones'
+      route: '/adopcion'
     },
     {
       imagen: card3Image,
       title: "Reserva de Turnos",
       text: "Agenda turnos para vacunación y castración de manera sencilla",
-      route: '/formTurnos'
+      route: '/turnos'
     }
   ];
 

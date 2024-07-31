@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../css/Register.css';
+import config from '../utils/config';
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -12,6 +13,7 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
+  const backServerUrl = config.backServerUrl;
 
   const validateForm = () => {
     const newErrors = {};
@@ -46,7 +48,7 @@ const Register = () => {
       return;
     }
     try {
-      const response = await fetch('http://localhost:5000/auth/register', {
+      const response = await fetch(`${backServerUrl}auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

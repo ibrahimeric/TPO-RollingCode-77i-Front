@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/AcercaDe.css';
+import '../../css/PublicPages-styles/AcercaDe.css';
 const AboutPage = () => {
   return (
     <div className="container">

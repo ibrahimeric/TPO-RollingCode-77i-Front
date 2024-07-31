@@ -2,8 +2,8 @@ import React, { useState, useContext } from 'react';
 import { Navbar, Nav, Button } from 'react-bootstrap';
 import logo from '/logo.png';
 import { menuItems } from '../js/data';
-import Contact from './Contact';
-import '../css/Navbar.css';
+import Contact from './ContactPage';
+import '../css/Components-styles/Navbar.css';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/Context'; // Asegúrate de ajustar la ruta según tu estructura de archivos
 
