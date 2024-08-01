@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { socialMediaLinks, footerLinks } from '../js/data';
 import '../css/Components-styles/Footer.css';
 import { Link } from 'react-router-dom';
-import Contact from './ContactPage'; // Importa el componente Contact
+import Contact from './ContactPage';
 
 const Footer = () => {
     const [showContactModal, setShowContactModal] = useState(false);
@@ -57,13 +57,12 @@ const Footer = () => {
                 </div>
             </div>
 
-            {/* Usar el componente Contact para el modal */}
             <Contact isOpen={showContactModal} onClose={handleToggleContactModal} />
         </>
     );
 }
 
-// Definir la función getRoute fuera del componente Footer
+
 const getRoute = (text) => {
     switch (text) {
         case "Mis mascotas":
@@ -76,7 +75,7 @@ const getRoute = (text) => {
             return "/soporte";
         case "Acerca de":
             return "/about-us";
-        // Agregar más casos según tus necesidades
+       
         default:
             return "/";
     }

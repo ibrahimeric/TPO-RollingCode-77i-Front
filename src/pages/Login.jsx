@@ -46,7 +46,7 @@ const Login = () => {
       const token = data.token;
       if (token) {
         login(token);
-        navigate('/'); // Redirigir al usuario a la página principal u otra página protegida
+        navigate('/');
       }
     } catch (error) {
       console.error('Error logging in:', error);

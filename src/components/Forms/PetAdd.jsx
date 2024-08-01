@@ -90,7 +90,7 @@ const PetAdd = () => {
         throw new Error(errorData.error || "Network response was not ok");
       }
       console.log("Mascota agregada correctamente");
-      navigate("/mascotas"); // Redirige a la ruta /mascotas después de agregar la mascota
+      navigate("/mascotas");
     } catch (error) {
       console.error("Error adding pet:", error);
       setError(error.message);

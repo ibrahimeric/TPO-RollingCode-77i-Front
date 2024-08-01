@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import {jwtDecode} from "jwt-decode"; // Importar jwtDecode correctamente
+import {jwtDecode} from "jwt-decode";
 import axios from 'axios';
 import config from "../utils/config";
 import "../css/PetEdit.css";
 
 const PetEdit = () => {
   const { id } = useParams();
-  const navigate = useNavigate(); // Para redireccionar después de la eliminación
+  const navigate = useNavigate();
   const [pet, setPet] = useState(null);
   const [editedPet, setEditedPet] = useState({});
   const [error, setError] = useState(null);
@@ -24,7 +24,7 @@ const PetEdit = () => {
 
       try {
         const decodedToken = jwtDecode(token);
-        console.log("Decoded Token:", decodedToken); // Log del token decodificado
+        console.log("Decoded Token:", decodedToken);
 
         if (!decodedToken) {
           throw new Error("Invalid token");
@@ -36,14 +36,14 @@ const PetEdit = () => {
           },
         });
 
-        console.log("Fetch Response Status:", response.status); // Log del estado de la respuesta
+        console.log("Fetch Response Status:", response.status);
 
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
 
         const data = await response.json();
-        console.log("Pet Data:", data); // Log de los datos de la mascota
+        console.log("Pet Data:", data);
         setPet(data);
         setEditedPet(data);
       } catch (error) {
@@ -73,7 +73,7 @@ const PetEdit = () => {
 
     try {
       const decodedToken = jwtDecode(token);
-      console.log("Decoded Token on Submit:", decodedToken); // Log del token decodificado al enviar
+      console.log("Decoded Token on Submit:", decodedToken);
 
       if (!decodedToken) {
         throw new Error("Invalid token");
@@ -89,7 +89,7 @@ const PetEdit = () => {
         formData.append("image", editedPet.image);
       }
 
-      console.log("Form Data to Submit:", formData); // Log de los datos del formulario a enviar
+      console.log("Form Data to Submit:", formData);
 
       const response = await fetch(`${backServerUrl}pet/update/${id}`, {
         method: "PATCH",
@@ -99,14 +99,14 @@ const PetEdit = () => {
         body: formData,
       });
 
-      console.log("Update Response Status:", response.status); // Log del estado de la respuesta de actualización
+      console.log("Update Response Status:", response.status);
 
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
 
-      // Manejar actualización exitosa, redireccionar o mostrar mensaje de éxito
-      navigate('/mascotas'); // Redireccionar a la lista de mascotas
+      
+      navigate('/mascotas');
     } catch (error) {
       console.error("Error updating pet:", error);
       setError(error.message);
@@ -136,7 +136,7 @@ const PetEdit = () => {
           "Authorization": `Bearer ${token}`,
         },
       });
-      navigate('/mascotas'); // Redireccionar después de la eliminación
+      navigate('/mascotas');
     } catch (err) {
       setError('Error deleting pet');
       console.error('Error deleting pet:', err);

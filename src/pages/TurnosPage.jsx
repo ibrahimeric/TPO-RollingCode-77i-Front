@@ -10,7 +10,7 @@ const TurnosPage = () => {
   const [turnos, setTurnos] = useState([]);
   const backServerUrl = config.backServerUrl;
 
-  // Obtener el token del usuario (asumiendo que lo tienes almacenado en localStorage)
+
   const token = localStorage.getItem('token');
   if (!token) {
     console.error('No token found');
@@ -20,7 +20,7 @@ const TurnosPage = () => {
   let userId;
   try {
     const decodedToken = jwtDecode(token);
-    userId = decodedToken.id; // Asegúrate de que el campo del ID del usuario en el token es 'id'
+    userId = decodedToken.id;
   } catch (error) {
     console.error('Invalid token:', error);
     return;
