@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import {jwtDecode} from "jwt-decode"; 
+import {jwtDecode} from "jwt-decode"; // Importar jwtDecode correctamente
 import axios from 'axios';
-import config from "../../utils/config";
+import config from "../utils/config";
+import "../css/PetEdit.css";
 
 const PetEdit = () => {
   const { id } = useParams();
-  const navigate = useNavigate(); 
+  const navigate = useNavigate(); // Para redireccionar después de la eliminación
   const [pet, setPet] = useState(null);
   const [editedPet, setEditedPet] = useState({});
   const [error, setError] = useState(null);
-  const backServerUrl = config.backServerUrl
+  const backServerUrl = config.backServerUrl;
 
   useEffect(() => {
     const fetchPetDetails = async () => {
@@ -23,6 +24,8 @@ const PetEdit = () => {
 
       try {
         const decodedToken = jwtDecode(token);
+        console.log("Decoded Token:", decodedToken); // Log del token decodificado
+
         if (!decodedToken) {
           throw new Error("Invalid token");
         }
@@ -33,11 +36,14 @@ const PetEdit = () => {
           },
         });
 
+        console.log("Fetch Response Status:", response.status); // Log del estado de la respuesta
+
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
 
         const data = await response.json();
+        console.log("Pet Data:", data); // Log de los datos de la mascota
         setPet(data);
         setEditedPet(data);
       } catch (error) {
@@ -47,7 +53,7 @@ const PetEdit = () => {
     };
 
     fetchPetDetails();
-  }, [id]);
+  }, [id, backServerUrl]);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -67,6 +73,8 @@ const PetEdit = () => {
 
     try {
       const decodedToken = jwtDecode(token);
+      console.log("Decoded Token on Submit:", decodedToken); // Log del token decodificado al enviar
+
       if (!decodedToken) {
         throw new Error("Invalid token");
       }
@@ -81,7 +89,9 @@ const PetEdit = () => {
         formData.append("image", editedPet.image);
       }
 
-      const response = await fetch(`${backServerUrl}pet/${id}`, {
+      console.log("Form Data to Submit:", formData); // Log de los datos del formulario a enviar
+
+      const response = await fetch(`${backServerUrl}pet/update/${id}`, {
         method: "PATCH",
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -89,11 +99,14 @@ const PetEdit = () => {
         body: formData,
       });
 
+      console.log("Update Response Status:", response.status); // Log del estado de la respuesta de actualización
+
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
 
-      navigate('/pets'); 
+      // Manejar actualización exitosa, redireccionar o mostrar mensaje de éxito
+      navigate('/mascotas'); // Redireccionar a la lista de mascotas
     } catch (error) {
       console.error("Error updating pet:", error);
       setError(error.message);
@@ -118,12 +131,12 @@ const PetEdit = () => {
     }
 
     try {
-      await axios.delete(`${backServerUrl}delete/${id}`, {
+      await axios.delete(`${backServerUrl}pet/delete/${id}`, {
         headers: {
           "Authorization": `Bearer ${token}`,
         },
       });
-      navigate('/pets');
+      navigate('/mascotas'); // Redireccionar después de la eliminación
     } catch (err) {
       setError('Error deleting pet');
       console.error('Error deleting pet:', err);
@@ -148,7 +161,7 @@ const PetEdit = () => {
               <Form.Control
                 type="text"
                 name="name"
-                value={editedPet.name}
+                value={editedPet.name || ''}
                 onChange={handleInputChange}
                 placeholder="Ingrese el nombre de la mascota"
                 required
@@ -159,7 +172,7 @@ const PetEdit = () => {
               <Form.Control
                 type="text"
                 name="race"
-                value={editedPet.race}
+                value={editedPet.race || ''}
                 onChange={handleInputChange}
                 placeholder="Ingrese la raza de la mascota"
               />
@@ -169,7 +182,7 @@ const PetEdit = () => {
               <Form.Control
                 type="number"
                 name="age"
-                value={editedPet.age}
+                value={editedPet.age || ''}
                 onChange={handleInputChange}
                 placeholder="Ingrese la edad de la mascota"
                 required
@@ -180,11 +193,11 @@ const PetEdit = () => {
               <Form.Control
                 as="select"
                 name="sex"
-                value={editedPet.sex}
+                value={editedPet.sex || ''}
                 onChange={handleInputChange}
               >
-                <option value="male">Macho</option>
-                <option value="female">Hembra</option>
+                <option value="macho">Macho</option>
+                <option value="hembra">Hembra</option>
               </Form.Control>
             </Form.Group>
             <Form.Group controlId="formSpecies">
@@ -192,11 +205,11 @@ const PetEdit = () => {
               <Form.Control
                 as="select"
                 name="species"
-                value={editedPet.species}
+                value={editedPet.species || ''}
                 onChange={handleInputChange}
               >
-                <option value="canine">Canino</option>
-                <option value="feline">Felino</option>
+                <option value="canino">Canino</option>
+                <option value="felino">Felino</option>
               </Form.Control>
             </Form.Group>
             <Form.Group controlId="formImage">
@@ -208,7 +221,7 @@ const PetEdit = () => {
                 accept="image/*"
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" onClick={handleSubmit}>
               Actualizar Mascota
             </Button>
             <Button variant="danger" type="button" onClick={handleDelete} className="ml-2">

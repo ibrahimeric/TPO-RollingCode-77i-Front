@@ -1,5 +1,5 @@
 const config = {
-    backServerUrl: 'http://localhost:5000/',
+    backServerUrl: 'https://back-rum-rolling.onrender.com/',
 
     mascotasRoute: 'private/mascotas/',
     turnosRoute: 'private/turnos/',

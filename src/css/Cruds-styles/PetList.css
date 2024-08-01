@@ -3,7 +3,7 @@
 }
 
 .h1-petlist {
-  text-align: center;
+  text-align: left;
   margin-bottom: 1.5rem;
   color: #2F6FA5;
 }
@@ -11,6 +11,7 @@
 .table-petlist {
   background-color: white;
   border: 1px solid #2F6FA5;
+  text-align: left !important;
 }
 
 .table-petlist th {
@@ -20,6 +21,10 @@
 
 .table-petlist td {
   vertical-align: middle;
+}
+
+.form-label {
+    text-align: left !important;
 }
 
 .table-petlist img {

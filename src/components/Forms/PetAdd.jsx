@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import {jwtDecode} from "jwt-decode";
-import config from '../../utils/config'
+import config from '../../utils/config';
 
 const PetAdd = () => {
   const [error, setError] = useState(null);
@@ -12,10 +12,27 @@ const PetAdd = () => {
     name: "",
     race: "",
     age: "",
-    sex: "male",
-    species: "canine",
+    sex: "macho",
+    species: "canino",
     image: null,
   });
+
+  const [userId, setUserId] = useState(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setError("No token found");
+      return;
+    }
+    try {
+      const decodedToken = jwtDecode(token);
+      setUserId(decodedToken.id);
+    } catch (error) {
+      setError("Invalid token");
+      console.error("Error decoding token:", error);
+    }
+  }, []);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -25,24 +42,24 @@ const PetAdd = () => {
     });
   };
 
-  const token = localStorage.getItem("token");
-  if (!token) {
-    setError("No token found");
-    return;
-  }
-
-  let userId;
-  try {
-    const decodedToken = jwtDecode(token);
-    userId = decodedToken.id;
-  } catch (error) {
-    setError("Invalid token");
-    console.error("Error decoding token:", error);
-    return;
-  }
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setNewPet({
+        ...newPet,
+        image: file,
+      });
+    }
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setError("No token found");
+      return;
+    }
 
     const formData = new FormData();
     formData.append("name", newPet.name);
@@ -54,36 +71,29 @@ const PetAdd = () => {
       formData.append("image", newPet.image);
     }
 
+    console.log("Form Data to be sent:");
+    formData.forEach((value, key) => {
+      console.log(key, value);
+    });
+
     try {
-      const response = await fetch(
-        `${backServerUrl}pet/register/${userId}`,
-        {
-          method: "POST",
-          headers: {
-            "Authorization": `Bearer ${token}`,
-          },
-          body: formData,
-        }
-      );
+      const response = await fetch(`${backServerUrl}pet/register/${userId}`, {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
+        body: formData,
+      });
 
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Network response was not ok");
       }
-      console.log("Mascota Agregada correctamente");
-      navigate("/pets");
+      console.log("Mascota agregada correctamente");
+      navigate("/mascotas"); // Redirige a la ruta /mascotas después de agregar la mascota
     } catch (error) {
       console.error("Error adding pet:", error);
       setError(error.message);
-    }
-  };
-
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      setNewPet({
-        ...newPet,
-        image: file,
-      });
     }
   };
 
@@ -132,8 +142,8 @@ const PetAdd = () => {
                 value={newPet.sex}
                 onChange={handleInputChange}
               >
-                <option value="male">Macho</option>
-                <option value="female">Hembra</option>
+                <option value="macho">Macho</option>
+                <option value="hembra">Hembra</option>
               </Form.Control>
             </Form.Group>
             <Form.Group controlId="formSpecies">
@@ -144,8 +154,8 @@ const PetAdd = () => {
                 value={newPet.species}
                 onChange={handleInputChange}
               >
-                <option value="canine">Canino</option>
-                <option value="feline">Felino</option>
+                <option value="canino">Canino</option>
+                <option value="felino">Felino</option>
               </Form.Control>
             </Form.Group>
             <Form.Group controlId="formImage">

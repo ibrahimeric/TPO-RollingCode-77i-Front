@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { Container, Table, Button, Form, Image} from "react-bootstrap";
+import { useState, useEffect } from "react";
+import { Container, Table, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "../../css/PrivatePages-styles/PetsPage.css";
-import { jwtDecode } from "jwt-decode"; 
-import config from "../../utils/config";
+import "../css/PetList.css";
+import { jwtDecode } from "jwt-decode"; // Importing as default
+import config from "../utils/config";
 
-const PetList = () => {
+const PetListAdopt = () => {
   const [pets, setPets] = useState([]);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const backServerUrl = config.backServerUrl;
+  const [userId, setUserId] = useState();
 
+  
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -18,21 +20,22 @@ const PetList = () => {
       return;
     }
 
-    let userId;
+    let decodedUserId;
     try {
       const decodedToken = jwtDecode(token);
-      userId = decodedToken.id;
-      console.log(userId);
+      decodedUserId = decodedToken.id;
+      setUserId(decodedUserId);
+      console.log(decodedUserId);
     } catch (error) {
       setError("Invalid token");
       console.error("Error decoding token:", error);
       return;
     }
 
-    const fetchPets = async () => {
+    const fetchPets = async (userId) => {
       try {
         const response = await fetch(
-          `${backServerUrl}user/${userId}/pets`,
+          `${backServerUrl}user/adoption/adopt_pets`,
           {
             method: "GET",
             headers: {
@@ -53,12 +56,13 @@ const PetList = () => {
 
         const data = await response.json();
 
-        console.log("API response data:", data); 
+        console.log("API response data:", data); // Log the response data
 
-        if (Array.isArray(data.pets)) {
-          setPets(data.pets);
+        // Ensure data is an array
+        if (Array.isArray(data)) {
+          setPets(data);
         } else {
-          throw new Error("Received data.pets is not an array");
+          throw new Error("Received data is not an array");
         }
       } catch (error) {
         setError(error.message);
@@ -66,7 +70,9 @@ const PetList = () => {
       }
     };
 
-    fetchPets();
+    if (decodedUserId) {
+      fetchPets(decodedUserId);
+    }
   }, []);
 
   const handleSearchChange = (event) => {
@@ -78,7 +84,7 @@ const PetList = () => {
   );
 
   const petImage = (pet) => {
-    return pet.image ? pet.image : "src/assets/pet.imagen.jpg";
+    return pet.imagen ? pet.imagen : "src/assets/pet.imagen.jpg";
   };
 
   if (error) {
@@ -87,9 +93,6 @@ const PetList = () => {
 
 return (
     <Container className="container-petlist">
-        <Link to="/mascota/add">
-          <Button variant="success">Agregar otra mascota</Button>
-        </Link>
       <h1 className="h1-petlist">Listado de Mascotas</h1>
       <div className="pet-card-header">
         <Form.Control
@@ -99,6 +102,7 @@ return (
           onChange={handleSearchChange}
           className="mb-3"
         />
+
       </div>
       <Table striped bordered hover responsive className="table-petlist">
         <thead>
@@ -116,18 +120,18 @@ return (
           {filteredPets.map((pet) => (
             <tr key={pet._id}>
               <td>
-                <Image
+                <img
                   src={petImage(pet)}
-                  alt={pet.name} fluid
+                  alt={pet.name}
                 />
               </td>
               <td>{pet.name}</td>
-              <td>{pet.race}</td>
+              <td>{pet.raice}</td>
               <td>{pet.age} años</td>
               <td>{pet.sex}</td>
               <td>{pet.species}</td>
               <td>
-                <Link to={`/pet/${pet._id}`}>
+                <Link to={`/mascota/${pet._id}/adopt`}>
                   <Button variant="primary" className="btn-primary-petlist">Ver Detalles</Button>
                 </Link>
               </td>
@@ -139,4 +143,4 @@ return (
   );
 };
 
-export default PetList;
+export default PetListAdopt;

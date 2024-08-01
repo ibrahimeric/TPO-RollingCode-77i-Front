@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
 import { jwtDecode } from 'jwt-decode';
-import config from '../../utils/config';
+import config from '../utils/config';
 
 const PetDetail = () => {
   const backServerUrl = config.backServerUrl;
@@ -65,12 +65,12 @@ const PetDetail = () => {
         </Col>
         <Col md={6}>
           <h2>{pet.name}</h2>
-          <p><strong>Raza:</strong> {pet.breed}</p>
+          <p><strong>Raza:</strong> {pet.race}</p>
           <p><strong>Edad:</strong> {pet.age} años</p>
-          <p><strong>Sexo:</strong> {pet.gender}</p>
-          <p><strong>Tamaño:</strong> {pet.size}</p>
+          <p><strong>Sexo:</strong> {pet.sex}</p>
+          {/* <p><strong>Tamaño:</strong> {pet.size}</p> */}
           <p><strong>Especie:</strong> {pet.species}</p>
-          <Link to={`/pet/${id}/edit`}><Button>Editar</Button></Link>
+          <Link to={`/mascota/${id}/edit`}><Button>Editar</Button></Link>
         </Col>
       </Row>
     </Container>

@@ -21,7 +21,7 @@ const Login = () => {
     }
 
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0; 
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
@@ -35,30 +35,30 @@ const Login = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password }), 
+        body: JSON.stringify({ email, password }),
       });
 
       if (!response.ok) {
-        throw new Error('Network response was not ok'); 
+        throw new Error('Network response was not ok');
       }
 
       const data = await response.json();
-      const token = data.token; 
+      const token = data.token;
       if (token) {
-        login(token); 
-        navigate('/'); 
+        login(token);
+        navigate('/'); // Redirigir al usuario a la página principal u otra página protegida
       }
     } catch (error) {
-      console.error('Error logging in:', error); 
+      console.error('Error logging in:', error);
     }
   };
 
   return (
-    <div className="container-login d-flex justify-content-center align-items-center vh-100"> 
-      <div className="col-md-6"> 
+    <div className="container-login d-flex justify-content-center align-items-center vh-100">
+      <div className="col-md-6">
         <h1 className="login-heading text-center mb-4">Iniciar Sesión</h1>
         <form onSubmit={handleSubmit} className="login-form">
-          <div className="form-group login-form-group"> 
+          <div className="form-group login-form-group">
             <label htmlFor="email">Email:</label>
             <input
               type="email"
@@ -68,12 +68,12 @@ const Login = () => {
               onChange={e => setEmail(e.target.value)}
               required
             />
-            {errors.email && <div className="text-danger">{errors.email}</div>} 
+            {errors.email && <div className="text-danger">{errors.email}</div>}
           </div>
-          <div className="form-group login-form-group"> 
+          <div className="form-group login-form-group">
             <label htmlFor="password">Contraseña:</label>
             <input
-              type={showPassword ? "text" : "password"} 
+              type={showPassword ? "text" : "password"}
               className="form-control login-form-control"
               id="password"
               value={password}
@@ -82,7 +82,7 @@ const Login = () => {
             />
             {errors.password && <div className="text-danger">{errors.password}</div>}
           </div>
-          <div className="form-check mb-3"> 
+          <div className="form-check mb-3">
             <input
               type="checkbox"
               className="form-check-input"
@@ -94,10 +94,10 @@ const Login = () => {
           </div>
           <button type="submit" className="btn btn-primary login-btn-primary btn-block mb-3">Iniciar Sesión</button>
           <div className="text-center">
-            <Link to="/recover-password">¿Olvidaste tu contraseña?</Link> 
+            <Link to="/recover-password">¿Olvidaste tu contraseña?</Link>
           </div>
           <div className="text-center">
-            <Link to="/public/register">¿No tienes una cuenta? Registrarse</Link>
+            <Link to="/register">¿No tienes una cuenta? Registrarse</Link>
           </div>
         </form>
       </div>

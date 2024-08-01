@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Navbar, Nav, Button } from 'react-bootstrap';
 import logo from '/logo.png';
 import { menuItems } from '../js/data';
-import Contact from './PublicPages/ContactPage';
+import Contact from './ContactPage';
 import '../css/Components-styles/Navbar.css';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/Context';
@@ -28,7 +28,7 @@ const NavBar = () => {
               Logout
             </Button>
           ) : (
-            <Link to="/public/login">
+            <Link to="/login">
               <Button variant="outline-primary" className="btn-login">
                 Login
               </Button>
